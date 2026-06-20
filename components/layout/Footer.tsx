@@ -166,7 +166,7 @@ export default function Footer() {
           <p className="text-xs link-subtle">
             Axon è un dispositivo medico di Classe I. Leggere le istruzioni per l&apos;uso.
             <br />
-            © {anno} Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV). P.IVA [placeholder].
+            © {anno} Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV). P.IVA IT05577370264.
           </p>
           <div className="flex gap-5">
             {(['Privacy', 'Cookie', 'Termini'] as const).map(label => (
