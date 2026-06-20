@@ -1,0 +1,117 @@
+@import '../design/tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    color-scheme: dark;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Impedisce lo scroll orizzontale causato da elementi decorativi
+     (es. glow con inset negativo) che sforano oltre la viewport.
+     'clip' non crea un contenitore di scroll, quindi position: sticky resta valido. */
+  html,
+  body {
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background-color: var(--brand);
+    color: var(--brand-contrast);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Link hover utilities */
+  .link-muted {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+  }
+  .link-muted:hover {
+    color: var(--text);
+  }
+  .link-subtle {
+    color: var(--text-subtle);
+    transition: color 0.2s ease;
+  }
+  .link-subtle:hover {
+    color: var(--text-muted);
+  }
+
+  /* Button variants */
+  .btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn-primary {
+    background: var(--brand);
+    color: var(--brand-contrast);
+    border: 1px solid transparent;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--brand-hover);
+    transform: translateY(-2px);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border-strong);
+  }
+  .btn-secondary:hover:not(:disabled) {
+    background: var(--surface-2);
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-muted);
+    border: 1px solid transparent;
+  }
+  .btn-ghost:hover:not(:disabled) {
+    color: var(--text);
+  }
+
+  /* Card hover */
+  .card-base {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .card-hover:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+  }
+}
