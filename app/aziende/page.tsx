@@ -3,7 +3,9 @@ import AziendeContent from '@/components/aziende/AziendeContent'
 
 export const metadata: Metadata = {
   title: 'Axon per le aziende',
-  description: 'Integra Axon nei tuoi prodotti e percorsi. Moda, sport, sanità, benessere.',
+  description:
+    'Integra Axon nei tuoi prodotti, calzature o percorsi aziendali. Dalla moda alla sanità, dallo sport al benessere sul lavoro.',
+  alternates: { canonical: '/aziende' },
 }
 
 export default function AziendePage() {

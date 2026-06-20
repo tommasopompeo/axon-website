@@ -1,3 +1,4 @@
+import JsonLd from '@/components/JsonLd'
 import HeroSection from '@/components/home/HeroSection'
 import ContestiBento from '@/components/sections/ContestiBento'
 import IntroStatSection from '@/components/home/IntroStatSection'
@@ -11,6 +12,7 @@ import FinalCtaSection from '@/components/home/FinalCtaSection'
 export default function HomePage() {
   return (
     <>
+      <JsonLd />
       <HeroSection />
       <ContestiBento />
       <IntroStatSection />
