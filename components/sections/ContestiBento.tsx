@@ -92,7 +92,7 @@ export default function ContestiBento() {
                 letterSpacing: '-0.02em',
               }}
             >
-              La tua performance,<br className="hidden sm:inline" /> in ogni contesto.
+              Equilibrio e stabilità posturale, benessere e autonomia tutti i giorni.
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
@@ -103,8 +103,7 @@ export default function ContestiBento() {
                 color: 'var(--text-muted)',
               }}
             >
-              Micro-stimolazioni vibrazionali passive che sostengono equilibrio, forza,
-              flessibilità e recupero muscolare. Senza batterie, senza contatto con la pelle.
+              Micro-stimolazioni vibrazionali passive che sostengono equilibrio, forza, flessibilità e recupero muscolare. Senza batterie, senza contatto con la pelle. Tu indossi i tuoi capi di sempre: Axon lavora da solo.
             </p>
           </Reveal>
         </div>
@@ -153,7 +152,6 @@ export default function ContestiBento() {
                       }}
                     >
                       {value}
-                      <span style={{ fontSize: '0.7em', color: 'rgba(255,255,255,0.7)' }}>*</span>
                     </span>
                     <span
                       className="font-medium"
@@ -203,19 +201,7 @@ export default function ContestiBento() {
 
         </RevealGroup>
 
-        {/* ── Nota studio pilota ── */}
-        <Reveal delay={0.1}>
-          <p
-            className="mt-4"
-            style={{
-              fontSize: 'var(--fs-caption)',
-              color: 'var(--text-subtle)',
-              lineHeight: 1.5,
-            }}
-          >
-            * Studio pilota IPAB F. Fenzi, 14 soggetti. Risultati preliminari.
-          </p>
-        </Reveal>
+
 
       </Container>
     </Section>

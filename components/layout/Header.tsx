@@ -7,9 +7,9 @@ import { Menu, X } from 'lucide-react'
 import Button from '@/components/ui/Button'
 
 const navLinks = [
-  { label: 'Come funziona', href: '/#come-funziona' },
-  { label: 'Testimonianze', href: '/#testimonianze' },
-  { label: 'FAQ', href: '/#faq' },
+  { label: 'Come funziona', href: '/come-funziona' },
+  { label: 'Perchè AXON', href: '/perche-axon' },
+  { label: 'Fisioterapisti', href: '/fisioterapisti' },
   { label: 'Aziende', href: '/aziende' },
 ]
 
@@ -36,35 +36,30 @@ export default function Header() {
       }}
     >
       <div
-        className="mx-auto flex h-16 items-center justify-between"
-        style={{
-          maxWidth: 'var(--container)',
-          paddingLeft: 'var(--gutter)',
-          paddingRight: 'var(--gutter)',
-        }}
+        className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 flex h-16 items-center justify-between"
       >
         {/* Logo */}
         <Link href="/" aria-label="Axon — torna alla home" className="flex-shrink-0">
           <Image
             src="/logo.svg"
             alt="Axon"
-            width={40}
-            height={40}
+            width={144}
+            height={48}
             priority
-            className="h-9 w-auto"
+            className="h-10 md:h-12 w-auto"
           />
         </Link>
 
         {/* Nav desktop */}
         <nav
           aria-label="Navigazione principale"
-          className="hidden md:flex items-center gap-7"
+          className="hidden md:flex items-center gap-10 lg:gap-12"
         >
           {navLinks.map(({ label, href }) => (
             <Link
               key={href}
               href={href}
-              className="text-sm font-medium transition-colors"
+              className="text-base font-medium transition-colors"
               style={{ color: 'var(--text-muted)' }}
               onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
               onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
@@ -75,9 +70,12 @@ export default function Header() {
         </nav>
 
         {/* CTA desktop */}
-        <Button href="/shop" variant="primary" size="sm" className="hidden md:inline-flex">
-          Acquista
-        </Button>
+        <Link
+          href="/shop"
+          className="hidden md:inline-flex bg-[#E3342F] text-white font-medium px-5 py-2 rounded-full hover:bg-red-700 transition-colors text-sm items-center justify-center min-h-[38px]"
+        >
+          Acquista AXON
+        </Link>
 
         {/* Hamburger mobile */}
         <button
@@ -128,11 +126,10 @@ export default function Header() {
             ))}
             <Link
               href="/shop"
-              className="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-pill text-base font-semibold text-white"
-              style={{ background: 'var(--brand)' }}
+              className="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-full text-base font-medium text-white bg-[#E3342F] hover:bg-red-700 transition-colors"
               onClick={() => setMenuOpen(false)}
             >
-              Acquista
+              Acquista AXON
             </Link>
           </nav>
         </div>

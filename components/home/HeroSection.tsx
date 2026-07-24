@@ -1,90 +1,74 @@
-import Image from 'next/image'
-import { Container, Section, Eyebrow, Button, Reveal } from '@/components/ui'
+import Link from 'next/link'
+import { Container, Section, Eyebrow, Reveal } from '@/components/ui'
 
 export default function HeroSection() {
   return (
     <Section
       id="top"
-      className="relative min-h-[calc(100svh-4rem)] flex items-center"
+      className="relative overflow-hidden z-0 min-h-[calc(100vh-80px)] flex items-center"
     >
-      <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center py-8 lg:py-0">
+      {/* ── Background Video in Loop ── */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+      >
+        <source src="/HERO7.mp4" type="video/mp4" />
+      </video>
 
-          {/* ── Colonna testo ── */}
-          <div className="flex flex-col gap-5">
+      <Container className="relative z-10">
+        <div className="max-w-4xl flex flex-col gap-6 lg:gap-8 py-12 lg:py-20">
 
-            <Reveal trigger="mount">
-              <Eyebrow>Dispositivo medico · Classe I</Eyebrow>
-            </Reveal>
+          {/* ── Eyebrow / Tag Badge ── */}
+          <Reveal trigger="mount">
+            <Eyebrow className="!text-black !border-black/30 !bg-white/50 backdrop-blur-md font-semibold">
+              Dispositivo medico · Classe I
+            </Eyebrow>
+          </Reveal>
 
-            <Reveal trigger="mount" delay={0.1}>
-              <h1
-                className="font-bold"
-                style={{
-                  fontSize: 'var(--fs-display)',
-                  lineHeight: 1.04,
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                La forza invisibile che rivoluziona il movimento
-              </h1>
-            </Reveal>
-
-            <Reveal trigger="mount" delay={0.2}>
-              <p
-                style={{
-                  fontSize: 'var(--fs-lead)',
-                  lineHeight: 1.6,
-                  color: 'var(--text-muted)',
-                  maxWidth: '44ch',
-                }}
-              >
-                Axon è un dispositivo medico passivo che si applica ai tuoi capi
-                e, con i micro-movimenti di ogni giorno, aiuta a migliorare equilibrio,
-                forza e rilassamento muscolare. Senza batterie. Senza contatto con la pelle.
-              </p>
-            </Reveal>
-
-            <Reveal trigger="mount" delay={0.3}>
-              <div className="flex flex-wrap gap-3 pt-2">
-                <Button href="#come-funziona" variant="primary" size="lg">
-                  Scopri Axon
-                </Button>
-                <Button href="/shop" variant="secondary" size="lg">
-                  Acquista il Kit
-                </Button>
-              </div>
-            </Reveal>
-
-          </div>
-
-          {/* ── Colonna immagine ── */}
-          <Reveal trigger="mount" delay={0.45} className="relative">
-
-            {/* Glow radiale — dietro il prodotto */}
-            <div
-              aria-hidden="true"
-              className="absolute pointer-events-none"
+          {/* ── Title ── */}
+          <Reveal trigger="mount" delay={0.1}>
+            <h1
+              className="font-bold text-black"
               style={{
-                inset: '-20%',
-                background:
-                  'radial-gradient(ellipse 70% 65% at 50% 52%, var(--brand-glow), transparent)',
-                filter: 'blur(56px)',
+                fontSize: 'clamp(3.25rem, 7.5vw, 5.5rem)',
+                lineHeight: 1.04,
+                letterSpacing: '-0.02em',
               }}
-            />
+            >
+              La forza invisibile che rivoluziona il movimento
+            </h1>
+          </Reveal>
 
-            {/* Immagine prodotto */}
-            <div className="relative w-full aspect-square max-w-sm mx-auto lg:max-w-none">
-              <Image
-                src="/axon-label.svg"
-                alt="Dispositivo Axon — etichetta ufficiale"
-                fill
-                priority
-                className="object-contain"
-                sizes="(max-width: 1024px) 80vw, 45vw"
-              />
+          {/* ── Subtitle ── */}
+          <Reveal trigger="mount" delay={0.2}>
+            <p
+              className="text-zinc-900 font-normal"
+              style={{
+                fontSize: 'var(--fs-lead)',
+                lineHeight: 1.6,
+                maxWidth: '60ch',
+              }}
+            >
+              Axon è un dispositivo medico passivo che si applica ai tuoi capi
+              e, con i micro-movimenti di ogni giorno, aiuta a migliorare equilibrio,
+              forza e rilassamento muscolare. Senza batterie. Senza contatto con la pelle.
+            </p>
+          </Reveal>
+
+          {/* ── CTA Button ── */}
+          <Reveal trigger="mount" delay={0.3}>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/shop"
+                className="bg-[#E3342F] text-white font-medium px-6 py-3 rounded-full hover:bg-red-700 transition-colors inline-block text-base shadow-lg"
+              >
+                Acquista AXON
+              </Link>
             </div>
-
           </Reveal>
 
         </div>
@@ -92,3 +76,6 @@ export default function HeroSection() {
     </Section>
   )
 }
+
+
+

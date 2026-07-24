@@ -36,12 +36,7 @@ export default function Footer() {
       }}
     >
       <div
-        className="mx-auto py-16 md:py-20"
-        style={{
-          maxWidth: 'var(--container)',
-          paddingLeft: 'var(--gutter)',
-          paddingRight: 'var(--gutter)',
-        }}
+        className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-20"
       >
         {/* Griglia principale */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">

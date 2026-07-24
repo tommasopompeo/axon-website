@@ -1,7 +1,13 @@
 import type { Metadata } from 'next'
+import { Urbanist } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+
+const urbanist = Urbanist({
+  subsets: ['latin'],
+  variable: '--font-urbanist',
+})
 
 const defaultTitle = 'Axon - Etichetta per il benessere del corpo'
 const defaultDescription =
@@ -29,8 +35,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="it">
-      <body>
+    <html lang="it" className={urbanist.variable}>
+      <body className={urbanist.className}>
         <Header />
         <main>{children}</main>
         <Footer />
