@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { Footprints, Waves, Dumbbell, TrendingUp } from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
@@ -26,13 +26,11 @@ function Key({ children }: { children: React.ReactNode }) {
 function ImageOverlay({
   src,
   alt,
-  icon: Icon,
   caption,
   className = '',
 }: {
   src: string
   alt: string
-  icon: React.ComponentType<{ size?: number; strokeWidth?: number; 'aria-hidden'?: boolean }>
   caption: React.ReactNode
   className?: string
 }) {
@@ -49,7 +47,7 @@ function ImageOverlay({
         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
       />
       {/* Overlay scuro di base per leggibilità del testo bianco */}
-      <div className="absolute inset-0 bg-black/40 pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-0 bg-black/20 pointer-events-none" aria-hidden="true" />
       {/* Scrim gradiente rinforzato in basso */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -58,7 +56,6 @@ function ImageOverlay({
       />
       {/* Overlay text */}
       <div className="absolute bottom-0 left-0 p-5 flex flex-col gap-2">
-        <Icon size={18} strokeWidth={1.75} aria-hidden />
         <p
           className="font-semibold text-white leading-snug"
           style={{ fontSize: 'var(--fs-body)', maxWidth: '26ch' }}
@@ -82,7 +79,7 @@ export default function ContestiBento() {
       <Container>
 
         {/* ── Header compatto ── */}
-        <div className="flex flex-col gap-4 mb-10 lg:mb-12 max-w-[60ch]">
+        <div className="flex flex-col gap-4 mb-10 lg:mb-12 max-w-[75ch]">
           <Reveal>
             <h2
               className="font-bold"
@@ -119,11 +116,9 @@ export default function ContestiBento() {
             <ImageOverlay
               src="/corsa.png"
               alt="Persona che corre"
-              icon={Footprints}
               caption={
                 <>
-                  Più <Key>resistenza alla fatica</Key> e controllo del passo, chilometro dopo
-                  chilometro.
+                  Più <Key>resistenza alla fatica</Key> e controllo del passo.
                 </>
               }
               className="min-h-[280px] lg:min-h-0"
@@ -174,10 +169,9 @@ export default function ContestiBento() {
             <ImageOverlay
               src="/nuoto.png"
               alt="Persona che nuota"
-              icon={Waves}
               caption={
                 <>
-                  <Key>Equilibrio e stabilità</Key> posturale, dentro e fuori dall&apos;acqua.
+                  <Key>Equilibrio e stabilità</Key> posturale.
                 </>
               }
               className="min-h-[220px] lg:min-h-0"
@@ -189,10 +183,9 @@ export default function ContestiBento() {
             <ImageOverlay
               src="/palestra.png"
               alt="Persona che si allena in palestra"
-              icon={Dumbbell}
               caption={
                 <>
-                  <Key>Forza</Key> e tono muscolare in ogni ripetizione.
+                  <Key>Forza</Key> e tono muscolare.
                 </>
               }
               className="min-h-[280px] lg:min-h-0"

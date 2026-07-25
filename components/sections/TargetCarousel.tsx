@@ -1,12 +1,9 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { ChevronLeft, ChevronRight, ImageOff } from 'lucide-react'
-import { useReducedMotion } from 'framer-motion'
+import { ImageOff } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
-import Button from '@/components/ui/Button'
 import Reveal from '@/components/ui/Reveal'
 
 type TargetCard = {
@@ -22,7 +19,7 @@ const cards: TargetCard[] = [
   {
     id: 'vita-quotidiana',
     title: 'Vita quotidiana',
-    description: 'Postura e tensioni delle lunghe ore da seduti.',
+    description: 'Postura e tensioni delle lunghe ore lavorative.',
     image: '/ufficio.png',
     alt: 'Persona seduta alla scrivania durante una lunga giornata in ufficio',
   },
@@ -44,60 +41,16 @@ const cards: TargetCard[] = [
     id: 'lavori-intensivi',
     title: 'Lavori intensivi',
     description: 'Meno affaticamento muscolare a fine turno.',
-    // Immagine non ancora fornita: droppare /public/lavori.png e impostare image: '/lavori.png'.
-    image: null,
+    image: '/intenso.png',
     alt: 'Lavoratore impegnato in un turno fisicamente intenso',
   },
 ]
 
-// Stile condiviso dalle frecce: pill brand, 44px (tap target), stato disabilitato ai bordi.
-const arrowClass =
-  'inline-flex size-11 items-center justify-center rounded-full text-white transition-colors ' +
-  'disabled:cursor-not-allowed disabled:opacity-40 ' +
-  '[background:var(--brand)] enabled:hover:[background:var(--brand-hover)]'
-
 export default function TargetCarousel() {
-  const scrollerRef = useRef<HTMLDivElement>(null)
-  const reduced = useReducedMotion()
-  const [canPrev, setCanPrev] = useState(false)
-  const [canNext, setCanNext] = useState(true)
-
-  // Abilita/disabilita le frecce ai bordi (no loop, fedele a EvoTrack).
-  const updateArrows = useCallback(() => {
-    const el = scrollerRef.current
-    if (!el) return
-    const max = el.scrollWidth - el.clientWidth
-    setCanPrev(el.scrollLeft > 1)
-    setCanNext(el.scrollLeft < max - 1)
-  }, [])
-
-  // Misura reale (cambia con il breakpoint) + stato iniziale delle frecce.
-  useEffect(() => {
-    const el = scrollerRef.current
-    if (!el) return
-    updateArrows()
-    const ro = new ResizeObserver(updateArrows)
-    ro.observe(el)
-    return () => ro.disconnect()
-  }, [updateArrows])
-
-  // Avanza/indietreggia di una card (larghezza + gap), snap fluido salvo reduced-motion.
-  const scrollByCards = useCallback(
-    (dir: 1 | -1) => {
-      const el = scrollerRef.current
-      if (!el) return
-      const firstCard = el.firstElementChild as HTMLElement | null
-      const gap = parseFloat(getComputedStyle(el).columnGap) || 0
-      const step = firstCard ? firstCard.offsetWidth + gap : el.clientWidth * 0.8
-      el.scrollBy({ left: dir * step, behavior: reduced ? 'auto' : 'smooth' })
-    },
-    [reduced],
-  )
-
   return (
     <Section id="per-chi">
       <Container>
-        {/* ── Intestazione (testo a sinistra, frecce a destra come EvoTrack) ── */}
+        {/* ── Intestazione ── */}
         <div className="mb-10 flex items-end justify-between gap-6 lg:mb-12">
           <div className="flex max-w-2xl flex-col gap-4">
             <Reveal>
@@ -117,37 +70,11 @@ export default function TargetCarousel() {
               </p>
             </Reveal>
           </div>
-
-          {/* Frecce: solo da sm in su — su mobile ci si muove con swipe + peek */}
-          <Reveal delay={0.14} className="hidden shrink-0 sm:block">
-            <div className="flex items-center gap-3">
-              <button
-                type="button"
-                onClick={() => scrollByCards(-1)}
-                disabled={!canPrev}
-                aria-label="Mostra il contesto precedente"
-                className={arrowClass}
-              >
-                <ChevronLeft size={20} strokeWidth={2} aria-hidden="true" />
-              </button>
-              <button
-                type="button"
-                onClick={() => scrollByCards(1)}
-                disabled={!canNext}
-                aria-label="Mostra il contesto successivo"
-                className={arrowClass}
-              >
-                <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
-              </button>
-            </div>
-          </Reveal>
         </div>
 
         {/* ── Carosello ── */}
         <Reveal delay={0.1}>
           <div
-            ref={scrollerRef}
-            onScroll={updateArrows}
             role="region"
             aria-label="Contesti d'uso di Axon"
             tabIndex={0}
@@ -180,13 +107,14 @@ export default function TargetCarousel() {
                   </div>
                 )}
 
-                {/* Scrim: trasparente in alto → scuro in basso, per leggibilità del testo */}
+                {/* Overlay scuro di base per leggibilità del testo bianco */}
+                <div className="absolute inset-0 bg-black/20 pointer-events-none" aria-hidden="true" />
+                {/* Scrim gradiente rinforzato in basso */}
                 <div
-                  className="pointer-events-none absolute inset-0"
+                  className="absolute inset-0 pointer-events-none"
                   aria-hidden="true"
                   style={{
-                    background:
-                      'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.25) 32%, transparent 58%)',
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.78) 0%, transparent 60%)',
                   }}
                 />
 
@@ -207,14 +135,6 @@ export default function TargetCarousel() {
           </div>
         </Reveal>
 
-        {/* ── CTA ── */}
-        <Reveal delay={0.1}>
-          <div className="mt-8">
-            <Button href="#testimonianze" variant="ghost">
-              Scopri lo studio
-            </Button>
-          </div>
-        </Reveal>
       </Container>
     </Section>
   )

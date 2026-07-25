@@ -20,7 +20,7 @@ export default function HeroSection() {
       </video>
 
       <Container className="relative z-10">
-        <div className="max-w-4xl flex flex-col gap-6 lg:gap-8 py-12 lg:py-20">
+        <div className="max-w-4xl flex flex-col gap-6 lg:gap-8 pt-12 lg:pt-20">
 
           {/* ── Eyebrow / Tag Badge ── */}
           <Reveal trigger="mount">
@@ -34,7 +34,7 @@ export default function HeroSection() {
             <h1
               className="font-bold text-black"
               style={{
-                fontSize: 'clamp(3.25rem, 7.5vw, 5.5rem)',
+                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
                 lineHeight: 1.04,
                 letterSpacing: '-0.02em',
               }}
@@ -44,13 +44,13 @@ export default function HeroSection() {
           </Reveal>
 
           {/* ── Subtitle ── */}
-          <Reveal trigger="mount" delay={0.2}>
+          <Reveal trigger="mount" delay={0.2} className="mt-1 lg:mt-2">
             <p
               className="text-zinc-900 font-normal"
               style={{
                 fontSize: 'var(--fs-lead)',
                 lineHeight: 1.6,
-                maxWidth: '60ch',
+                maxWidth: '58ch',
               }}
             >
               Axon è un dispositivo medico passivo che si applica ai tuoi capi
@@ -59,19 +59,19 @@ export default function HeroSection() {
             </p>
           </Reveal>
 
-          {/* ── CTA Button ── */}
-          <Reveal trigger="mount" delay={0.3}>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/shop"
-                className="bg-[#E3342F] text-white font-medium px-6 py-3 rounded-full hover:bg-red-700 transition-colors inline-block text-base shadow-lg"
-              >
-                Acquista AXON
-              </Link>
-            </div>
-          </Reveal>
-
         </div>
+
+        {/* ── CTA Button ── */}
+        <Reveal trigger="mount" delay={0.3} className="w-full flex justify-center mt-24 lg:mt-36 pb-12 lg:pb-20">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link
+              href="/shop"
+              className="bg-[#E3342F] text-white font-medium px-12 py-3.5 rounded-full hover:bg-red-700 transition-colors inline-block text-base shadow-lg min-w-[240px] text-center"
+            >
+              Acquista AXON
+            </Link>
+          </div>
+        </Reveal>
       </Container>
     </Section>
   )
