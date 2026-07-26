@@ -1,7 +1,6 @@
 'use client'
 
 import Image from 'next/image'
-import { TrendingUp } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
@@ -67,12 +66,6 @@ function ImageOverlay({
   )
 }
 
-const boxStats = [
-  { value: '+42%', label: 'potenza nel movimento' },
-  { value: '+28%', label: 'equilibrio' },
-  { value: '+30%', label: 'forza' },
-]
-
 export default function ContestiBento() {
   return (
     <Section id="contesti">
@@ -125,40 +118,111 @@ export default function ContestiBento() {
             />
           </RevealItem>
 
-          {/* BOX DATI — col 2, riga 1 */}
+          {/* BOX DATI — col 2, riga 1 (4 sub-box in griglia asimmetrica: Sopra 2/3 + 1/3, Sotto 1/3 + 2/3) */}
           <RevealItem className="lg:col-start-2 lg:row-start-1">
-            <div
-              className="flex flex-col justify-between h-full p-7 gap-5 bg-white text-black border border-gray-100 shadow-lg transition-all duration-300"
-              style={{
-                borderRadius: 'var(--radius-lg)',
-                minHeight: '200px',
-              }}
-            >
-              <TrendingUp size={28} strokeWidth={1.75} className="text-[var(--brand)]" aria-hidden />
-              <div className="flex flex-col gap-4">
-                {boxStats.map(({ value, label }) => (
-                  <div key={value} className="flex flex-col gap-0.5">
-                    <span
-                      className="font-bold leading-none"
-                      style={{
-                        color: 'var(--brand)',
-                        fontSize: 'clamp(1.5rem, 2.8vw, 2rem)',
-                        letterSpacing: '-0.025em',
-                      }}
-                    >
-                      {value}
-                    </span>
-                    <span
-                      className="font-medium text-gray-700"
-                      style={{
-                        fontSize: 'var(--fs-caption)',
-                        lineHeight: 1.3,
-                      }}
-                    >
-                      {label}
-                    </span>
-                  </div>
-                ))}
+            <div className="grid grid-cols-3 grid-rows-2 h-full gap-2.5 sm:gap-3 min-h-[260px] lg:min-h-0">
+              {/* Box 1: +42% Potenza nel movimento (2/3 width) */}
+              <div
+                className="col-span-2 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
+                style={{ borderRadius: 'var(--radius-lg)' }}
+              >
+                <span
+                  className="font-extrabold leading-none"
+                  style={{
+                    color: 'var(--brand)',
+                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  +42%
+                </span>
+                <span
+                  className="font-semibold text-gray-800 mt-1"
+                  style={{
+                    fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  potenza nel movimento
+                </span>
+              </div>
+
+              {/* Box 2: +28% Equilibrio (1/3 width) */}
+              <div
+                className="col-span-1 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
+                style={{ borderRadius: 'var(--radius-lg)' }}
+              >
+                <span
+                  className="font-extrabold leading-none"
+                  style={{
+                    color: 'var(--brand)',
+                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  +28%
+                </span>
+                <span
+                  className="font-semibold text-gray-800 mt-1"
+                  style={{
+                    fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  equilibrio
+                </span>
+              </div>
+
+              {/* Box 3: +30% Forza (1/3 width) */}
+              <div
+                className="col-span-1 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
+                style={{ borderRadius: 'var(--radius-lg)' }}
+              >
+                <span
+                  className="font-extrabold leading-none"
+                  style={{
+                    color: 'var(--brand)',
+                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  +30%
+                </span>
+                <span
+                  className="font-semibold text-gray-800 mt-1"
+                  style={{
+                    fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  forza
+                </span>
+              </div>
+
+              {/* Box 4: +21% Resistenza (2/3 width) */}
+              <div
+                className="col-span-2 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
+                style={{ borderRadius: 'var(--radius-lg)' }}
+              >
+                <span
+                  className="font-extrabold leading-none"
+                  style={{
+                    color: 'var(--brand)',
+                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    letterSpacing: '-0.03em',
+                  }}
+                >
+                  +21%
+                </span>
+                <span
+                  className="font-semibold text-gray-800 mt-1"
+                  style={{
+                    fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
+                    lineHeight: 1.25,
+                  }}
+                >
+                  resistenza
+                </span>
               </div>
             </div>
           </RevealItem>

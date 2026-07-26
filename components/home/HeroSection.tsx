@@ -25,7 +25,7 @@ export default function HeroSection() {
           {/* ── Eyebrow / Tag Badge ── */}
           <Reveal trigger="mount">
             <Eyebrow className="!text-black !border-black/30 !bg-white/50 backdrop-blur-md font-semibold">
-              Dispositivo medico · Classe I
+              Dispositivo medico classe I
             </Eyebrow>
           </Reveal>
 
