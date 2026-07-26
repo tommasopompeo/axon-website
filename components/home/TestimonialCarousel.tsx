@@ -93,15 +93,13 @@ export default function TestimonialCarousel() {
 
   return (
     <div
-      className="relative overflow-hidden"
+      className="relative overflow-hidden bg-black text-white border border-gray-800 shadow-xl"
       role="region"
       aria-roledescription="carosello"
       aria-label="Testimonianze"
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
       style={{
-        background: 'var(--surface-2)',
-        border: '1px solid var(--border)',
         borderRadius: 'var(--radius-lg)',
       }}
     >
@@ -128,25 +126,25 @@ export default function TestimonialCarousel() {
               aria-live="polite"
             >
               <p
-                className="text-balance font-medium"
+                className="text-balance font-medium text-white"
                 style={{
                   fontSize: 'var(--fs-h3)',
                   lineHeight: 1.4,
                   letterSpacing: '-0.01em',
-                  color: 'var(--text)',
                 }}
               >
                 {t.quote}
               </p>
               <footer className="flex flex-col gap-0.5">
                 <cite
-                  className="font-semibold not-italic"
-                  style={{ fontSize: 'var(--fs-body)', color: 'var(--text)' }}
+                  className="font-semibold not-italic text-white"
+                  style={{ fontSize: 'var(--fs-body)' }}
                 >
                   {t.name}
                 </cite>
                 <span
-                  style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-muted)' }}
+                  className="text-gray-400"
+                  style={{ fontSize: 'var(--fs-caption)' }}
                 >
                   {t.role}
                 </span>
@@ -155,38 +153,24 @@ export default function TestimonialCarousel() {
           </AnimatePresence>
         </div>
 
-        {/* Controlli: indicatore n/N + frecce */}
-        <div className="mt-10 flex items-center justify-between gap-6">
-          <span
-            aria-hidden="true"
-            style={{
-              fontSize: 'var(--fs-caption)',
-              color: 'var(--text-subtle)',
-              fontVariantNumeric: 'tabular-nums',
-            }}
+        {/* Controlli: frecce spastate più in alto */}
+        <div className="mt-6 flex items-center justify-end gap-3">
+          <button
+            type="button"
+            onClick={() => paginate(-1)}
+            aria-label="Testimonianza precedente"
+            className={arrowClass}
           >
-            {String(index + 1).padStart(2, '0')}{' '}
-            <span style={{ opacity: 0.5 }}>/ {String(testimonials.length).padStart(2, '0')}</span>
-          </span>
-
-          <div className="flex items-center gap-3">
-            <button
-              type="button"
-              onClick={() => paginate(-1)}
-              aria-label="Testimonianza precedente"
-              className={arrowClass}
-            >
-              <ChevronLeft size={20} strokeWidth={2} aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              onClick={() => paginate(1)}
-              aria-label="Testimonianza successiva"
-              className={arrowClass}
-            >
-              <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
-            </button>
-          </div>
+            <ChevronLeft size={20} strokeWidth={2} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            onClick={() => paginate(1)}
+            aria-label="Testimonianza successiva"
+            className={arrowClass}
+          >
+            <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
+          </button>
         </div>
       </div>
     </div>

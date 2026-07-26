@@ -10,7 +10,7 @@ import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 function Key({ children }: { children: React.ReactNode }) {
   return (
     <span
-      className="font-bold text-white"
+      className="font-semibold text-white"
       style={{
         textDecoration: 'underline',
         textDecorationColor: 'var(--brand)',
@@ -128,20 +128,20 @@ export default function ContestiBento() {
           {/* BOX DATI — col 2, riga 1 */}
           <RevealItem className="lg:col-start-2 lg:row-start-1">
             <div
-              className="flex flex-col justify-between h-full p-7 gap-5"
+              className="flex flex-col justify-between h-full p-7 gap-5 bg-white text-black border border-gray-100 shadow-lg transition-all duration-300"
               style={{
-                background: 'var(--brand)',
                 borderRadius: 'var(--radius-lg)',
                 minHeight: '200px',
               }}
             >
-              <TrendingUp size={28} strokeWidth={1.75} className="text-white" aria-hidden />
+              <TrendingUp size={28} strokeWidth={1.75} className="text-[var(--brand)]" aria-hidden />
               <div className="flex flex-col gap-4">
                 {boxStats.map(({ value, label }) => (
                   <div key={value} className="flex flex-col gap-0.5">
                     <span
-                      className="font-bold text-white leading-none"
+                      className="font-bold leading-none"
                       style={{
+                        color: 'var(--brand)',
                         fontSize: 'clamp(1.5rem, 2.8vw, 2rem)',
                         letterSpacing: '-0.025em',
                       }}
@@ -149,10 +149,9 @@ export default function ContestiBento() {
                       {value}
                     </span>
                     <span
-                      className="font-medium"
+                      className="font-medium text-gray-700"
                       style={{
                         fontSize: 'var(--fs-caption)',
-                        color: 'rgba(255,255,255,0.82)',
                         lineHeight: 1.3,
                       }}
                     >

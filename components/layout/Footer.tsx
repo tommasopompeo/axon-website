@@ -30,8 +30,9 @@ export default function Footer() {
 
   return (
     <footer
+      className="bg-black"
       style={{
-        background: 'var(--bg-elevated)',
+        background: '#000000',
         borderTop: '1px solid var(--border)',
       }}
     >

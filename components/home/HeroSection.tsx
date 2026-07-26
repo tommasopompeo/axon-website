@@ -62,7 +62,7 @@ export default function HeroSection() {
         </div>
 
         {/* ── CTA Button ── */}
-        <Reveal trigger="mount" delay={0.3} className="w-full flex justify-center mt-24 lg:mt-36 pb-12 lg:pb-20">
+        <Reveal trigger="mount" delay={0.3} className="w-full flex justify-center mt-28 lg:mt-44 pb-0 lg:pb-2">
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/shop"

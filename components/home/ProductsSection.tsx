@@ -39,7 +39,7 @@ export default function ProductsSection() {
       <Container>
 
         {/* ── Header ── */}
-        <div className="flex flex-col gap-5 mb-12 lg:mb-16">
+        <div className="flex flex-col gap-5 mb-10 lg:mb-12">
           <Reveal>
             <h2
               className="font-bold"
