@@ -8,13 +8,13 @@ export default function TestimonialsSection() {
     <Section id="testimonianze" className="bg-white" style={{ background: '#ffffff' }}>
       <Container>
         {/* ── Header ── */}
-        <div className="flex flex-col gap-5 mb-10 lg:mb-12 max-w-2xl">
+        <div className="flex flex-col gap-5 mb-10 lg:mb-12 max-w-[75ch]">
           <Reveal>
             <h2
               className="font-bold text-black"
               style={{
-                fontSize: 'var(--fs-h2)',
-                lineHeight: 1.1,
+                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
+                lineHeight: 1.04,
                 letterSpacing: '-0.02em',
                 color: '#000000',
               }}

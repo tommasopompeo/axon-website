@@ -4,6 +4,7 @@ import { Instagram, Linkedin } from 'lucide-react'
 import { SOCIAL } from '@/lib/links'
 
 const navColonna = [
+  { label: 'Applicazioni', href: '/applicazioni' },
   { label: 'Come funziona', href: '/#come-funziona' },
   { label: 'Testimonianze', href: '/#testimonianze' },
   { label: 'FAQ', href: '/#faq' },

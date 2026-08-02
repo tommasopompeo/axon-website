@@ -18,8 +18,8 @@ export default function HowItsDoneSection() {
             <h2
               className="font-bold text-black"
               style={{
-                fontSize: 'var(--fs-h2)',
-                lineHeight: 1.1,
+                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
+                lineHeight: 1.04,
                 letterSpacing: '-0.02em',
                 color: '#000000',
               }}
@@ -90,14 +90,14 @@ export default function HowItsDoneSection() {
           <Reveal className="h-full" delay={0.25}>
             <div className="flex flex-col justify-between h-full gap-6">
 
-              {/* Top: Watch Description */}
+              {/* Top: Band Description */}
               <div className="p-6 lg:p-8 rounded-[var(--radius-lg)] bg-black text-white border border-gray-800 transition-all duration-300 flex flex-col justify-between gap-4 shadow-lg flex-1">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-xl lg:text-2xl !font-semibold text-white leading-tight">
-                    Axon Watch: indossalo al polso
+                    Axon Band: indossalo al polso
                   </h3>
                   <p className="text-sm lg:text-base text-gray-300 leading-relaxed">
-                    Preferisci la praticità di un accessorio quotidiano? Puoi indossare Axon comodamente al polso grazie all&apos;esclusivo cinturino Axon Watch, ideato per accompagnarti in ogni attività e disponibile all&apos;acquisto direttamente sul nostro shop.
+                    Preferisci la praticità di un accessorio quotidiano? Puoi indossare Axon comodamente al polso grazie all&apos;esclusivo cinturino Axon Band, ideato per accompagnarti in ogni attività e disponibile all&apos;acquisto direttamente sul nostro shop.
                   </p>
                 </div>
 
@@ -112,11 +112,11 @@ export default function HowItsDoneSection() {
                 </div>
               </div>
 
-              {/* Bottom: Vertical Image (Axon Watch) */}
+              {/* Bottom: Vertical Image (Axon Band) */}
               <div className="relative w-full aspect-[4/5] rounded-[var(--radius-lg)] overflow-hidden border border-gray-200 bg-gray-100 shadow-xl group">
                 <Image
-                  src="/axon watch.png"
-                  alt="Axon Watch indossato al polso"
+                  src="/axon-watch.png"
+                  alt="Axon Band indossato al polso"
                   fill
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"

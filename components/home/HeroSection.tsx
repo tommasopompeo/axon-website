@@ -16,7 +16,7 @@ export default function HeroSection() {
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover -z-10"
       >
-        <source src="/HERO7.mp4" type="video/mp4" />
+        <source src="/hero-video.mp4" type="video/mp4" />
       </video>
 
       <Container className="relative z-10">
@@ -66,7 +66,7 @@ export default function HeroSection() {
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/shop"
-              className="bg-[#E3342F] text-white font-medium px-12 py-3.5 rounded-full hover:bg-red-700 transition-colors inline-block text-base shadow-lg min-w-[240px] text-center"
+              className="bg-brand text-white font-medium px-12 py-3.5 rounded-full hover:bg-brand-hover transition-colors inline-block text-base shadow-lg min-w-[240px] text-center"
             >
               Acquista AXON
             </Link>

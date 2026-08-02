@@ -8,9 +8,10 @@
 
 # NAV (header, sticky, su tutte le pagine)
 - Logo AXON (SVG, wordmark bianco con X rossa) → link a "/"
-- Voci: **Come funziona** (#come-funziona) ·
-  **Testimonianze** (#testimonianze) · **FAQ** (#faq) · **Aziende** (/aziende)
-- CTA primaria (bottone rosso): **Acquista** → /shop
+- Voci: **Applicazioni** (/applicazioni) · **Come funziona** (/come-funziona) ·
+  **Perchè AXON** (/perche-axon) · **Fisioterapisti** (/fisioterapisti) ·
+  **Aziende** (/aziende)
+- CTA primaria (bottone rosso): **Acquista AXON** → /shop
 - Mobile: menu hamburger con le stesse voci.
 
 # FOOTER (su tutte le pagine)
@@ -35,7 +36,7 @@
   rilassamento muscolare. Senza batterie. Senza contatto con la pelle.*
 - CTA primaria: **Scopri Axon** → #come-funziona
 - CTA secondaria: **Acquista il Kit** → /shop
-- Immagine: prodotto (assets/axon-device-pouch.jpg) — disco Axon inserito nell'Axon Shell™.
+- Immagine: video background (hero-video.mp4).
 
 ## 1b. CONTESTI (bento — sezione intro che consolida benefici e dati) — id: contesti
 - H2: **La tua performance, in ogni contesto.**
@@ -68,8 +69,8 @@
   aperta di default. Cambio immagine con crossfade al cambio accordion.
 - Accordion (ordine):
   1. **Cuci** (icona Scissors) — *Fissa il guscio al capo: nuca, fascia lombare o petto. Bastano pochi punti.* → immagine: axon-shell-sewn.png
-  2. **Inserisci** (icona PackagePlus) — *Metti Axon nell'Axon Shell™, il guscio funzionale dedicato.* → immagine: axon-device-pouch.jpg
-  3. **Indossa** (icona Shirt) — *Vivi la tua giornata. Axon si attiva con i tuoi movimenti.* → immagine: donna.png
+  2. **Inserisci** (icona PackagePlus) — *Metti Axon nell'Axon Shell™, il guscio funzionale dedicato.* → immagine: axon-watch.png
+  3. **Indossa** (icona Shirt) — *Vivi la tua giornata. Axon si attiva con i tuoi movimenti.*
 - Micro-nota: *In alternativa, Axon può essere cucito direttamente lungo la circonferenza.
   Nessun contatto con la pelle richiesto.*
 
@@ -89,7 +90,7 @@
   1. **Vita quotidiana** — Postura e tensioni delle lunghe ore da seduti. *(ufficio.png)*
   2. **Anzianità** — Supporto a equilibrio e stabilità, per più autonomia. *(anziano.png)*
   3. **Sport** — Equilibrio, forza e recupero, in ogni disciplina. *(sciatore.png)*
-  4. **Lavori intensivi** — Meno affaticamento muscolare a fine turno. *(lavori.png — placeholder finché Tommaso non fornisce il file)*
+  4. **Lavori intensivi** — Meno affaticamento muscolare a fine turno. *(intenso.png)*
 - CTA: **Scopri lo studio** → #testimonianze
 
 ## 6. PRODOTTI (preview shop) — id: prodotti

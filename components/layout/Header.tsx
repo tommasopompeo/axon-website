@@ -7,6 +7,7 @@ import { Menu, X } from 'lucide-react'
 import Button from '@/components/ui/Button'
 
 const navLinks = [
+  { label: 'Applicazioni', href: '/applicazioni' },
   { label: 'Come funziona', href: '/come-funziona' },
   { label: 'Perchè AXON', href: '/perche-axon' },
   { label: 'Fisioterapisti', href: '/fisioterapisti' },
@@ -72,7 +73,7 @@ export default function Header() {
         {/* CTA desktop */}
         <Link
           href="/shop"
-          className="hidden md:inline-flex bg-[#E3342F] text-white font-medium px-5 py-2 rounded-full hover:bg-red-700 transition-colors text-sm items-center justify-center min-h-[38px]"
+          className="hidden md:inline-flex bg-brand text-white font-medium px-5 py-2 rounded-full hover:bg-brand-hover transition-colors text-sm items-center justify-center min-h-[38px]"
         >
           Acquista AXON
         </Link>
@@ -126,7 +127,7 @@ export default function Header() {
             ))}
             <Link
               href="/shop"
-              className="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-full text-base font-medium text-white bg-[#E3342F] hover:bg-red-700 transition-colors"
+              className="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-full text-base font-medium text-white bg-brand hover:bg-brand-hover transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               Acquista AXON

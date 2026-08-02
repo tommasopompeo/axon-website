@@ -5,17 +5,6 @@ export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default async function OgImage() {
-  // Tenta fetch di Host Grotesk; fallback a sans-serif se la build è offline
-  let fontData: ArrayBuffer | null = null
-  try {
-    const res = await fetch(
-      'https://fonts.gstatic.com/s/hostgrotesk/v1/wEOhEBXBk8hCoNA4iIBYoIAB85Yp.woff2',
-    )
-    if (res.ok) fontData = await res.arrayBuffer()
-  } catch {
-    // ignorato: usa font di sistema
-  }
-
   return new ImageResponse(
     (
       <div
@@ -28,6 +17,7 @@ export default async function OgImage() {
           padding: '72px 80px',
           background: '#0A0A0B',
           position: 'relative',
+          fontFamily: 'system-ui, -apple-system, sans-serif',
         }}
       >
         {/* Glow radiale brand in alto a destra */}
@@ -118,20 +108,6 @@ export default async function OgImage() {
         </div>
       </div>
     ),
-    {
-      ...size,
-      ...(fontData
-        ? {
-            fonts: [
-              {
-                name: 'Host Grotesk',
-                data: fontData,
-                style: 'normal',
-                weight: 700,
-              },
-            ],
-          }
-        : {}),
-    },
+    { ...size },
   )
 }

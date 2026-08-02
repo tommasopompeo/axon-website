@@ -1,15 +1,13 @@
 # AXON — Design System
 
-Obiettivo: replicare l'**impianto UI/UX di EvoTrack**
-(https://evotrack.framer.website/) — tema scuro, grandi titoli display, card molto
+Obiettivo: tema scuro, grandi titoli display, card molto
 arrotondate, etichette "eyebrow", spaziature generose, immagini di prodotto a tutta
-larghezza, micro-animazioni allo scroll — riskinnato con l'identità **Axon**.
+larghezza, micro-animazioni allo scroll — con l'identità **Axon**.
 
 ## 1. Identità
-- **Font: Host Grotesk** (Google Fonts) per titoli e testo. Variabile, pesi 400–800.
-  Import: `https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,400..800;1,400..800&display=swap`
+- **Font: Urbanist** (Google Fonts, loaded via `next/font/google`). Variabile, pesi 400–800.
 - **Logo**: SVG fornito (wordmark **bianco**, "X" **rossa**). Va su **header scuro/nero**
-  per garantire leggibilità del bianco. Mettere `logo.svg` in `/public` (o `/assets`).
+  per garantire leggibilità del bianco. File in `/public/logo.svg`.
 - **Palette**: rosso brand **#db181b**, near-black, bianco. (Token sotto.)
 
 ## 2. Color tokens (vedi anche design/tokens.css e tokens.json)
@@ -74,20 +72,18 @@ Tema: **dark only**. Nessuna variante light per ora.
   label sopra; checkbox consenso; bottone primario; stato di conferma inline.
 - **Footer**: scuro, multi-colonna, logo + tagline + social + nav + riga legale.
 
-## 6. Anatomia HOME (ordine sezioni, mappata su EvoTrack)
+## 6. Anatomia HOME (ordine sezioni)
 1. Header (sticky)
-2. **Hero** — titolo display + sub + 2 CTA + immagine prodotto con glow
-3. **Intro + Stat** ("Come funziona" p.1) — eyebrow, H2, testo, 3 stat
-4. **Come è fatto** — 3 step card
-5. **Benefici** — griglia 6 feature card (= i 6 card della reference)
-6. **Perché funziona / per chi** — H2 + accordion/tab con immagine (= "Why it works")
-7. **Prodotti** — 2 card prodotto con prezzo + CTA Shopify (sezione aggiunta rispetto a EvoTrack)
-8. **Testimonianze** — carousel
-9. **FAQ** — accordion + CTA contatti
-10. **CTA finale** — H2 + CTA shop / aziende, con glow
-11. Footer
+2. **Hero** — video background + titolo display + CTA
+3. **Contesti** — bento grid che consolida benefici + dati pilota nel box rosso
+4. **Come si applica** — accordion "Tre passi e basta" + immagini
+5. **A chi è rivolto** — carosello di contesti (carousel orizzontale)
+6. **Testimonianze** — carousel
+7. **FAQ** — accordion + CTA contatti
+8. Footer
 
-Altre pagine: `/shop`, `/aziende`, `/contatti` (vedi content-it.md). Stesse header/footer.
+Altre pagine: `/applicazioni`, `/come-funziona`, `/perche-axon`, `/fisioterapisti`,
+`/shop`, `/aziende`, `/contatti`. Stesse header/footer.
 
 ## 7. Motion (Framer Motion)
 - Reveal allo scroll: `opacity 0→1`, `y 24→0`, `duration 0.6`, `ease "easeOut"`,
@@ -113,7 +109,6 @@ Altre pagine: `/shop`, `/aziende`, `/contatti` (vedi content-it.md). Stesse head
 - `alt` su tutte le immagini; label esplicite sui campi form.
 - HTML semantico (`header/nav/main/section/footer`, heading order corretto).
 
-## 10. Note di fedeltà
-- Questo è uno **spec fedele**, non un clone pixel-perfect di Framer. Spaziature/curve di
-  animazione vanno rifinite a occhio confrontando con la reference durante il build.
-- Mantenere la **stessa lunghezza/ritmo** della home di EvoTrack.
+## 10. Note
+- Spaziature/curve di animazione vanno rifinite a occhio durante il build.
+- Il design system è dark-only, nessuna variante light per ora.

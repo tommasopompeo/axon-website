@@ -6,7 +6,7 @@ import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 import { AccordionItem } from '@/components/ui/Accordion'
-import ProductCard from '@/components/home/ProductCard'
+import ProductCard from '@/components/shop/ProductCard'
 import { SHOPIFY_KIT_URL, SHOPIFY_SHELL_URL } from '@/lib/links'
 
 // ── Prodotti (versione estesa) — dati da knowledge/product.md e content-it.md ──
