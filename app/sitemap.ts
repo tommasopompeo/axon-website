@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/applicazioni`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/come-funziona`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/perche-axon`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE}/fisioterapisti`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+    { url: `${BASE}/professionisti`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/shop`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/aziende`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE}/contatti`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },

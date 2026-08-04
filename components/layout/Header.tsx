@@ -10,7 +10,7 @@ const navLinks = [
   { label: 'Applicazioni', href: '/applicazioni' },
   { label: 'Come funziona', href: '/come-funziona' },
   { label: 'Perchè AXON', href: '/perche-axon' },
-  { label: 'Fisioterapisti', href: '/fisioterapisti' },
+  { label: 'Professionisti', href: '/professionisti' },
   { label: 'Aziende', href: '/aziende' },
 ]
 

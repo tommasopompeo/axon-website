@@ -15,22 +15,15 @@ const wearMethodsData = [
     id: 1,
     title: "AXON + Band",
     description:
-      "Il modo più immediato per indossare AXON. Inserisci il dispositivo nell\u2019alloggiamento del cinturino AXON Band e allaccialo al polso come un orologio. Nessuna cucitura, nessuna preparazione: indossalo e sei pronto. Ideale per chi cerca massima praticità senza rinunciare al contatto diretto con la pelle.",
+      "Il modo più immediato per indossare AXON. Inserisci il dispositivo nell’alloggiamento del cinturino AXON Band e allaccialo al polso come un orologio. Nessuna cucitura, nessuna preparazione: indossalo e sei pronto. Ideale per chi cerca massima praticità senza rinunciare al contatto diretto con la pelle.",
     image: "/applicazioni_axonband.png",
   },
   {
     id: 2,
     title: "AXON + Shell",
     description:
-      "Cuci il guscio trasparente AXON Shell sul lato interno del capo che preferisci, all\u2019altezza desiderata. Una volta fissato, ti basterà inserire il dispositivo AXON nel guscio ogni volta che indossi quel capo. I punti di applicazione più comuni sono la nuca, il centro del petto, tra le scapole e la zona lombare \u2014 tutti punti in cui il tessuto resta aderente al corpo.",
+      "Cuci il guscio trasparente AXON Shell sul lato interno del capo che preferisci, all’altezza desiderata. Una volta fissato, ti basterà inserire il dispositivo AXON nel guscio ogni volta che indossi quel capo. I punti di applicazione più comuni sono la nuca, il centro del petto, tra le scapole e la zona lombare — tutti punti in cui il tessuto resta aderente al corpo.",
     image: "/applicazioni_axonshell.png",
-  },
-  {
-    id: 3,
-    title: "AXON singolo",
-    description:
-      "Il metodo più semplice in assoluto: posiziona il dispositivo AXON direttamente a contatto con la pelle o in una tasca aderente al corpo. Nessun accessorio necessario. Puoi infilarlo nella tasca del petto di una camicia, in un taschino interno della giacca o tenerlo semplicemente contro la pelle sotto una fascia elastica. Perfetto per provare AXON ovunque, subito.",
-    image: "/applicazioni_axon_singolo.png",
   },
 ];
 

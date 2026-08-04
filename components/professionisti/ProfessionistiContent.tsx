@@ -3,12 +3,12 @@
 import { FormEvent, useState } from 'react'
 import Link from 'next/link'
 import {
-  Shirt,
-  Footprints,
+  Stethoscope,
   HeartPulse,
   Dumbbell,
-  Briefcase,
-  Bandage,
+  Activity,
+  Footprints,
+  Users,
 } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
@@ -25,65 +25,65 @@ import {
 } from '@/components/ui/Field'
 import { FORM_ENDPOINT } from '@/lib/links'
 
-// ── Casi d'uso ──
+// ── Ambiti professionali ──
 const useCases = [
   {
-    icon: Shirt,
-    title: 'Moda e abbigliamento',
-    text: 'Integrare Axon in capi, intimo tecnico, activewear.',
-  },
-  {
-    icon: Footprints,
-    title: 'Calzature',
-    text: 'Inserire Axon in scarpe e solette per supporto a postura ed equilibrio.',
+    icon: Stethoscope,
+    title: 'Fisioterapisti',
+    text: 'Integra Axon nei percorsi riabilitativi dei tuoi pazienti, per lavorare su equilibrio e recupero funzionale.',
   },
   {
     icon: HeartPulse,
-    title: 'Sanità e RSA',
-    text: 'Case di riposo e centri riabilitativi: equilibrio e prevenzione cadute.',
+    title: 'Medici e specialisti',
+    text: 'Suggerisci Axon nei percorsi di prevenzione cadute e mantenimento dell’autonomia motoria.',
   },
   {
     icon: Dumbbell,
-    title: 'Sport e performance',
-    text: 'Squadre, palestre e centri sportivi: supporto a forza, equilibrio e recupero.',
+    title: 'Personal trainer',
+    text: 'Affianca Axon ai tuoi programmi di allenamento per supportare equilibrio, forza e prevenzione infortuni.',
   },
   {
-    icon: Briefcase,
-    title: 'Benessere sul lavoro',
-    text: 'Programmi corporate per chi passa molte ore seduto.',
+    icon: Activity,
+    title: 'Osteopati e chiropratici',
+    text: 'Un supporto passivo e non invasivo da abbinare ai tuoi trattamenti manuali.',
   },
   {
-    icon: Bandage,
-    title: 'Tutori e ortopedia',
-    text: 'Applicazione su tutori e supporti, su indicazione clinica.',
+    icon: Footprints,
+    title: 'Podologi',
+    text: 'Applica Axon su plantari e calzature per lavorare su postura ed equilibrio.',
+  },
+  {
+    icon: Users,
+    title: 'Educatori motori e trainer per anziani',
+    text: 'Integralo nei programmi di attività motoria individuale per la terza età.',
   },
 ]
 
 // ── Form state ──
 interface FormData {
-  nome: string; azienda: string; ruolo: string
-  email: string; telefono: string; settore: string
-  tipo: string; volumi: string; messaggio: string
+  nome: string; professione: string; struttura: string
+  email: string; telefono: string; ambito: string
+  tipo: string; pazienti: string; messaggio: string
   consenso: boolean; _honey: string
 }
 
 const empty: FormData = {
-  nome: '', azienda: '', ruolo: '', email: '', telefono: '',
-  settore: '', tipo: '', volumi: '', messaggio: '',
+  nome: '', professione: '', struttura: '', email: '', telefono: '',
+  ambito: '', tipo: '', pazienti: '', messaggio: '',
   consenso: false, _honey: '',
 }
 
 function validate(d: FormData): Record<string, string> {
   const e: Record<string, string> = {}
   if (!d.nome.trim()) e.nome = 'Campo obbligatorio.'
-  if (!d.azienda.trim()) e.azienda = 'Campo obbligatorio.'
+  if (!d.professione.trim()) e.professione = 'Campo obbligatorio.'
   if (!d.email.trim()) e.email = 'Campo obbligatorio.'
   else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) e.email = 'Inserisci un indirizzo email valido.'
   if (!d.consenso) e.consenso = 'Accetta la privacy policy per procedere.'
   return e
 }
 
-export default function AziendeContent() {
+export default function ProfessionistiContent() {
   const [data, setData] = useState<FormData>(empty)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitting, setSubmitting] = useState(false)
@@ -133,32 +133,33 @@ export default function AziendeContent() {
                 className="font-bold"
                 style={{ fontSize: 'var(--fs-display)', lineHeight: 1.04, letterSpacing: '-0.02em' }}
               >
-                Sei un azienda?
+                Sei un professionista?
               </h1>
             </Reveal>
             <Reveal trigger="mount" delay={0.12}>
               <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                Se vuoi integrare Axon nei tuoi prodotti, calzature o percorsi aziendali —
-                per i tuoi clienti, i tuoi dipendenti o la tua struttura — sei nel posto giusto.
+                Se lavori con pazienti o clienti — come fisioterapista, medico, personal trainer
+                o altro professionista della salute e del movimento — e vuoi integrare Axon
+                nella tua attività, sei nel posto giusto.
               </p>
             </Reveal>
           </div>
         </Container>
       </Section>
 
-      {/* ── Casi d'uso ── */}
-      <Section id="casi-uso" className="bg-black !pt-0" style={{ background: '#000000' }}>
+      {/* ── Ambiti professionali ── */}
+      <Section id="ambiti" className="bg-black !pt-0" style={{ background: '#000000' }}>
         <Container>
           <div className="flex flex-col gap-12 lg:gap-16">
             <div className="flex flex-col gap-4 max-w-2xl">
               <Reveal>
                 <h2 className="font-bold" style={{ fontSize: 'var(--fs-h2)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
-                  Un dispositivo, molti settori.
+                  Una tecnologia, molte professioni.
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>
                 <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                  Dove può essere integrato.
+                  Come integrarlo nella tua attività.
                 </p>
               </Reveal>
             </div>
@@ -195,8 +196,8 @@ export default function AziendeContent() {
         </Container>
       </Section>
 
-      {/* ── Form aziende ── */}
-      <Section id="contatto-aziende" className="bg-black" style={{ background: '#000000' }}>
+      {/* ── Form professionisti ── */}
+      <Section id="contatto-professionisti" className="bg-black" style={{ background: '#000000' }}>
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <div className="flex flex-col gap-5">
@@ -238,71 +239,78 @@ export default function AziendeContent() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-nome" required>Nome e cognome</FieldLabel>
+                      <FieldLabel htmlFor="pro-nome" required>Nome e cognome</FieldLabel>
                       <Input
-                        id="az-nome" type="text" autoComplete="name"
+                        id="pro-nome" type="text" autoComplete="name"
                         value={data.nome} onChange={(e) => set('nome', e.target.value)}
-                        aria-required="true" aria-describedby={errors.nome ? 'az-nome-err' : undefined}
+                        aria-required="true" aria-describedby={errors.nome ? 'pro-nome-err' : undefined}
                         aria-invalid={!!errors.nome}
                       />
-                      {errors.nome && <FieldError id="az-nome-err">{errors.nome}</FieldError>}
+                      {errors.nome && <FieldError id="pro-nome-err">{errors.nome}</FieldError>}
                     </FieldGroup>
 
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-azienda" required>Azienda</FieldLabel>
-                      <Input
-                        id="az-azienda" type="text" autoComplete="organization"
-                        value={data.azienda} onChange={(e) => set('azienda', e.target.value)}
-                        aria-required="true" aria-describedby={errors.azienda ? 'az-azienda-err' : undefined}
-                        aria-invalid={!!errors.azienda}
-                      />
-                      {errors.azienda && <FieldError id="az-azienda-err">{errors.azienda}</FieldError>}
+                      <FieldLabel htmlFor="pro-professione" required>Professione</FieldLabel>
+                      <Select
+                        id="pro-professione"
+                        value={data.professione} onChange={(e) => set('professione', e.target.value)}
+                        aria-required="true" aria-describedby={errors.professione ? 'pro-professione-err' : undefined}
+                        aria-invalid={!!errors.professione}
+                      >
+                        <option value="">— Seleziona —</option>
+                        <option>Fisioterapista</option>
+                        <option>Medico/specialista</option>
+                        <option>Personal trainer</option>
+                        <option>Osteopata/chiropratico</option>
+                        <option>Podologo</option>
+                        <option>Educatore motorio/trainer per anziani</option>
+                        <option>Altro</option>
+                      </Select>
+                      {errors.professione && <FieldError id="pro-professione-err">{errors.professione}</FieldError>}
                     </FieldGroup>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-ruolo">Ruolo</FieldLabel>
+                      <FieldLabel htmlFor="pro-struttura">Studio/struttura</FieldLabel>
                       <Input
-                        id="az-ruolo" type="text" autoComplete="organization-title"
-                        value={data.ruolo} onChange={(e) => set('ruolo', e.target.value)}
+                        id="pro-struttura" type="text" autoComplete="organization"
+                        value={data.struttura} onChange={(e) => set('struttura', e.target.value)}
                       />
                     </FieldGroup>
 
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-email" required>Email aziendale</FieldLabel>
+                      <FieldLabel htmlFor="pro-email" required>Email</FieldLabel>
                       <Input
-                        id="az-email" type="email" autoComplete="email"
+                        id="pro-email" type="email" autoComplete="email"
                         value={data.email} onChange={(e) => set('email', e.target.value)}
-                        aria-required="true" aria-describedby={errors.email ? 'az-email-err' : undefined}
+                        aria-required="true" aria-describedby={errors.email ? 'pro-email-err' : undefined}
                         aria-invalid={!!errors.email}
                       />
-                      {errors.email && <FieldError id="az-email-err">{errors.email}</FieldError>}
+                      {errors.email && <FieldError id="pro-email-err">{errors.email}</FieldError>}
                     </FieldGroup>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-telefono">Telefono</FieldLabel>
+                      <FieldLabel htmlFor="pro-telefono">Telefono</FieldLabel>
                       <Input
-                        id="az-telefono" type="tel" autoComplete="tel"
+                        id="pro-telefono" type="tel" autoComplete="tel"
                         value={data.telefono} onChange={(e) => set('telefono', e.target.value)}
                       />
                     </FieldGroup>
 
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-settore">Settore</FieldLabel>
+                      <FieldLabel htmlFor="pro-ambito">Ambito principale</FieldLabel>
                       <Select
-                        id="az-settore"
-                        value={data.settore} onChange={(e) => set('settore', e.target.value)}
+                        id="pro-ambito"
+                        value={data.ambito} onChange={(e) => set('ambito', e.target.value)}
                       >
                         <option value="">— Seleziona —</option>
-                        <option>Moda/abbigliamento</option>
-                        <option>Calzature</option>
-                        <option>Sanità/RSA</option>
-                        <option>Sport</option>
-                        <option>Benessere aziendale</option>
-                        <option>Ortopedia/tutori</option>
+                        <option>Riabilitazione</option>
+                        <option>Sport e prevenzione infortuni</option>
+                        <option>Terza età e prevenzione cadute</option>
+                        <option>Postura ed equilibrio</option>
                         <option>Altro</option>
                       </Select>
                     </FieldGroup>
@@ -310,40 +318,40 @@ export default function AziendeContent() {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-tipo">Tipo di interesse</FieldLabel>
+                      <FieldLabel htmlFor="pro-tipo">Tipo di interesse</FieldLabel>
                       <Select
-                        id="az-tipo"
+                        id="pro-tipo"
                         value={data.tipo} onChange={(e) => set('tipo', e.target.value)}
                       >
                         <option value="">— Seleziona —</option>
-                        <option>Integrare Axon in un prodotto</option>
-                        <option>Fornitura per la mia struttura/team</option>
-                        <option>Progetto pilota/sperimentazione</option>
-                        <option>Distribuzione/rivendita</option>
+                        <option>Usare Axon con i miei pazienti/clienti</option>
+                        <option>Proporre/rivendere Axon nel mio studio</option>
+                        <option>Collaborazione/partnership con Axon</option>
+                        <option>Informazioni generali</option>
                         <option>Altro</option>
                       </Select>
                     </FieldGroup>
 
                     <FieldGroup>
-                      <FieldLabel htmlFor="az-volumi">Volumi stimati</FieldLabel>
+                      <FieldLabel htmlFor="pro-pazienti">Quanti pazienti/clienti segui (indicativo)</FieldLabel>
                       <Select
-                        id="az-volumi"
-                        value={data.volumi} onChange={(e) => set('volumi', e.target.value)}
+                        id="pro-pazienti"
+                        value={data.pazienti} onChange={(e) => set('pazienti', e.target.value)}
                       >
                         <option value="">— Seleziona —</option>
-                        <option value="lt100">&lt;100</option>
-                        <option value="100-1000">100–1.000</option>
-                        <option value="1000-10000">1.000–10.000</option>
-                        <option value="gt10000">&gt;10.000</option>
+                        <option value="lt10">&lt;10</option>
+                        <option value="10-50">10–50</option>
+                        <option value="50-200">50–200</option>
+                        <option value="gt200">&gt;200</option>
                         <option value="unknown">Non so ancora</option>
                       </Select>
                     </FieldGroup>
                   </div>
 
                   <FieldGroup>
-                    <FieldLabel htmlFor="az-messaggio">Messaggio</FieldLabel>
+                    <FieldLabel htmlFor="pro-messaggio">Messaggio</FieldLabel>
                     <Textarea
-                      id="az-messaggio" rows={5}
+                      id="pro-messaggio" rows={5}
                       placeholder="Descrivi il contesto e l'obiettivo"
                       value={data.messaggio} onChange={(e) => set('messaggio', e.target.value)}
                     />
@@ -351,15 +359,15 @@ export default function AziendeContent() {
 
                   <div className="flex flex-col gap-1">
                     <CheckboxField
-                      id="az-consenso"
+                      id="pro-consenso"
                       checked={data.consenso}
                       onChange={(v) => set('consenso', v)}
-                      errorId={errors.consenso ? 'az-consenso-err' : undefined}
+                      errorId={errors.consenso ? 'pro-consenso-err' : undefined}
                     >
                       Accetto il trattamento dei dati personali secondo la{' '}
                       <Link href="/privacy" style={{ color: 'var(--text)' }}>Privacy Policy</Link> di Axon-Tech S.r.l.
                     </CheckboxField>
-                    {errors.consenso && <FieldError id="az-consenso-err">{errors.consenso}</FieldError>}
+                    {errors.consenso && <FieldError id="pro-consenso-err">{errors.consenso}</FieldError>}
                   </div>
 
                   {serverError && (
