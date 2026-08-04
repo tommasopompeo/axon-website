@@ -2,10 +2,12 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import { Container, Section, Reveal } from '@/components/ui'
 import VideoSection from '@/components/come-funziona/VideoSection'
+import ScienceSection from '@/components/come-funziona/ScienceSection'
 
 export const metadata: Metadata = {
   title: 'Come funziona - AXON',
-  description: 'Scopri la tecnologia e il funzionamento dei dispositivi e dei gusci passivi AXON.',
+  description:
+    'Scopri la tecnologia e le basi scientifiche dei dispositivi e dei gusci passivi AXON: meccanotrasduzione, canali Piezo, vibrazioni terapeutiche e nanomateriali.',
   alternates: { canonical: '/come-funziona' },
 }
 
@@ -47,8 +49,11 @@ export default function ComeFunzionaPage() {
         </Container>
       </Section>
 
-      {/* ── Video Section ── */}
+      {/* ── Video Section (CMO under-a-minute intro) ── */}
       <VideoSection />
+
+      {/* ── Science Section (contesto scientifico su cui si basa AXON) ── */}
+      <ScienceSection />
 
     </>
   )
