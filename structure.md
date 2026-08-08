@@ -10,19 +10,22 @@ Lingua: **solo italiano**. Tema: **dark only**. Font: **Urbanist**.
 | `/applicazioni` | Applicazioni | Completa |
 | `/come-funziona` | Come funziona | Completa |
 | `/perche-axon` | Perché AXON | Completa |
-| `/fisioterapisti` | Fisioterapisti | Stub (in costruzione) |
+| `/professionisti` | Professionisti | Completa (form placeholder) |
 | `/shop` | Shop | Completa (link Shopify placeholder) |
 | `/aziende` | Aziende — Enterprise | Completa (form placeholder) |
 | `/contatti` | Contatti | Completa (form placeholder) |
 
+`/fisioterapisti` è il vecchio slug della pagina Professionisti: redirect 301 permanente
+verso `/professionisti` in `next.config.ts`.
+
 ## Navigazione (Header)
-Voci: **Applicazioni** · **Come funziona** · **Perchè AXON** · **Fisioterapisti** · **Aziende**
+Voci: **Applicazioni** · **Come funziona** · **Perchè AXON** · **Professionisti** · **Aziende**
 CTA destra: **Acquista AXON** → `/shop`
 
 ## Ordine sezioni HOME
 1. Hero (`#top`) — video background + titolo nero + CTA
 2. ContestiBento (`#contesti`) — bento grid benefici + dati pilota
-3. HowItsDoneSection (`#come-fatto`) — accordion "Tre passi, e basta."
+3. HowItsDoneSection (`#come-indossare`) — griglia 2 colonne, metodi di applicazione
 4. TargetCarousel (`#per-chi`) — carousel di 4 contesti d'uso
 5. TestimonialsSection (`#testimonianze`) — carousel testimonianze
 6. FaqSection (`#faq`) — accordion FAQ
@@ -34,7 +37,8 @@ components/
 ├── home/
 │   ├── HeroSection            ← video bg, testo nero, singola CTA → /shop
 │   ├── ContestiBento          ← bento grid 3×2 (corsa / dati / nuoto / palestra)
-│   ├── HowItsDoneSection      ← accordion 3 passi + crossfade immagine
+│   ├── HowItsDoneSection      ← griglia 2 colonne: Axon Shell™ cucito (axon-shell-sewn.png)
+│   │                             + Axon Band al polso (axon-watch.png), CTA "Vedi nello shop"
 │   ├── TargetCarousel         ← carousel orizzontale 4 card (ufficio/anziano/sciatore/intenso)
 │   ├── TestimonialsSection    ← wrapper
 │   ├── TestimonialCarousel    ← carousel testimonianze
@@ -42,20 +46,23 @@ components/
 ├── applicazioni/
 │   ├── StickyScrollApplicazioni  ← sticky scroll 7 contesti (applicazioni/1–7.png)
 │   ├── AxonFeaturesSection       ← caratteristiche prodotto (usa axon_no_bkg.png)
-│   └── WearMethodSection         ← metodi di applicazione
+│   └── WearMethodSection         ← 2 metodi di applicazione: AXON + Band (applicazioni_axonband.png),
+│                                    AXON + Shell (applicazioni_axonshell.png)
 ├── come-funziona/
-│   ├── VideoSection           ← embed video_come_funziona.mp4
+│   ├── VideoSection           ← player custom, embed video_come_funziona.mp4
 │   └── ScienceSection         ← 3 pillar scientifici con accordion approfondimento + refs
 ├── perche-axon/
 │   ├── ResultsAccordion       ← accordion dati studio (grafici-perche-axon/1–7.png)
 │   └── PartnerSection         ← sfondo bianco, 2 loghi (logo1.png, logo2.png)
 ├── shop/
-│   ├── ShopContent            ← 2 prodotti, immagini, CTA Shopify
+│   ├── ShopContent            ← 2 prodotti, immagini, CTA Shopify, box fiducia, mini-FAQ
 │   └── ProductCard            ← card singolo prodotto
+├── professionisti/
+│   └── ProfessionistiContent  ← hero + ambiti professionali grid (6) + form B2B
 ├── aziende/
-│   └── AziendeContent         ← hero + use case grid + form B2B
+│   └── AziendeContent         ← hero + casi d'uso grid (6) + form B2B
 ├── contatti/
-│   └── ContattiContent        ← form contatti
+│   └── ContattiContent        ← form contatti + box contatti diretti
 ├── layout/
 │   ├── Header                 ← sticky, nav desktop/mobile hamburger
 │   └── Footer                 ← 4 colonne + riga legale
@@ -79,9 +86,9 @@ components/
 - `hero_perche_axon.png` — hero immagine pagina Perché AXON
 - `corsa.png`, `nuoto.png`, `palestra.png` — ContestiBento home
 - `ufficio.png`, `anziano.png`, `sciatore.png`, `intenso.png` — TargetCarousel home
-- `axon-shell-sewn.png`, `axon-watch.png` — HowItsDoneSection (passi 1, 2)
+- `axon-shell-sewn.png`, `axon-watch.png` — HowItsDoneSection home
 - `axon_no_bkg.png` — AxonFeaturesSection
-- `applicazioni_axonband.png`, `applicazioni_axonshell.png`, `applicazioni_axon_singolo.png` — WearMethodSection
+- `applicazioni_axonband.png`, `applicazioni_axonshell.png` — WearMethodSection (2 metodi)
 - `kit-1.png`, `kit-2.png` — Shop, card AXON KIT
 - `shell-1.png`, `shell-2.png` — Shop, card AXON SHELL™
 - `video_come_funziona.mp4` — VideoSection
@@ -94,4 +101,6 @@ components/
 - **Shopify**: `SHOPIFY_KIT_URL` e `SHOPIFY_SHELL_URL` in `lib/links.ts` — attualmente `'#'`.
 - **Form**: `FORM_ENDPOINT` in `lib/links.ts` — attualmente `'#'`. Servizio esterno (Web3Forms/Formspree o API route + Resend).
 - **Social**: `SOCIAL.instagram/tiktok/linkedin` in `lib/links.ts` — attualmente `'#'`.
+- **Privacy Policy**: nessuna pagina `/privacy` esiste ancora — i link "Privacy Policy" nei form
+  e in Footer puntano a `#` come placeholder.
 - **Dominio**: `axon-tech.it`. Collegamento in Vercel a sito completato.

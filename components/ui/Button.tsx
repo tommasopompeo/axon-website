@@ -18,6 +18,13 @@ const sizeClsGhost: Record<Size, string> = {
   lg: 'py-4 text-base',
 }
 
+// Classi statiche (non interpolate) così Tailwind le rileva sempre in scansione contenuti.
+const variantCls: Record<Variant, string> = {
+  primary: 'btn-primary',
+  secondary: 'btn-secondary',
+  ghost: 'btn-ghost',
+}
+
 type ButtonAsLink = {
   href: string
   target?: '_blank' | '_self'
@@ -50,7 +57,7 @@ export default function Button({
   className = '',
 }: ButtonProps) {
   const sizeClass = variant === 'ghost' ? sizeClsGhost[size] : sizeClsBase[size]
-  const cls = `btn-base btn-${variant} ${sizeClass} ${className}`
+  const cls = `btn-base ${variantCls[variant]} ${sizeClass} ${className}`
   const showArrow = variant === 'ghost'
 
   if (href) {

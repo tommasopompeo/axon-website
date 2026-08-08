@@ -9,7 +9,7 @@
 # NAV (header, sticky, su tutte le pagine)
 - Logo AXON (SVG, wordmark bianco con X rossa) → link a "/"
 - Voci: **Applicazioni** (/applicazioni) · **Come funziona** (/come-funziona) ·
-  **Perchè AXON** (/perche-axon) · **Fisioterapisti** (/fisioterapisti) ·
+  **Perchè AXON** (/perche-axon) · **Professionisti** (/professionisti) ·
   **Aziende** (/aziende)
 - CTA primaria (bottone rosso): **Acquista AXON** → /shop
 - Mobile: menu hamburger con le stesse voci.
@@ -52,14 +52,17 @@
   - **nuoto.png** (col 2, riga 2) — *"Equilibrio e stabilità posturale."*
   - **palestra.png** (col 3, span 2 righe) — *"Forza e tono muscolare."*
 
-## 3. COME SI APPLICA (HowItsDoneSection) — id: come-fatto
-- H2: **Tre passi, e basta.**
-- Layout: immagine a sinistra (crossfade) + accordion a destra.
-- Accordion:
-  1. **Cuci** — *Fissa il guscio al capo: nuca, fascia lombare o petto. Bastano pochi punti.* → axon-shell-sewn.png
-  2. **Inserisci** — *Metti Axon nell'Axon Shell™, il guscio funzionale dedicato.* → axon-watch.png
-  3. **Indossa** — *Vivi la tua giornata. Axon si attiva con i tuoi movimenti.*
-- Nota: *In alternativa, Axon può essere cucito direttamente lungo la circonferenza.*
+## 3. COME SI APPLICA (HowItsDoneSection) — id: come-indossare
+- H2: **Indossa Axon come preferisci**
+- Sottotitolo: *Progettato per adattarsi perfettamente al tuo stile di vita. Scegli la
+  soluzione più comoda per te ed esprimi il massimo del tuo benessere in ogni momento.*
+- Layout: griglia a 2 colonne, ciascuna con immagine + box testo nero:
+  1. **Cucilo direttamente sui tuoi capi** — *Fissa l'Axon Shell™ a qualsiasi capo
+     d'abbigliamento — alla nuca, sul petto o sulla schiena — con pochi punti di cucitura.
+     Inserisci poi il dispositivo Axon nel guscio ogni volta che lo indossi.* →
+     axon-shell-sewn.png · CTA "Vedi nello shop" → /shop
+  2. **Axon Band: indossalo al polso** — *Indossa Axon comodamente al polso grazie
+     all'esclusivo cinturino Axon Band.* → axon-watch.png · CTA "Vedi nello shop" → /shop
 
 ## 4. A CHI È RIVOLTO (TargetCarousel) — id: per-chi
 - H2: **Per come ti muovi, ogni giorno.**
@@ -98,10 +101,10 @@
 
 ## AxonFeaturesSection — caratteristiche del dispositivo (usa axon_no_bkg.png)
 
-## WearMethodSection — 3 metodi di applicazione
-1. Axon Band (applicazioni_axonband.png)
-2. Axon Shell™ removibile (applicazioni_axonshell.png)
-3. Axon cucito (applicazioni_axon_singolo.png)
+## WearMethodSection — 2 metodi di applicazione
+- H2: **Scegli come indossarlo, AXON funziona dovunque**
+1. **AXON + Band** — applicazioni_axonband.png
+2. **AXON + Shell** — applicazioni_axonshell.png
 
 ---
 
@@ -168,9 +171,26 @@
 
 ---
 
-# PAGINA: FISIOTERAPISTI ("/fisioterapisti")
-- **Stub attivo** — mostra messaggio "Questa pagina è in fase di allestimento."
-- Contenuto futuro: partnership con fisioterapisti e specialisti della riabilitazione.
+# PAGINA: PROFESSIONISTI ("/professionisti")
+- H1: **Sei un professionista?**
+- Sottotitolo: *Se lavori con pazienti o clienti — come fisioterapista, medico, personal
+  trainer o altro professionista della salute e del movimento — e vuoi integrare Axon
+  nella tua attività, sei nel posto giusto.*
+
+## Sezione "Ambiti professionali"
+- H2: **Una tecnologia, molte professioni.**
+- 6 card: Fisioterapisti · Medici e specialisti · Personal trainer ·
+  Osteopati e chiropratici · Podologi · Educatori motori e trainer per anziani
+
+## Form professionisti
+- Campi: Nome cognome · Professione (select) · Studio/struttura · Email ·
+  Telefono · Ambito principale (select) · Tipo di interesse (select) ·
+  Pazienti/clienti seguiti (select) · Messaggio · Consenso privacy
+- CTA: **Invia richiesta**
+- Conferma: *Grazie. Il team Axon ti ricontatterà al più presto.*
+
+> Nota: `/fisioterapisti` è il vecchio slug di questa pagina — redirect 301 permanente
+> verso `/professionisti` (vedi `next.config.ts`).
 
 ---
 

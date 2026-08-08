@@ -5,7 +5,7 @@ import { SOCIAL } from '@/lib/links'
 
 const navColonna = [
   { label: 'Applicazioni', href: '/applicazioni' },
-  { label: 'Come funziona', href: '/#come-funziona' },
+  { label: 'Come funziona', href: '/come-funziona' },
   { label: 'Testimonianze', href: '/#testimonianze' },
   { label: 'FAQ', href: '/#faq' },
   { label: 'Shop', href: '/shop' },
@@ -16,7 +16,7 @@ const navColonna = [
 const prodottoColonna = [
   { label: 'AXON KIT', href: '/shop' },
   { label: 'AXON SHELL™', href: '/shop' },
-  { label: 'Come si usa', href: '/#come-fatto' },
+  { label: 'Come si usa', href: '/#come-indossare' },
   { label: 'FAQ', href: '/#faq' },
 ]
 

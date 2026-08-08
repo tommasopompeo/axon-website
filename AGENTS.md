@@ -43,5 +43,6 @@ che si applica ai capi). Pubblico **consumer** + pagina **aziende** (B2B, senza 
 - **Testi consumer** da far validare al referente regolatorio Axon-Tech prima del go-live.
 - **Testimonianze** in `content-it.md` sono esempi da validare/sostituire con quote reali.
 - **P.IVA** in Footer (già inserita: IT05577370264 — verificare).
-- **Pagina `/fisioterapisti`**: stub attivo, contenuto ancora da sviluppare.
+- **Pagina `/privacy`**: non ancora creata — i link "Privacy Policy" nei form e in Footer
+  puntano a `#` come placeholder.
 - **Social links**: tutti `'#'` in `lib/links.ts`.

@@ -1,57 +1,50 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Container } from "@/components/ui";
 
 const applicationsData = [
   { 
-    id: 1, 
-    tag: "Ufficio", 
-    title: "Ufficio", 
+    id: 1,
+    title: "Ufficio",
     description: "Ore alla scrivania, riunioni e schermi luminosi accumulano tensione nel corpo senza che ce ne accorgiamo. AXON agisce in silenzio, mantenendo il sistema nervoso in equilibrio: meno rigidità, più lucidità.", 
     image: "/applicazioni/1.png" 
   },
   { 
-    id: 2, 
-    tag: "Quotidianità", 
-    title: "Quotidianità", 
+    id: 2,
+    title: "Quotidianità",
     description: "La routine quotidiana è spesso più stancante di quanto si immagini. Con AXON addosso hai un supporto costante al benessere fisico, invisibile e sempre attivo — qualunque cosa stia facendo.", 
     image: "/applicazioni/2.png" 
   },
   { 
-    id: 3, 
-    tag: "Sport", 
-    title: "Sport", 
+    id: 3,
+    title: "Sport",
     description: "AXON supporta la muscolatura durante la performance, migliora la gestione dell'energia e riduce la sensazione di affaticamento. Allenati di più, con meno sforzo percepito.", 
     image: "/applicazioni/3.png" 
   },
   { 
-    id: 4, 
-    tag: "Recupero", 
-    title: "Recupero", 
+    id: 4,
+    title: "Recupero",
     description: "AXON amplifica i processi naturali di rigenerazione, riducendo i tempi di recupero tra uno sforzo e l'altro. Che sia dopo l'allenamento o una giornata intensa, il corpo ritrova equilibrio più in fretta.", 
     image: "/applicazioni/4.png" 
   },
   { 
-    id: 5, 
-    tag: "Lavori intensivi", 
-    title: "Lavori intensivi", 
+    id: 5,
+    title: "Lavori intensivi",
     description: "In cantiere o in magazzino, arrivare a fine turno senza cedere alla fatica fa la differenza. AXON riduce il carico percepito sulla muscolatura e sostiene la concentrazione nelle condizioni più impegnative.", 
     image: "/applicazioni/5.png" 
   },
   { 
-    id: 6, 
-    tag: "Riposo", 
-    title: "Riposo", 
+    id: 6,
+    title: "Riposo",
     description: "AXON favorisce il rilassamento del sistema nervoso nelle ore serali, preparando il corpo a un sonno più profondo e rigenerante. Non solo dormire — recuperare davvero.", 
     image: "/applicazioni/6.png" 
   },
   { 
-    id: 7, 
-    tag: "Svago", 
-    title: "Svago", 
+    id: 7,
+    title: "Svago",
     description: "Che sia una passeggiata, una serata fuori o un viaggio, il tempo libero merita di essere vissuto senza pensare a come ci si sente. AXON mantiene il corpo in uno stato di benessere attivo, anche quando si stacca.", 
     image: "/applicazioni/7.png" 
   }
