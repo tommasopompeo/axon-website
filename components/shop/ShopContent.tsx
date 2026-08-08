@@ -99,7 +99,7 @@ export default function ShopContent() {
   return (
     <>
       {/* ── Hero pagina ── */}
-      <Section id="top">
+      <Section id="top" className="bg-black" style={{ background: '#000000' }}>
         <Container>
           <div className="flex flex-col gap-5 max-w-3xl">
             <Reveal trigger="mount">
@@ -130,7 +130,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Schede prodotto estese ── */}
-      <Section id="prodotti" elevated className="!pt-0">
+      <Section id="prodotti" className="bg-black !pt-0" style={{ background: '#000000' }}>
         <Container>
           <RevealGroup
             className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
@@ -161,7 +161,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Cosa include il kit / perché il kit originale ── */}
-      <Section id="cosa-include">
+      <Section id="cosa-include" className="bg-black" style={{ background: '#000000' }}>
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <div className="flex flex-col gap-5">
@@ -234,7 +234,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Box fiducia ── */}
-      <Section id="garanzie" elevated>
+      <Section id="garanzie" className="bg-black" style={{ background: '#000000' }}>
         <Container>
           <RevealGroup
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
@@ -245,8 +245,8 @@ export default function ShopContent() {
                 <div
                   className="flex flex-col gap-3 h-full p-6 lg:p-7"
                   style={{
-                    background: 'var(--surface)',
-                    border: '1px solid var(--border)',
+                    background: '#ffffff',
+                    border: '1px solid rgba(0,0,0,0.06)',
                     borderRadius: 'var(--radius-lg)',
                   }}
                 >
@@ -264,14 +264,14 @@ export default function ShopContent() {
                   </span>
                   <h3
                     className="font-semibold"
-                    style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em' }}
+                    style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em', color: '#0a0a0b' }}
                   >
                     {title}
                   </h3>
                   <p
                     style={{
                       fontSize: 'var(--fs-caption)',
-                      color: 'var(--text-muted)',
+                      color: 'rgba(10,10,11,0.62)',
                       lineHeight: 1.55,
                     }}
                   >
@@ -285,7 +285,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Mini-FAQ acquisto ── */}
-      <Section id="faq-acquisto">
+      <Section id="faq-acquisto" className="bg-black" style={{ background: '#000000' }}>
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <Reveal>

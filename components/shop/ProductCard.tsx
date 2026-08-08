@@ -73,8 +73,8 @@ export default function ProductCard({
     <div
       className="flex flex-col h-full overflow-hidden"
       style={{
-        background: 'var(--surface-2)',
-        border: '1px solid var(--border)',
+        background: '#ffffff',
+        border: '1px solid rgba(0,0,0,0.06)',
         borderRadius: 'var(--radius-lg)',
       }}
     >
@@ -138,7 +138,7 @@ export default function ProductCard({
                 style={{
                   width: i === index ? 18 : 6,
                   height: 6,
-                  background: i === index ? 'var(--brand)' : 'rgba(255,255,255,0.6)',
+                  background: i === index ? 'var(--brand)' : 'rgba(10,10,11,0.18)',
                 }}
               />
             ))}
@@ -152,14 +152,14 @@ export default function ProductCard({
         <div className="flex flex-col gap-1.5">
           <h3
             className="font-bold"
-            style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em' }}
+            style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em', color: '#0a0a0b' }}
           >
             {title}
           </h3>
           <p
             style={{
               fontSize: 'var(--fs-body)',
-              color: 'var(--text-muted)',
+              color: 'rgba(10,10,11,0.62)',
               lineHeight: 1.5,
             }}
           >
@@ -186,7 +186,7 @@ export default function ProductCard({
               <span
                 style={{
                   fontSize: 'var(--fs-body)',
-                  color: 'var(--text)',
+                  color: '#0a0a0b',
                   lineHeight: 1.5,
                 }}
               >
@@ -201,7 +201,7 @@ export default function ProductCard({
           <div className="flex flex-col gap-1">
             <p
               className="font-bold"
-              style={{ fontSize: 'var(--fs-h2)', letterSpacing: '-0.02em' }}
+              style={{ fontSize: 'var(--fs-h2)', letterSpacing: '-0.02em', color: '#0a0a0b' }}
             >
               {price}
             </p>
@@ -209,7 +209,7 @@ export default function ProductCard({
               <p
                 style={{
                   fontSize: 'var(--fs-caption)',
-                  color: 'var(--text-subtle)',
+                  color: 'rgba(10,10,11,0.45)',
                 }}
               >
                 {priceNote}
