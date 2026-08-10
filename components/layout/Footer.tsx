@@ -33,7 +33,7 @@ export default function Footer() {
     <footer
       className="bg-black"
       style={{
-        background: '#000000',
+        background: 'var(--bg-black)',
         borderTop: '1px solid var(--border)',
       }}
     >

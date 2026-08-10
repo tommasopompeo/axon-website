@@ -58,7 +58,7 @@ export default function VideoSection() {
   }
 
   return (
-    <Section id="video-come-funziona" className="bg-black" style={{ background: '#000000' }}>
+    <Section id="video-come-funziona" className="bg-black" style={{ background: 'var(--bg-black)' }}>
       <Container>
         <Reveal>
           {/* 16:9 box — sides flush with container text area */}

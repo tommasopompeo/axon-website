@@ -110,4 +110,18 @@
   .btn-ghost:hover:not(:disabled) {
     color: var(--text);
   }
+  /* White — for CTAs on dark sections that need max contrast (FAQ CTA, B2B form submit) */
+  .btn-white {
+    background: #ffffff;
+    color: #0a0a0b;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  }
+  .btn-white:hover:not(:disabled) {
+    background: #e5e7eb;
+  }
+  .btn-white:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 }

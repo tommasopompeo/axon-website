@@ -102,10 +102,8 @@ export default function Header() {
         >
           <nav
             aria-label="Menu mobile"
-            className="flex flex-col"
+            className="flex flex-col px-6"
             style={{
-              paddingLeft: 'var(--gutter)',
-              paddingRight: 'var(--gutter)',
               paddingTop: '1rem',
               paddingBottom: '1.5rem',
             }}

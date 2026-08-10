@@ -9,7 +9,7 @@
  *
  * Layout invertibile via prop `imageSide` ('right' | 'left').
  * Frame immagine identico alla pagina Applicazioni: aspect-square, max-w-[620px],
- * rounded-2xl, stesso bordo e ombra. Placeholder 1:1 finché non si inseriscono
+ * rounded-lg (24px), stesso bordo e ombra. Placeholder 1:1 finché non si inseriscono
  * i grafici ottimizzati.
  */
 
@@ -69,7 +69,7 @@ export default function ResultsAccordion({
   // Colonna immagine (frame identico ad Applicazioni).
   const imageColumn = (
     <div className="w-full flex justify-center lg:justify-end">
-      <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-[620px] aspect-square rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.08)] border border-white/10">
+      <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-[620px] aspect-square rounded-lg overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.08)] border border-white/10">
         {items.map((item, i) => (
           <motion.div
             key={item.id}
@@ -220,7 +220,7 @@ export default function ResultsAccordion({
   )
 
   return (
-    <Section id={id} elevated={elevated} className="bg-black" style={{ background: elevated ? undefined : '#000000' }}>
+    <Section id={id} elevated={elevated} className="bg-black" style={{ background: elevated ? undefined : 'var(--bg-black)' }}>
       <Container>
         {/* Header sezione */}
         <div className="flex flex-col gap-4 mb-12 lg:mb-16 max-w-5xl">

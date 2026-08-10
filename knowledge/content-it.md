@@ -43,14 +43,14 @@
   flessibilità e recupero muscolare. Senza batterie, senza contatto con la pelle.
   Tu indossi i tuoi capi di sempre: Axon lavora da solo.*
 - Bento grid 3 colonne × 2 righe (desktop):
-  - **corsa.png** (col 1, span 2 righe) — *"Più resistenza alla fatica e controllo del passo."*
+  - **corsa.jpg** (col 1, span 2 righe) — *"Più resistenza alla fatica e controllo del passo."*
   - **Box dati** (col 2, riga 1) — sfondo **bianco**, stat in rosso brand — 4 sub-box:
     - **+42%** — potenza nel movimento
     - **+28%** — equilibrio
     - **+30%** — forza
     - **+21%** — resistenza
-  - **nuoto.png** (col 2, riga 2) — *"Equilibrio e stabilità posturale."*
-  - **palestra.png** (col 3, span 2 righe) — *"Forza e tono muscolare."*
+  - **nuoto.jpg** (col 2, riga 2) — *"Equilibrio e stabilità posturale."*
+  - **palestra.jpg** (col 3, span 2 righe) — *"Forza e tono muscolare."*
 
 ## 3. COME SI APPLICA (HowItsDoneSection) — id: come-indossare
 - H2: **Indossa Axon come preferisci**
@@ -60,18 +60,18 @@
   1. **Cucilo direttamente sui tuoi capi** — *Fissa l'Axon Shell™ a qualsiasi capo
      d'abbigliamento — alla nuca, sul petto o sulla schiena — con pochi punti di cucitura.
      Inserisci poi il dispositivo Axon nel guscio ogni volta che lo indossi.* →
-     axon-shell-sewn.png · CTA "Vedi nello shop" → /shop
+     axon-shell-sewn.jpg · CTA "Vedi nello shop" → /shop
   2. **Axon Band: indossalo al polso** — *Indossa Axon comodamente al polso grazie
-     all'esclusivo cinturino Axon Band.* → axon-watch.png · CTA "Vedi nello shop" → /shop
+     all'esclusivo cinturino Axon Band.* → axon-watch.jpg · CTA "Vedi nello shop" → /shop
 
 ## 4. A CHI È RIVOLTO (TargetCarousel) — id: per-chi
 - H2: **Per come ti muovi, ogni giorno.**
 - Sottotitolo: *Axon lavora con te in ogni contesto, dal lavoro allo sport.*
 - Carousel 4 card:
-  1. **Vita quotidiana** — *Postura e tensioni delle lunghe ore da seduti.* (ufficio.png)
-  2. **Anzianità** — *Supporto a equilibrio e stabilità, per più autonomia.* (anziano.png)
-  3. **Sport** — *Equilibrio, forza e recupero, in ogni disciplina.* (sciatore.png)
-  4. **Lavori intensivi** — *Meno affaticamento muscolare a fine turno.* (intenso.png)
+  1. **Vita quotidiana** — *Postura e tensioni delle lunghe ore da seduti.* (ufficio.jpg)
+  2. **Anzianità** — *Supporto a equilibrio e stabilità, per più autonomia.* (anziano.jpg)
+  3. **Sport** — *Equilibrio, forza e recupero, in ogni disciplina.* (sciatore.jpg)
+  4. **Lavori intensivi** — *Meno affaticamento muscolare a fine turno.* (intenso.jpg)
 
 ## 5. TESTIMONIANZE — id: testimonianze
 - H2: **Chi lo indossa, lo racconta**
@@ -88,29 +88,29 @@
 
 # PAGINA: APPLICAZIONI ("/applicazioni")
 - H1: **Indossa AXON in ogni occasione**
-- Sfondo: `hero_applicazioni.png`, overlay 30%.
+- Sfondo: `hero_applicazioni.jpg`, overlay 30%.
 
 ## StickyScrollApplicazioni — 7 contesti (scroll sticky)
-1. **Ufficio** — *Ore alla scrivania, riunioni... AXON agisce in silenzio...* (applicazioni/1.png)
-2. **Quotidianità** — *La routine quotidiana... Con AXON addosso hai un supporto costante...* (applicazioni/2.png)
-3. **Sport** — *AXON supporta la muscolatura durante la performance...* (applicazioni/3.png)
-4. **Recupero** — *AXON amplifica i processi naturali di rigenerazione...* (applicazioni/4.png)
-5. **Lavori intensivi** — *In cantiere o in magazzino...* (applicazioni/5.png)
-6. **Riposo** — *AXON favorisce il rilassamento del sistema nervoso...* (applicazioni/6.png)
-7. **Svago** — *Che sia una passeggiata, una serata fuori...* (applicazioni/7.png)
+1. **Ufficio** — *Ore alla scrivania, riunioni... AXON agisce in silenzio...* (applicazioni/1.jpg)
+2. **Quotidianità** — *La routine quotidiana... Con AXON addosso hai un supporto costante...* (applicazioni/2.jpg)
+3. **Sport** — *AXON supporta la muscolatura durante la performance...* (applicazioni/3.jpg)
+4. **Recupero** — *AXON amplifica i processi naturali di rigenerazione...* (applicazioni/4.jpg)
+5. **Lavori intensivi** — *In cantiere o in magazzino...* (applicazioni/5.jpg)
+6. **Riposo** — *AXON favorisce il rilassamento del sistema nervoso...* (applicazioni/6.jpg)
+7. **Svago** — *Che sia una passeggiata, una serata fuori...* (applicazioni/7.jpg)
 
-## AxonFeaturesSection — caratteristiche del dispositivo (usa axon_no_bkg.png)
+## AxonFeaturesSection — caratteristiche del dispositivo (usa axon_no_bkg.png — PNG mantenuto, canale alpha)
 
 ## WearMethodSection — 2 metodi di applicazione
 - H2: **Scegli come indossarlo, AXON funziona dovunque**
-1. **AXON + Band** — applicazioni_axonband.png
-2. **AXON + Shell** — applicazioni_axonshell.png
+1. **AXON + Band** — applicazioni_axonband.jpg
+2. **AXON + Shell** — applicazioni_axonshell.jpg
 
 ---
 
 # PAGINA: COME FUNZIONA ("/come-funziona")
 - H1: **La tecnologia dietro AXON**
-- Sfondo: `come_funziona_hero.png`, overlay 30%.
+- Sfondo: `come_funziona_hero.jpg`, overlay 30%.
 
 ## VideoSection
 - Video esplicativo: `video_come_funziona.mp4`
@@ -119,8 +119,8 @@
 - H2: **Le basi scientifiche del movimento passivo**
 - Sottotitolo: *Una breve panoramica nelle basi neuro-fisiologiche e nei materiali che rendono possibile una nuova generazione di soluzioni passive per il sistema neuromuscolare.*
 - 3 pillar (ogni pillar ha intro + accordion "Approfondimento tecnico" + immagine):
-  1. **Come il corpo "sente" il movimento** (Meccanotrasduzione, Piezo1/Piezo2) — comefunziona1.png
-  2. **Le vibrazioni come strumento terapeutico** (Tonic Vibration Reflex, WBV) — comefunziona2.png
+  1. **Come il corpo "sente" il movimento** (Meccanotrasduzione, Piezo1/Piezo2) — comefunziona1.jpg
+  2. **Le vibrazioni come strumento terapeutico** (Tonic Vibration Reflex, WBV) — comefunziona2.jpg
   3. **Dai dispositivi attivi ai nanomateriali passivi** — comefunziona3.jpg
 - Sezione fonti bibliografiche in fondo (5 riferimenti PubMed).
 
@@ -130,7 +130,7 @@
 
 ## HERO
 - H1: **I risultati di chi ha indossato AXON**
-- Sfondo: `hero_perche_axon.png`, overlay 30%.
+- Sfondo: `hero_perche_axon.jpg`, overlay 30%.
 
 ## INTRO (paragrafo, sfondo nero)
 - *Tutti i test sono stati condotti in un contesto medico-scientifico rigoroso, confrontando
@@ -165,8 +165,8 @@
 # PAGINA: SHOP ("/shop")
 - H1: **Shop**
 - Sottotitolo: *Scegli il tuo Axon. Spedizione inclusa in Italia.*
-- Prodotto 1 — **AXON KIT**: immagini kit-1.png / kit-2.png, prezzo € 230,00, CTA → Shopify
-- Prodotto 2 — **AXON SHELL™ Kit da 5**: immagini shell-1.png / shell-2.png, prezzo [da definire], CTA → Shopify
+- Prodotto 1 — **AXON KIT**: immagini kit-1.jpg / kit-2.jpg, prezzo € 230,00, CTA → Shopify
+- Prodotto 2 — **AXON SHELL™ Kit da 5**: immagini shell-1.jpg / shell-2.jpg, prezzo [da definire], CTA → Shopify
 - Sezione fiducia: garanzia 2 anni · dispositivo medico Classe I · spedizione inclusa.
 
 ---

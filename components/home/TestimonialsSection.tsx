@@ -24,10 +24,9 @@ export default function TestimonialsSection() {
           </Reveal>
           <Reveal delay={0.14}>
             <p
-              className="text-gray-600"
               style={{
                 fontSize: 'var(--fs-lead)',
-                color: '#4b5563',
+                color: 'var(--text-on-white-muted)',
                 lineHeight: 1.6,
               }}
             >

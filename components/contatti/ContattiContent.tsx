@@ -7,6 +7,7 @@ import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Reveal from '@/components/ui/Reveal'
 import Button from '@/components/ui/Button'
+import Card from '@/components/ui/Card'
 import {
   FieldGroup,
   FieldLabel,
@@ -110,15 +111,12 @@ export default function ContattiContent() {
             {/* Form */}
             <Reveal>
               {success ? (
-                <div
-                  className="flex flex-col gap-3 p-8"
-                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)' }}
-                >
+                <Card className="flex flex-col gap-3 p-8">
                   <p className="font-semibold" style={{ fontSize: 'var(--fs-h3)' }}>Messaggio inviato.</p>
                   <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
                     Ti risponderemo via email al più presto.
                   </p>
-                </div>
+                </Card>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
                   {/* honeypot */}
@@ -215,10 +213,7 @@ export default function ContattiContent() {
             {/* Box contatti */}
             <Reveal delay={0.14}>
               <div className="flex flex-col gap-6">
-                <div
-                  className="flex flex-col gap-5 p-6 lg:p-7"
-                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)' }}
-                >
+                <Card className="flex flex-col gap-5 p-6 lg:p-7">
                   <h2 className="font-semibold" style={{ fontSize: 'var(--fs-h3)' }}>
                     Contatti diretti
                   </h2>
@@ -272,7 +267,7 @@ export default function ContattiContent() {
                       <span style={{ fontSize: 'var(--fs-body)' }}>Instagram</span>
                     </div>
                   )}
-                </div>
+                </Card>
 
                 {/* Nota legale */}
                 <p style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-subtle)', lineHeight: 1.6 }}>

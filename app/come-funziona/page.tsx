@@ -21,7 +21,7 @@ export default function ComeFunzionaPage() {
       >
         {/* ── Background Image ── */}
         <Image
-          src="/come_funziona_hero.png"
+          src="/come_funziona_hero.jpg"
           alt="La tecnologia dietro AXON"
           fill
           priority

@@ -59,7 +59,7 @@ export default function FaqSection() {
   }
 
   return (
-    <Section id="faq" className="bg-black" style={{ background: '#000000' }}>
+    <Section id="faq" className="bg-black" style={{ background: 'var(--bg-black)' }}>
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
 
@@ -89,10 +89,7 @@ export default function FaqSection() {
               </p>
             </Reveal>
             <Reveal delay={0.2} className="mt-2">
-              <Button
-                href="/contatti"
-                className="!bg-white !text-black hover:!bg-gray-200 font-semibold border-none shadow-md"
-              >
+              <Button href="/contatti" variant="white">
                 Hai altre domande?
               </Button>
             </Reveal>

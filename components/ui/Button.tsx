@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { ReactNode } from 'react'
 import { ArrowRight } from 'lucide-react'
 
-type Variant = 'primary' | 'secondary' | 'ghost'
+type Variant = 'primary' | 'secondary' | 'ghost' | 'white'
 type Size = 'sm' | 'md' | 'lg'
 
 const sizeClsBase: Record<Size, string> = {
@@ -23,6 +23,7 @@ const variantCls: Record<Variant, string> = {
   primary: 'btn-primary',
   secondary: 'btn-secondary',
   ghost: 'btn-ghost',
+  white: 'btn-white',
 }
 
 type ButtonAsLink = {

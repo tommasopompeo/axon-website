@@ -13,8 +13,8 @@ import { SHOPIFY_KIT_URL, SHOPIFY_SHELL_URL } from '@/lib/links'
 const products = [
   {
     images: [
-      { src: '/kit-1.png', alt: 'Axon Kit — confezione e dispositivo Axon' },
-      { src: '/kit-2.png', alt: 'Axon Kit — dispositivo Axon e Axon Shell™' },
+      { src: '/kit-1.jpg', alt: 'Axon Kit — confezione e dispositivo Axon' },
+      { src: '/kit-2.jpg', alt: 'Axon Kit — dispositivo Axon e Axon Shell™' },
     ],
     title: 'AXON KIT',
     subtitle: 'Dispositivo medico · Ø 30 mm',
@@ -29,8 +29,8 @@ const products = [
   },
   {
     images: [
-      { src: '/shell-1.png', alt: 'Axon Shell™ — gusci funzionali originali' },
-      { src: '/shell-2.png', alt: 'Axon Shell™ — guscio cucibile su capo' },
+      { src: '/shell-1.jpg', alt: 'Axon Shell™ — gusci funzionali originali' },
+      { src: '/shell-2.jpg', alt: 'Axon Shell™ — guscio cucibile su capo' },
     ],
     title: 'AXON SHELL™ — Kit da 5',
     subtitle: 'Gusci funzionali originali · cucibili · riciclabili',
@@ -99,7 +99,7 @@ export default function ShopContent() {
   return (
     <>
       {/* ── Hero pagina ── */}
-      <Section id="top" className="bg-black" style={{ background: '#000000' }}>
+      <Section id="top" className="bg-black" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <div className="flex flex-col gap-5 max-w-3xl">
             <Reveal trigger="mount">
@@ -130,7 +130,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Schede prodotto estese ── */}
-      <Section id="prodotti" className="bg-black !pt-0" style={{ background: '#000000' }}>
+      <Section id="prodotti" className="bg-black !pt-0" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <RevealGroup
             className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
@@ -161,7 +161,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Cosa include il kit / perché il kit originale ── */}
-      <Section id="cosa-include" className="bg-black" style={{ background: '#000000' }}>
+      <Section id="cosa-include" className="bg-black" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <div className="flex flex-col gap-5">
@@ -234,7 +234,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Box fiducia ── */}
-      <Section id="garanzie" className="bg-black" style={{ background: '#000000' }}>
+      <Section id="garanzie" className="bg-black" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <RevealGroup
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
@@ -271,7 +271,7 @@ export default function ShopContent() {
                   <p
                     style={{
                       fontSize: 'var(--fs-caption)',
-                      color: 'rgba(10,10,11,0.62)',
+                      color: 'var(--text-on-white-muted)',
                       lineHeight: 1.55,
                     }}
                   >
@@ -285,7 +285,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Mini-FAQ acquisto ── */}
-      <Section id="faq-acquisto" className="bg-black" style={{ background: '#000000' }}>
+      <Section id="faq-acquisto" className="bg-black" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <Reveal>

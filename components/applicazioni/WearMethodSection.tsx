@@ -16,14 +16,14 @@ const wearMethodsData = [
     title: "AXON + Band",
     description:
       "Il modo più immediato per indossare AXON. Inserisci il dispositivo nell’alloggiamento del cinturino AXON Band e allaccialo al polso come un orologio. Nessuna cucitura, nessuna preparazione: indossalo e sei pronto. Ideale per chi cerca massima praticità senza rinunciare al contatto diretto con la pelle.",
-    image: "/applicazioni_axonband.png",
+    image: "/applicazioni_axonband.jpg",
   },
   {
     id: 2,
     title: "AXON + Shell",
     description:
       "Cuci il guscio trasparente AXON Shell sul lato interno del capo che preferisci, all’altezza desiderata. Una volta fissato, ti basterà inserire il dispositivo AXON nel guscio ogni volta che indossi quel capo. I punti di applicazione più comuni sono la nuca, il centro del petto, tra le scapole e la zona lombare — tutti punti in cui il tessuto resta aderente al corpo.",
-    image: "/applicazioni_axonshell.png",
+    image: "/applicazioni_axonshell.jpg",
   },
 ];
 
@@ -64,7 +64,7 @@ export default function WearMethodSection() {
   return (
     <div className="bg-black">
       {/* ── Section header — sits ABOVE the scroll-pinned zone ── */}
-      <div className="pt-24 pb-10 lg:pt-32 lg:pb-14">
+      <div className="pb-10 lg:pb-14" style={{ paddingTop: 'var(--section-y)' }}>
         <Container>
           <h2
             className="font-bold text-white mb-5"
@@ -101,7 +101,7 @@ export default function WearMethodSection() {
               {/* ── Left: Image ── */}
               <div className="w-full flex justify-center lg:justify-start order-2 lg:order-1">
                 {/* Identical sizing & styling to StickyScrollApplicazioni */}
-                <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-[620px] aspect-square rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.08)] border border-white/10">
+                <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-[620px] aspect-square rounded-lg overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.08)] border border-white/10">
                   {wearMethodsData.map((item, i) => (
                     <motion.div
                       key={item.id}
@@ -166,7 +166,7 @@ export default function WearMethodSection() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                             className="overflow-hidden"
                           >
                             <p className="text-white/70 mt-3 text-base lg:text-lg leading-relaxed pr-4">
@@ -186,7 +186,7 @@ export default function WearMethodSection() {
       </section>
 
       {/* ── Bottom padding before next section ── */}
-      <div className="pb-24 lg:pb-32" />
+      <div style={{ paddingBottom: 'var(--section-y)' }} />
     </div>
   );
 }

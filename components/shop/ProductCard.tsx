@@ -159,7 +159,7 @@ export default function ProductCard({
           <p
             style={{
               fontSize: 'var(--fs-body)',
-              color: 'rgba(10,10,11,0.62)',
+              color: 'var(--text-on-white-muted)',
               lineHeight: 1.5,
             }}
           >

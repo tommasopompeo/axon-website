@@ -31,7 +31,7 @@ const partners: Partner[] = [
 
 export default function PartnerSection() {
   return (
-    <Section className="bg-white py-48 lg:py-72" style={{ background: '#ffffff' }}>
+    <Section className="bg-white" style={{ background: '#ffffff' }}>
       <Container>
         <div className="flex flex-col gap-10 lg:gap-14">
           {/* Titolo sopra il bordo superiore dei frame dei loghi */}
@@ -57,7 +57,7 @@ export default function PartnerSection() {
                 style={{
                   fontSize: 'var(--fs-lead)',
                   lineHeight: 1.6,
-                  color: '#4b5563',
+                  color: 'var(--text-on-white-muted)',
                 }}
               >
                 Strutture e realtà che hanno scelto di mettere alla prova AXON al fianco delle

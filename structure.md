@@ -37,8 +37,8 @@ components/
 ├── home/
 │   ├── HeroSection            ← video bg, testo nero, singola CTA → /shop
 │   ├── ContestiBento          ← bento grid 3×2 (corsa / dati / nuoto / palestra)
-│   ├── HowItsDoneSection      ← griglia 2 colonne: Axon Shell™ cucito (axon-shell-sewn.png)
-│   │                             + Axon Band al polso (axon-watch.png), CTA "Vedi nello shop"
+│   ├── HowItsDoneSection      ← griglia 2 colonne: Axon Shell™ cucito (axon-shell-sewn.jpg)
+│   │                             + Axon Band al polso (axon-watch.jpg), CTA "Vedi nello shop"
 │   ├── TargetCarousel         ← carousel orizzontale 4 card (ufficio/anziano/sciatore/intenso)
 │   ├── TestimonialsSection    ← wrapper
 │   ├── TestimonialCarousel    ← carousel testimonianze
@@ -46,8 +46,8 @@ components/
 ├── applicazioni/
 │   ├── StickyScrollApplicazioni  ← sticky scroll 7 contesti (applicazioni/1–7.png)
 │   ├── AxonFeaturesSection       ← caratteristiche prodotto (usa axon_no_bkg.png)
-│   └── WearMethodSection         ← 2 metodi di applicazione: AXON + Band (applicazioni_axonband.png),
-│                                    AXON + Shell (applicazioni_axonshell.png)
+│   └── WearMethodSection         ← 2 metodi di applicazione: AXON + Band (applicazioni_axonband.jpg),
+│                                    AXON + Shell (applicazioni_axonshell.jpg)
 ├── come-funziona/
 │   ├── VideoSection           ← player custom, embed video_come_funziona.mp4
 │   └── ScienceSection         ← 3 pillar scientifici con accordion approfondimento + refs
@@ -81,21 +81,23 @@ components/
 ## Asset pubblici (`/public/`)
 - `logo.svg` — logo wordmark bianco/rosso
 - `hero-video.mp4` — video background home hero
-- `come_funziona_hero.png` — hero immagine pagina Come funziona
-- `hero_applicazioni.png` — hero immagine pagina Applicazioni
-- `hero_perche_axon.png` — hero immagine pagina Perché AXON
-- `corsa.png`, `nuoto.png`, `palestra.png` — ContestiBento home
-- `ufficio.png`, `anziano.png`, `sciatore.png`, `intenso.png` — TargetCarousel home
-- `axon-shell-sewn.png`, `axon-watch.png` — HowItsDoneSection home
-- `axon_no_bkg.png` — AxonFeaturesSection
-- `applicazioni_axonband.png`, `applicazioni_axonshell.png` — WearMethodSection (2 metodi)
-- `kit-1.png`, `kit-2.png` — Shop, card AXON KIT
-- `shell-1.png`, `shell-2.png` — Shop, card AXON SHELL™
+- `come_funziona_hero.jpg` — hero immagine pagina Come funziona
+- `hero_applicazioni.jpg` — hero immagine pagina Applicazioni
+- `hero_perche_axon.jpg` — hero immagine pagina Perché AXON
+- `corsa.jpg`, `nuoto.jpg`, `palestra.jpg` — ContestiBento home
+- `ufficio.jpg`, `anziano.jpg`, `sciatore.jpg`, `intenso.jpg` — TargetCarousel home
+- `axon-shell-sewn.jpg`, `axon-watch.jpg` — HowItsDoneSection home
+- `axon_no_bkg.png` — AxonFeaturesSection (PNG mantenuto: richiede canale alpha)
+- `applicazioni_axonband.jpg`, `applicazioni_axonshell.jpg` — WearMethodSection (2 metodi)
+- `kit-1.jpg`, `kit-2.jpg` — Shop, card AXON KIT
+- `shell-1.jpg`, `shell-2.jpg` — Shop, card AXON SHELL™
 - `video_come_funziona.mp4` — VideoSection
-- `comefunziona1.png`, `comefunziona2.png`, `comefunziona3.jpg` — ScienceSection (3 pillar)
-- `applicazioni/1–7.png` — StickyScrollApplicazioni
-- `grafici-perche-axon/1–7.png` — ResultsAccordion (Perché AXON)
-- `logo1.png`, `logo2.png` — PartnerSection (loghi partner reali)
+- `comefunziona1.jpg`, `comefunziona2.jpg`, `comefunziona3.jpg` — ScienceSection (3 pillar)
+- `applicazioni/1–7.jpg` — StickyScrollApplicazioni
+- `grafici-perche-axon/1–7.png` — ResultsAccordion, Perché AXON (PNG mantenuto: grafici con testo/linee sottili)
+- `logo1.png`, `logo2.png` — PartnerSection, loghi partner reali (PNG mantenuto: canale alpha)
+
+> Tutte le foto sopra sono state ricompresse a JPEG q82–85 il 2026-08-10 (erano PNG non compressi esportati da Canva, fino a 6250px per un display max di ~620px). PNG mantenuto solo dove serve trasparenza (`axon_no_bkg`, `logo1/2`) o dove la JPEG introdurrebbe artefatti su testo/linee sottili (`grafici-perche-axon/*`). Dettagli in `DESIGN.md` §14.
 
 ## Integrazioni (da completare)
 - **Shopify**: `SHOPIFY_KIT_URL` e `SHOPIFY_SHELL_URL` in `lib/links.ts` — attualmente `'#'`.

@@ -101,7 +101,7 @@ export default function PercheAxonPage() {
         className="relative overflow-hidden z-0 min-h-[calc(100vh-80px)] flex items-center"
       >
         <Image
-          src="/hero_perche_axon.png"
+          src="/hero_perche_axon.jpg"
           alt="I risultati di chi ha indossato AXON"
           fill
           priority
@@ -128,7 +128,7 @@ export default function PercheAxonPage() {
       </Section>
 
       {/* ── Intro paragraph ── */}
-      <Section className="bg-black" style={{ background: '#000000' }}>
+      <Section className="bg-black" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <Reveal>
             <p

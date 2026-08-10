@@ -21,7 +21,7 @@ export default function ApplicazioniPage() {
       >
         {/* ── Background Image ── */}
         <Image
-          src="/hero_applicazioni.png"
+          src="/hero_applicazioni.jpg"
           alt="Indossa AXON in ogni occasione"
           fill
           priority

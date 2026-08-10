@@ -14,6 +14,7 @@ import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 import Button from '@/components/ui/Button'
+import Card from '@/components/ui/Card'
 import {
   FieldGroup,
   FieldLabel,
@@ -125,7 +126,7 @@ export default function AziendeContent() {
   return (
     <>
       {/* ── Hero ── */}
-      <Section id="top" className="bg-black" style={{ background: '#000000' }}>
+      <Section id="top" className="bg-black" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <div className="flex flex-col gap-5 max-w-3xl">
             <Reveal trigger="mount">
@@ -147,7 +148,7 @@ export default function AziendeContent() {
       </Section>
 
       {/* ── Casi d'uso ── */}
-      <Section id="casi-uso" className="bg-black !pt-0" style={{ background: '#000000' }}>
+      <Section id="casi-uso" className="bg-black !pt-0" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <div className="flex flex-col gap-12 lg:gap-16">
             <div className="flex flex-col gap-4 max-w-2xl">
@@ -169,10 +170,7 @@ export default function AziendeContent() {
             >
               {useCases.map(({ icon: Icon, title, text }) => (
                 <RevealItem key={title}>
-                  <div
-                    className="flex flex-col gap-4 h-full p-6 lg:p-7"
-                    style={{ background: '#ffffff', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 'var(--radius-lg)' }}
-                  >
+                  <Card variant="white" className="flex flex-col gap-4 h-full p-6 lg:p-7">
                     <span
                       className="inline-flex items-center justify-center"
                       style={{ width: 48, height: 48, borderRadius: '999px', background: 'var(--brand-soft)', color: 'var(--brand)', flexShrink: 0 }}
@@ -183,11 +181,11 @@ export default function AziendeContent() {
                       <h3 className="font-semibold" style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em', color: '#0a0a0b' }}>
                         {title}
                       </h3>
-                      <p style={{ fontSize: 'var(--fs-body)', color: 'rgba(10,10,11,0.62)', lineHeight: 1.55 }}>
+                      <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text-on-white-muted)', lineHeight: 1.55 }}>
                         {text}
                       </p>
                     </div>
-                  </div>
+                  </Card>
                 </RevealItem>
               ))}
             </RevealGroup>
@@ -196,7 +194,7 @@ export default function AziendeContent() {
       </Section>
 
       {/* ── Form aziende ── */}
-      <Section id="contatto-aziende" className="bg-black" style={{ background: '#000000' }}>
+      <Section id="contatto-aziende" className="bg-black" style={{ background: 'var(--bg-black)' }}>
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <div className="flex flex-col gap-5">
@@ -214,15 +212,12 @@ export default function AziendeContent() {
 
             <Reveal delay={0.1}>
               {success ? (
-                <div
-                  className="flex flex-col gap-3 p-8"
-                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)' }}
-                >
+                <Card className="flex flex-col gap-3 p-8">
                   <p className="font-semibold" style={{ fontSize: 'var(--fs-h3)' }}>Richiesta ricevuta.</p>
                   <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
                     Grazie. Il team Axon ti ricontatterà al più presto.
                   </p>
-                </div>
+                </Card>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
                   {/* honeypot */}
@@ -371,9 +366,9 @@ export default function AziendeContent() {
                   <div>
                     <Button
                       type="submit"
+                      variant="white"
                       size="lg"
                       disabled={submitting}
-                      className="!bg-white !text-black hover:!bg-gray-200 font-semibold border-none shadow-md"
                     >
                       {submitting ? 'Invio in corso…' : 'Invia richiesta'}
                     </Button>

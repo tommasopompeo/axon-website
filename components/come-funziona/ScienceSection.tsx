@@ -53,7 +53,7 @@ function DeepDive({ label = 'Approfondimento tecnico', children, isOpen, onToggl
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduced ? 0 : 0.35, ease: 'easeInOut' }}
+            transition={{ duration: reduced ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
             style={{ overflow: 'hidden' }}
           >
             <div
@@ -85,7 +85,7 @@ const pillars = [
     number: '01',
     eyebrow: 'Meccanotrasduzione',
     title: 'Come il corpo "sente" il movimento',
-    image: '/comefunziona1.png',
+    image: '/comefunziona1.jpg',
     intro: (
       <>
         <p>
@@ -141,7 +141,7 @@ const pillars = [
     number: '02',
     eyebrow: 'Stimoli vibratori',
     title: 'Le vibrazioni come strumento terapeutico',
-    image: '/comefunziona2.png',
+    image: '/comefunziona2.jpg',
     intro: (
       <>
         <p>
@@ -311,7 +311,7 @@ export default function ScienceSection() {
     setOpenIndex((prev) => (prev === i ? null : i))
 
   return (
-    <Section id="scienza" className="bg-black" style={{ background: '#000000' }}>
+    <Section id="scienza" className="bg-black" style={{ background: 'var(--bg-black)' }}>
       <Container>
 
         {/* ── Section header ── */}

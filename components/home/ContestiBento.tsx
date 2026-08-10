@@ -107,7 +107,7 @@ export default function ContestiBento() {
           {/* CORSA — col 1, span 2 righe */}
           <RevealItem className="lg:col-start-1 lg:row-start-1 lg:row-span-2">
             <ImageOverlay
-              src="/corsa.png"
+              src="/corsa.jpg"
               alt="Persona che corre"
               caption={
                 <>
@@ -230,7 +230,7 @@ export default function ContestiBento() {
           {/* NUOTO — col 2, riga 2 */}
           <RevealItem className="lg:col-start-2 lg:row-start-2">
             <ImageOverlay
-              src="/nuoto.png"
+              src="/nuoto.jpg"
               alt="Persona che nuota"
               caption={
                 <>
@@ -244,7 +244,7 @@ export default function ContestiBento() {
           {/* PALESTRA — col 3, span 2 righe */}
           <RevealItem className="lg:col-start-3 lg:row-start-1 lg:row-span-2">
             <ImageOverlay
-              src="/palestra.png"
+              src="/palestra.jpg"
               alt="Persona che si allena in palestra"
               caption={
                 <>

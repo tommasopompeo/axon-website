@@ -30,11 +30,10 @@ export default function HowItsDoneSection() {
 
           <Reveal delay={0.12}>
             <p
-              className="text-gray-600"
               style={{
                 fontSize: 'var(--fs-lead)',
                 lineHeight: 1.6,
-                color: '#4b5563',
+                color: 'var(--text-on-white-muted)',
               }}
             >
               Progettato per adattarsi perfettamente al tuo stile di vita. Scegli la soluzione più comoda per te ed esprimi il massimo del tuo benessere in ogni momento.
@@ -52,7 +51,7 @@ export default function HowItsDoneSection() {
               {/* Top: Vertical Image (Axon Shell sewn) */}
               <div className="relative w-full aspect-[4/5] rounded-[var(--radius-lg)] overflow-hidden border border-gray-200 bg-gray-100 shadow-xl group">
                 <Image
-                  src="/axon-shell-sewn.png"
+                  src="/axon-shell-sewn.jpg"
                   alt="Axon Shell cucito sui vestiti"
                   fill
                   priority
@@ -115,7 +114,7 @@ export default function HowItsDoneSection() {
               {/* Bottom: Vertical Image (Axon Band) */}
               <div className="relative w-full aspect-[4/5] rounded-[var(--radius-lg)] overflow-hidden border border-gray-200 bg-gray-100 shadow-xl group">
                 <Image
-                  src="/axon-watch.png"
+                  src="/axon-watch.jpg"
                   alt="Axon Band indossato al polso"
                   fill
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"

@@ -70,7 +70,10 @@ export default function AxonFeaturesSection() {
 
   return (
     <section className="bg-white w-full overflow-hidden">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-24 lg:py-32">
+      <div
+        className="max-w-[1400px] mx-auto px-6 lg:px-12"
+        style={{ paddingTop: 'var(--section-y)', paddingBottom: 'var(--section-y)' }}
+      >
 
         {/* ── Section Title ── */}
         <h2
@@ -103,7 +106,7 @@ export default function AxonFeaturesSection() {
               src="/axon_no_bkg.png"
               alt="AXON device"
               fill
-              className="object-contain drop-shadow-[0_0_60px_rgba(255,255,255,0.07)]"
+              className="object-contain drop-shadow-[0_0_50px_rgba(255,255,255,0.08)]"
             />
           </div>
 
