@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import { Button } from '@/components/ui'
 
 const navLinks = [
   { label: 'Applicazioni', href: '/applicazioni' },
@@ -15,6 +17,7 @@ const navLinks = [
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
     if (!menuOpen) return
@@ -36,17 +39,17 @@ export default function Header() {
       }}
     >
       <div
-        className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 flex h-16 items-center justify-between"
+        className="w-full max-w-container mx-auto px-6 md:px-12 lg:px-16 flex h-16 items-center justify-between"
       >
         {/* Logo */}
         <Link href="/" aria-label="Axon — torna alla home" className="flex-shrink-0">
           <Image
             src="/logo.svg"
             alt="Axon"
-            width={144}
+            width={48}
             height={48}
             priority
-            className="h-10 md:h-12 w-auto"
+            className="h-auto w-auto max-h-10 md:max-h-12"
           />
         </Link>
 
@@ -59,23 +62,22 @@ export default function Header() {
             <Link
               key={href}
               href={href}
-              className="text-base font-medium transition-colors"
-              style={{ color: 'var(--text-muted)' }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+              aria-current={pathname === href ? 'page' : undefined}
+              className="nav-link nav-link--desktop text-base font-medium"
             >
               {label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA desktop */}
-        <Link
+        {/* CTA desktop — below Button's 44px btn-base min-height by design (38px); see DESIGN.md §5 */}
+        <Button
           href="/shop"
-          className="hidden md:inline-flex bg-brand text-white font-medium px-5 py-2 rounded-full hover:bg-brand-hover transition-colors text-sm items-center justify-center min-h-[38px]"
+          size="custom"
+          className="hidden md:inline-flex px-5 py-2 text-sm font-medium min-h-[38px]"
         >
           Acquista AXON
-        </Link>
+        </Button>
 
         {/* Hamburger mobile */}
         <button
@@ -112,23 +114,22 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className="py-3 text-base font-medium border-b last:border-0 transition-colors"
-                style={{
-                  color: 'var(--text-muted)',
-                  borderColor: 'var(--border)',
-                }}
+                aria-current={pathname === href ? 'page' : undefined}
+                className="nav-link nav-link--mobile py-3 text-base font-medium border-b last:border-0"
+                style={{ borderColor: 'var(--border)' }}
                 onClick={() => setMenuOpen(false)}
               >
                 {label}
               </Link>
             ))}
-            <Link
+            <Button
               href="/shop"
-              className="mt-4 inline-flex items-center justify-center px-5 py-3 rounded-full text-base font-medium text-white bg-brand hover:bg-brand-hover transition-colors"
+              size="custom"
+              className="mt-4 px-5 py-3 text-base font-medium"
               onClick={() => setMenuOpen(false)}
             >
               Acquista AXON
-            </Link>
+            </Button>
           </nav>
         </div>
       )}

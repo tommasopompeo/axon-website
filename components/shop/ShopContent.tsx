@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { ShieldCheck, Stethoscope, Truck, RotateCcw } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
+import Card from '@/components/ui/Card'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 import { AccordionItem } from '@/components/ui/Accordion'
 import ProductCard from '@/components/shop/ProductCard'
@@ -99,18 +100,11 @@ export default function ShopContent() {
   return (
     <>
       {/* ── Hero pagina ── */}
-      <Section id="top" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+      <Section id="top" background="black">
         <Container>
           <div className="flex flex-col gap-5 max-w-3xl">
             <Reveal trigger="mount">
-              <h1
-                className="font-bold"
-                style={{
-                  fontSize: 'var(--fs-display)',
-                  lineHeight: 1.04,
-                  letterSpacing: '-0.02em',
-                }}
-              >
+              <h1 className="text-display">
                 Shop
               </h1>
             </Reveal>
@@ -130,7 +124,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Schede prodotto estese ── */}
-      <Section id="prodotti" className="bg-black !pt-0" style={{ background: 'var(--bg-black)' }}>
+      <Section id="prodotti" background="black" className="!pt-0">
         <Container>
           <RevealGroup
             className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
@@ -161,19 +155,12 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Cosa include il kit / perché il kit originale ── */}
-      <Section id="cosa-include" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+      <Section id="cosa-include" background="black">
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,420px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <div className="flex flex-col gap-5">
               <Reveal>
-                <h2
-                  className="font-bold"
-                  style={{
-                    fontSize: 'var(--fs-h2)',
-                    lineHeight: 1.1,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
+                <h2 className="text-h2">
                   Cosa include il Kit.
                 </h2>
               </Reveal>
@@ -234,7 +221,7 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Box fiducia ── */}
-      <Section id="garanzie" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+      <Section id="garanzie" background="black">
         <Container>
           <RevealGroup
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
@@ -242,14 +229,7 @@ export default function ShopContent() {
           >
             {trust.map(({ icon: Icon, title, text }) => (
               <RevealItem key={title}>
-                <div
-                  className="flex flex-col gap-3 h-full p-6 lg:p-7"
-                  style={{
-                    background: '#ffffff',
-                    border: '1px solid rgba(0,0,0,0.06)',
-                    borderRadius: 'var(--radius-lg)',
-                  }}
-                >
+                <Card variant="white" className="flex flex-col gap-3 h-full p-6 lg:p-7">
                   <span
                     className="inline-flex items-center justify-center"
                     style={{
@@ -262,10 +242,7 @@ export default function ShopContent() {
                   >
                     <Icon size={20} strokeWidth={2} aria-hidden="true" />
                   </span>
-                  <h3
-                    className="font-semibold"
-                    style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em', color: '#0a0a0b' }}
-                  >
+                  <h3 className="text-h3" style={{ color: '#0a0a0b' }}>
                     {title}
                   </h3>
                   <p
@@ -277,7 +254,7 @@ export default function ShopContent() {
                   >
                     {text}
                   </p>
-                </div>
+                </Card>
               </RevealItem>
             ))}
           </RevealGroup>
@@ -285,18 +262,11 @@ export default function ShopContent() {
       </Section>
 
       {/* ── Mini-FAQ acquisto ── */}
-      <Section id="faq-acquisto" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+      <Section id="faq-acquisto" background="black">
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <Reveal>
-              <h2
-                className="font-bold"
-                style={{
-                  fontSize: 'var(--fs-h2)',
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.02em',
-                }}
-              >
+              <h2 className="text-h2">
                 Spedizioni, resi e garanzia.
               </h2>
             </Reveal>

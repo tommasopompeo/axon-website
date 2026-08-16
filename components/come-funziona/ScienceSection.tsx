@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Container, Section, Reveal } from '@/components/ui'
+import { EASE, DURATION } from '@/lib/motion'
 
 /* ─────────────────────────────────────────────────────────────────────────
  * DeepDive — accordion stile Applicazioni con barra verticale sinistra.
@@ -53,7 +54,7 @@ function DeepDive({ label = 'Approfondimento tecnico', children, isOpen, onToggl
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduced ? 0 : 0.35, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: reduced ? 0 : DURATION.uiSlow, ease: EASE }}
             style={{ overflow: 'hidden' }}
           >
             <div
@@ -311,21 +312,13 @@ export default function ScienceSection() {
     setOpenIndex((prev) => (prev === i ? null : i))
 
   return (
-    <Section id="scienza" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+    <Section id="scienza" background="black">
       <Container>
 
         {/* ── Section header ── */}
         <div className="flex flex-col gap-6 lg:gap-8 max-w-4xl">
           <Reveal delay={0.08}>
-            <h2
-              className="font-bold text-white"
-              style={{
-                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.02em',
-                color: 'var(--text)',
-              }}
-            >
+            <h2 className="text-display text-white" style={{ color: 'var(--text)' }}>
               Le basi scientifiche del movimento passivo
             </h2>
           </Reveal>
@@ -355,7 +348,7 @@ export default function ScienceSection() {
                   {/* Text column (title + prose + deep-dive) */}
                   <div className={`flex flex-col ${isInverted ? 'lg:order-2' : 'lg:order-1'}`}>
                     <h3
-                      className="font-bold mb-8"
+                      className="mb-8"
                       style={{
                         fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
                         lineHeight: 1.15,
@@ -417,7 +410,7 @@ export default function ScienceSection() {
         <div className="mt-24 lg:mt-32">
           <Reveal delay={0.08}>
             <h3
-              className="font-semibold mb-6"
+              className="mb-6"
               style={{
                 fontSize: '1.25rem',
                 lineHeight: 1.2,

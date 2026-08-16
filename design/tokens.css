@@ -49,6 +49,7 @@
 
   /* Layout */
   --container: 1440px;
+  --header-h: 64px;
   --section-y: clamp(4rem, 6.5vw, 6rem);
 
   /* Motion */

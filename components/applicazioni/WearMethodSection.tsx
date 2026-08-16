@@ -8,7 +8,8 @@ import {
   useMotionValueEvent,
   AnimatePresence,
 } from "framer-motion";
-import { Container } from "@/components/ui";
+import { Container, MediaFrame } from "@/components/ui";
+import { EASE, DURATION } from "@/lib/motion";
 
 const wearMethodsData = [
   {
@@ -67,7 +68,7 @@ export default function WearMethodSection() {
       <div className="pb-10 lg:pb-14" style={{ paddingTop: 'var(--section-y)' }}>
         <Container>
           <h2
-            className="font-bold text-white mb-5"
+            className="text-white mb-5"
             style={{
               fontSize: "clamp(2.8rem, 5.2vw, 5.2rem)",
               lineHeight: 1.04,
@@ -101,7 +102,7 @@ export default function WearMethodSection() {
               {/* ── Left: Image ── */}
               <div className="w-full flex justify-center lg:justify-start order-2 lg:order-1">
                 {/* Identical sizing & styling to StickyScrollApplicazioni */}
-                <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-[620px] aspect-square rounded-lg overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.08)] border border-white/10">
+                <MediaFrame>
                   {wearMethodsData.map((item, i) => (
                     <motion.div
                       key={item.id}
@@ -114,6 +115,7 @@ export default function WearMethodSection() {
                         src={item.image}
                         alt={item.title}
                         fill
+                        sizes="(min-width: 1280px) 620px, (min-width: 1024px) 576px, 512px"
                         className="object-cover object-center opacity-90 transition-transform duration-1000 scale-105"
                         style={{
                           transform: i === activeIndex ? "scale(1)" : "scale(1.05)",
@@ -123,7 +125,7 @@ export default function WearMethodSection() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                     </motion.div>
                   ))}
-                </div>
+                </MediaFrame>
               </div>
 
               {/* ── Right: Accordion ── */}
@@ -151,9 +153,7 @@ export default function WearMethodSection() {
                       {/* Title */}
                       <h3
                         className={`text-3xl md:text-4xl transition-all duration-300 ${
-                          isActive
-                            ? "font-extrabold text-white"
-                            : "font-semibold text-white/35"
+                          isActive ? "text-white" : "text-white/35"
                         }`}
                       >
                         {item.title}
@@ -166,7 +166,7 @@ export default function WearMethodSection() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                            transition={{ duration: DURATION.uiSlow, ease: EASE }}
                             className="overflow-hidden"
                           >
                             <p className="text-white/70 mt-3 text-base lg:text-lg leading-relaxed pr-4">

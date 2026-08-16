@@ -77,7 +77,7 @@ export default function AxonFeaturesSection() {
 
         {/* ── Section Title ── */}
         <h2
-          className="font-bold text-black whitespace-nowrap mb-20"
+          className="text-black whitespace-nowrap mb-20"
           style={{
             fontSize: "clamp(2.8rem, 5.2vw, 5.2rem)",
             lineHeight: 1.04,

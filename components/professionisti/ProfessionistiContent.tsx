@@ -126,14 +126,11 @@ export default function ProfessionistiContent() {
   return (
     <>
       {/* ── Hero ── */}
-      <Section id="top" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+      <Section id="top" background="black">
         <Container>
           <div className="flex flex-col gap-5 max-w-3xl">
             <Reveal trigger="mount">
-              <h1
-                className="font-bold"
-                style={{ fontSize: 'var(--fs-display)', lineHeight: 1.04, letterSpacing: '-0.02em' }}
-              >
+              <h1 className="text-display">
                 Sei un professionista?
               </h1>
             </Reveal>
@@ -149,12 +146,12 @@ export default function ProfessionistiContent() {
       </Section>
 
       {/* ── Ambiti professionali ── */}
-      <Section id="ambiti" className="bg-black !pt-0" style={{ background: 'var(--bg-black)' }}>
+      <Section id="ambiti" background="black" className="!pt-0">
         <Container>
           <div className="flex flex-col gap-12 lg:gap-16">
             <div className="flex flex-col gap-4 max-w-2xl">
               <Reveal>
-                <h2 className="font-bold" style={{ fontSize: 'var(--fs-h2)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+                <h2 className="text-h2">
                   Una tecnologia, molte professioni.
                 </h2>
               </Reveal>
@@ -179,7 +176,7 @@ export default function ProfessionistiContent() {
                       <Icon size={22} strokeWidth={1.75} aria-hidden="true" />
                     </span>
                     <div className="flex flex-col gap-2">
-                      <h3 className="font-semibold" style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em', color: '#0a0a0b' }}>
+                      <h3 className="text-h3" style={{ color: '#0a0a0b' }}>
                         {title}
                       </h3>
                       <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text-on-white-muted)', lineHeight: 1.55 }}>
@@ -195,12 +192,12 @@ export default function ProfessionistiContent() {
       </Section>
 
       {/* ── Form professionisti ── */}
-      <Section id="contatto-professionisti" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+      <Section id="contatto-professionisti" background="black">
         <Container>
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <div className="flex flex-col gap-5">
               <Reveal>
-                <h2 className="font-bold" style={{ fontSize: 'var(--fs-h2)', lineHeight: 1.1, letterSpacing: '-0.02em' }}>
+                <h2 className="text-h2">
                   Raccontaci la tua esigenza.
                 </h2>
               </Reveal>

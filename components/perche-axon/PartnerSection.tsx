@@ -31,20 +31,12 @@ const partners: Partner[] = [
 
 export default function PartnerSection() {
   return (
-    <Section className="bg-white" style={{ background: '#ffffff' }}>
+    <Section background="white">
       <Container>
         <div className="flex flex-col gap-10 lg:gap-14">
           {/* Titolo sopra il bordo superiore dei frame dei loghi */}
           <Reveal>
-            <h2
-              className="font-bold text-black"
-              style={{
-                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.02em',
-                color: '#000000',
-              }}
-            >
+            <h2 className="text-display text-black" style={{ color: '#000000' }}>
               I nostri partner
             </h2>
           </Reveal>

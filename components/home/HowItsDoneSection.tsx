@@ -9,21 +9,13 @@ import Reveal from '@/components/ui/Reveal'
 
 export default function HowItsDoneSection() {
   return (
-    <Section id="come-indossare" className="bg-white" style={{ background: '#ffffff' }}>
+    <Section id="come-indossare" background="white">
       <Container>
 
         {/* ── Section Header ── */}
         <div className="flex flex-col gap-4 mb-10 lg:mb-12 max-w-[75ch]">
           <Reveal delay={0.06}>
-            <h2
-              className="font-bold text-black"
-              style={{
-                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.02em',
-                color: '#000000',
-              }}
-            >
+            <h2 className="text-display text-black" style={{ color: '#000000' }}>
               Indossa Axon come preferisci
             </h2>
           </Reveal>
@@ -54,7 +46,6 @@ export default function HowItsDoneSection() {
                   src="/axon-shell-sewn.jpg"
                   alt="Axon Shell cucito sui vestiti"
                   fill
-                  priority
                   className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
@@ -63,7 +54,7 @@ export default function HowItsDoneSection() {
               {/* Bottom: Shell Description */}
               <div className="p-6 lg:p-8 rounded-[var(--radius-lg)] bg-black text-white border border-gray-800 transition-all duration-300 flex flex-col justify-between gap-4 shadow-lg flex-1">
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl lg:text-2xl !font-semibold text-white leading-tight">
+                  <h3 className="text-xl lg:text-2xl text-white leading-tight">
                     Cucilo direttamente sui tuoi capi
                   </h3>
                   <p className="text-sm lg:text-base text-gray-300 leading-relaxed">
@@ -92,7 +83,7 @@ export default function HowItsDoneSection() {
               {/* Top: Band Description */}
               <div className="p-6 lg:p-8 rounded-[var(--radius-lg)] bg-black text-white border border-gray-800 transition-all duration-300 flex flex-col justify-between gap-4 shadow-lg flex-1">
                 <div className="flex flex-col gap-2">
-                  <h3 className="text-xl lg:text-2xl !font-semibold text-white leading-tight">
+                  <h3 className="text-xl lg:text-2xl text-white leading-tight">
                     Axon Band: indossalo al polso
                   </h3>
                   <p className="text-sm lg:text-base text-gray-300 leading-relaxed">

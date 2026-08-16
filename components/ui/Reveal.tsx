@@ -1,7 +1,8 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { CSSProperties, ReactNode } from 'react'
 import { motion, useReducedMotion, Variants } from 'framer-motion'
+import { EASE, DURATION } from '@/lib/motion'
 
 interface RevealProps {
   children: ReactNode
@@ -24,14 +25,12 @@ const containerVariants: Variants = {
   }),
 }
 
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
-
 export const revealItemVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: EASE },
+    transition: { duration: DURATION.reveal, ease: EASE },
   },
 }
 
@@ -42,27 +41,29 @@ export const revealItemReducedVariants: Variants = {
 
 /**
  * Reveal — fade+slide animation.
- * trigger='scroll' (default): fires when element enters the viewport.
- * trigger='mount': fires on component mount — use for above-the-fold content (hero).
+ * trigger='scroll' (default): fires when element enters the viewport, via
+ * Framer Motion (needs JS to know when the element crosses the viewport anyway).
+ * trigger='mount': above-the-fold content (hero) — pure CSS animation (see
+ * .reveal-mount in globals.css) so it's visible without waiting on/needing JS,
+ * instead of a motion.div that SSRs inline opacity:0 until React hydrates.
  * Respects prefers-reduced-motion: no y-translate when active.
  */
 export default function Reveal({ children, className = '', delay = 0, trigger = 'scroll' }: RevealProps) {
   const reduced = useReducedMotion()
-  const yOffset = reduced ? 0 : 24
-  const transition = { duration: 0.6, ease: EASE, delay }
 
   if (trigger === 'mount') {
     return (
-      <motion.div
-        className={className}
-        initial={{ opacity: 0, y: yOffset }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={transition}
+      <div
+        className={`reveal-mount ${className}`}
+        style={delay ? ({ '--reveal-delay': `${delay}s` } as CSSProperties) : undefined}
       >
         {children}
-      </motion.div>
+      </div>
     )
   }
+
+  const yOffset = reduced ? 0 : 24
+  const transition = { duration: DURATION.reveal, ease: EASE, delay }
 
   return (
     <motion.div

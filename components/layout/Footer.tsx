@@ -38,7 +38,7 @@ export default function Footer() {
       }}
     >
       <div
-        className="w-full max-w-[1440px] mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-20"
+        className="w-full max-w-container mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-20"
       >
         {/* Griglia principale */}
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
@@ -100,7 +100,7 @@ export default function Footer() {
           {/* Navigazione */}
           <div>
             <h3
-              className="mb-4 text-xs font-semibold uppercase tracking-widest"
+              className="mb-4 text-xs uppercase tracking-widest"
               style={{ color: 'var(--text-subtle)' }}
             >
               Navigazione
@@ -119,7 +119,7 @@ export default function Footer() {
           {/* Prodotto */}
           <div>
             <h3
-              className="mb-4 text-xs font-semibold uppercase tracking-widest"
+              className="mb-4 text-xs uppercase tracking-widest"
               style={{ color: 'var(--text-subtle)' }}
             >
               Prodotto
@@ -138,7 +138,7 @@ export default function Footer() {
           {/* Azienda */}
           <div>
             <h3
-              className="mb-4 text-xs font-semibold uppercase tracking-widest"
+              className="mb-4 text-xs uppercase tracking-widest"
               style={{ color: 'var(--text-subtle)' }}
             >
               Azienda

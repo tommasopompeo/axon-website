@@ -5,20 +5,12 @@ import TestimonialCarousel from '@/components/home/TestimonialCarousel'
 
 export default function TestimonialsSection() {
   return (
-    <Section id="testimonianze" className="bg-white" style={{ background: '#ffffff' }}>
+    <Section id="testimonianze" background="white">
       <Container>
         {/* ── Header ── */}
         <div className="flex flex-col gap-5 mb-10 lg:mb-12 max-w-[75ch]">
           <Reveal>
-            <h2
-              className="font-bold text-black"
-              style={{
-                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.02em',
-                color: '#000000',
-              }}
-            >
+            <h2 className="text-display text-black" style={{ color: '#000000' }}>
               Chi lo indossa, lo racconta.
             </h2>
           </Reveal>
