@@ -59,21 +59,14 @@ export default function FaqSection() {
   }
 
   return (
-    <Section id="faq" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+    <Section id="faq" background="black">
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
 
           {/* ── Header + CTA ── */}
           <div className="flex flex-col gap-5">
             <Reveal>
-              <h2
-                className="font-bold"
-                style={{
-                  fontSize: 'var(--fs-h2)',
-                  lineHeight: 1.1,
-                  letterSpacing: '-0.02em',
-                }}
-              >
+              <h2 className="text-h2">
                 Domande frequenti.
               </h2>
             </Reveal>

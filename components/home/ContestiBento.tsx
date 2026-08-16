@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
+import Card from '@/components/ui/Card'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 
 /* Parola chiave evidenziata nelle frasi overlay */
@@ -74,14 +75,7 @@ export default function ContestiBento() {
         {/* ── Header compatto ── */}
         <div className="flex flex-col gap-4 mb-10 lg:mb-12 max-w-[75ch]">
           <Reveal>
-            <h2
-              className="font-bold"
-              style={{
-                fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
-                lineHeight: 1.04,
-                letterSpacing: '-0.02em',
-              }}
-            >
+            <h2 className="text-display">
               Migliora il tuo benessere a 360°
             </h2>
           </Reveal>
@@ -122,10 +116,7 @@ export default function ContestiBento() {
           <RevealItem className="lg:col-start-2 lg:row-start-1">
             <div className="grid grid-cols-3 grid-rows-2 h-full gap-2.5 sm:gap-3 min-h-[260px] lg:min-h-0">
               {/* Box 1: +42% Potenza nel movimento (2/3 width) */}
-              <div
-                className="col-span-2 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
-                style={{ borderRadius: 'var(--radius-lg)' }}
-              >
+              <Card variant="white" hover className="col-span-2 flex flex-col justify-between p-4 sm:p-5 text-black">
                 <span
                   className="font-extrabold leading-none"
                   style={{
@@ -137,21 +128,19 @@ export default function ContestiBento() {
                   +42%
                 </span>
                 <span
-                  className="font-semibold text-gray-800 mt-1"
+                  className="font-semibold mt-1"
                   style={{
+                    color: 'var(--text-on-white-muted)',
                     fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
                     lineHeight: 1.25,
                   }}
                 >
                   potenza nel movimento
                 </span>
-              </div>
+              </Card>
 
               {/* Box 2: +28% Equilibrio (1/3 width) */}
-              <div
-                className="col-span-1 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
-                style={{ borderRadius: 'var(--radius-lg)' }}
-              >
+              <Card variant="white" hover className="col-span-1 flex flex-col justify-between p-4 sm:p-5 text-black">
                 <span
                   className="font-extrabold leading-none"
                   style={{
@@ -163,21 +152,19 @@ export default function ContestiBento() {
                   +28%
                 </span>
                 <span
-                  className="font-semibold text-gray-800 mt-1"
+                  className="font-semibold mt-1"
                   style={{
+                    color: 'var(--text-on-white-muted)',
                     fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
                     lineHeight: 1.25,
                   }}
                 >
                   equilibrio
                 </span>
-              </div>
+              </Card>
 
               {/* Box 3: +30% Forza (1/3 width) */}
-              <div
-                className="col-span-1 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
-                style={{ borderRadius: 'var(--radius-lg)' }}
-              >
+              <Card variant="white" hover className="col-span-1 flex flex-col justify-between p-4 sm:p-5 text-black">
                 <span
                   className="font-extrabold leading-none"
                   style={{
@@ -189,21 +176,19 @@ export default function ContestiBento() {
                   +30%
                 </span>
                 <span
-                  className="font-semibold text-gray-800 mt-1"
+                  className="font-semibold mt-1"
                   style={{
+                    color: 'var(--text-on-white-muted)',
                     fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
                     lineHeight: 1.25,
                   }}
                 >
                   forza
                 </span>
-              </div>
+              </Card>
 
               {/* Box 4: +21% Resistenza (2/3 width) */}
-              <div
-                className="col-span-2 flex flex-col justify-between p-4 sm:p-5 bg-white text-black border border-gray-100 shadow-md transition-all duration-300 hover:shadow-lg"
-                style={{ borderRadius: 'var(--radius-lg)' }}
-              >
+              <Card variant="white" hover className="col-span-2 flex flex-col justify-between p-4 sm:p-5 text-black">
                 <span
                   className="font-extrabold leading-none"
                   style={{
@@ -215,15 +200,16 @@ export default function ContestiBento() {
                   +21%
                 </span>
                 <span
-                  className="font-semibold text-gray-800 mt-1"
+                  className="font-semibold mt-1"
                   style={{
+                    color: 'var(--text-on-white-muted)',
                     fontSize: 'clamp(0.95rem, 1.25vw, 1.125rem)',
                     lineHeight: 1.25,
                   }}
                 >
                   resistenza
                 </span>
-              </div>
+              </Card>
             </div>
           </RevealItem>
 

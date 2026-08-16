@@ -150,10 +150,7 @@ export default function ProductCard({
       <div className="flex flex-col flex-1 gap-6 p-7 lg:p-8">
         {/* Titolo + sottotitolo */}
         <div className="flex flex-col gap-1.5">
-          <h3
-            className="font-bold"
-            style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em', color: '#0a0a0b' }}
-          >
+          <h3 className="text-h3" style={{ color: '#0a0a0b' }}>
             {title}
           </h3>
           <p

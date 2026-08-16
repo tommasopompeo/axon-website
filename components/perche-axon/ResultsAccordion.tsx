@@ -16,7 +16,8 @@
 import { useState, useId } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
-import { Container, Section, Reveal } from '@/components/ui'
+import { Container, Section, Reveal, MediaFrame } from '@/components/ui'
+import { EASE, DURATION } from '@/lib/motion'
 
 export interface ResultItem {
   id: string
@@ -42,11 +43,7 @@ interface ResultsAccordionProps {
   subtitle?: string
   items: ResultItem[]
   imageSide?: 'right' | 'left'
-  /** true → sfondo var(--bg-elevated) per alternare le sezioni. */
-  elevated?: boolean
 }
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 
 export default function ResultsAccordion({
   id,
@@ -54,7 +51,6 @@ export default function ResultsAccordion({
   subtitle,
   items,
   imageSide = 'right',
-  elevated = false,
 }: ResultsAccordionProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const reduced = useReducedMotion()
@@ -69,14 +65,14 @@ export default function ResultsAccordion({
   // Colonna immagine (frame identico ad Applicazioni).
   const imageColumn = (
     <div className="w-full flex justify-center lg:justify-end">
-      <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-[620px] aspect-square rounded-lg overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.08)] border border-white/10">
+      <MediaFrame>
         {items.map((item, i) => (
           <motion.div
             key={item.id}
             className="absolute inset-0"
             initial={false}
             animate={{ opacity: i === activeIndex ? 1 : 0 }}
-            transition={{ duration: reduced ? 0 : 0.45, ease: 'easeOut' }}
+            transition={{ duration: reduced ? 0 : 0.45, ease: EASE }}
             style={{ pointerEvents: i === activeIndex ? 'auto' : 'none' }}
             aria-hidden={i !== activeIndex}
           >
@@ -115,7 +111,7 @@ export default function ResultsAccordion({
             )}
           </motion.div>
         ))}
-      </div>
+      </MediaFrame>
     </div>
   )
 
@@ -148,8 +144,8 @@ export default function ResultsAccordion({
               <h3
                 className={`transition-all duration-300 ${
                   isActive
-                    ? 'font-extrabold text-white'
-                    : 'font-semibold text-white/35 group-hover:text-white/60'
+                    ? 'text-white'
+                    : 'text-white/35 group-hover:text-white/60'
                 }`}
                 style={{
                   fontSize: 'clamp(1.5rem, 2.6vw, 2rem)',
@@ -170,7 +166,7 @@ export default function ResultsAccordion({
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
-                  transition={{ duration: reduced ? 0 : 0.32, ease: EASE }}
+                  transition={{ duration: reduced ? 0 : DURATION.uiSlow, ease: EASE }}
                   className="overflow-hidden"
                 >
                   <div className="pt-3 pr-2 flex flex-col gap-3">
@@ -220,13 +216,13 @@ export default function ResultsAccordion({
   )
 
   return (
-    <Section id={id} elevated={elevated} className="bg-black" style={{ background: elevated ? undefined : 'var(--bg-black)' }}>
+    <Section id={id} background="black">
       <Container>
         {/* Header sezione */}
         <div className="flex flex-col gap-4 mb-12 lg:mb-16 max-w-5xl">
           <Reveal>
             <h2
-              className="font-bold text-white"
+              className="text-white"
               style={{
                 fontSize: 'clamp(2.25rem, 4.5vw, 3.25rem)',
                 lineHeight: 1.08,

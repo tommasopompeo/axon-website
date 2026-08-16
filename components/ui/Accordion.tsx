@@ -3,8 +3,7 @@
 import { ReactNode } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Plus } from 'lucide-react'
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
+import { EASE, DURATION } from '@/lib/motion'
 
 interface AccordionItemProps {
   title: ReactNode
@@ -61,7 +60,7 @@ export function AccordionItem({
 
         <motion.span
           animate={{ rotate: isOpen ? 45 : 0 }}
-          transition={{ duration: reduced ? 0 : 0.2, ease: 'easeInOut' }}
+          transition={{ duration: reduced ? 0 : DURATION.ui, ease: EASE }}
           className="shrink-0 flex"
           style={{ color: isOpen ? 'var(--text)' : 'var(--text-muted)' }}
           aria-hidden="true"
@@ -76,7 +75,7 @@ export function AccordionItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduced ? 0 : 0.35, ease: EASE }}
+            transition={{ duration: reduced ? 0 : DURATION.uiSlow, ease: EASE }}
             style={{ overflow: 'hidden' }}
           >
             <div

@@ -22,10 +22,6 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: 400 !important;
-  }
-
   /* Impedisce lo scroll orizzontale causato da elementi decorativi
      (es. glow con inset negativo) che sforano oltre la viewport.
      'clip' non crea un contenitore di scroll, quindi position: sticky resta valido. */
@@ -51,6 +47,33 @@
 }
 
 @layer components {
+  /* Heading type scale — font-size, line-height, letter-spacing AND font-weight
+     bundled together so the weight-400 display look lives in exactly one place
+     per size, instead of a hidden global override fighting per-heading classes.
+     See DESIGN.md §3 for the rationale. */
+  .text-display {
+    font-size: var(--fs-display);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .text-h2 {
+    font-size: var(--fs-h2);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+  .text-h3 {
+    font-size: var(--fs-h3);
+    letter-spacing: -0.01em;
+    font-weight: 400;
+  }
+  .text-lead {
+    font-size: var(--fs-lead);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
   /* Link hover utilities */
   .link-muted {
     color: var(--text-muted);
@@ -65,6 +88,72 @@
   }
   .link-subtle:hover {
     color: var(--text-muted);
+  }
+
+  /* Header nav links — hover/focus-visible in CSS instead of JS
+     onMouseEnter/onMouseLeave, plus a small brand-red aria-current indicator. */
+  .nav-link {
+    color: var(--text-muted);
+    transition: color 0.2s var(--ease);
+  }
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--text);
+  }
+  .nav-link[aria-current='page'] {
+    color: var(--text);
+  }
+  .nav-link--desktop {
+    position: relative;
+  }
+  .nav-link--desktop[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--brand);
+    transform: translateX(-50%);
+  }
+  .nav-link--mobile {
+    position: relative;
+    padding-left: 14px;
+  }
+  .nav-link--mobile[aria-current='page']::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--brand);
+    transform: translateY(-50%);
+  }
+
+  /* Dark surface cards — border/background hover, no lift (see DESIGN.md §11).
+     Base background/border live here (not inline style) so :hover can win —
+     an inline style value can't be overridden by any stylesheet rule. */
+  .card-surface {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  }
+  .card-surface:hover {
+    border-color: var(--border-strong);
+    background-color: var(--surface-2);
+  }
+
+  /* TargetCarousel tiles — same hover language as dark cards. */
+  .target-tile {
+    border: 1px solid transparent;
+    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+  }
+  .target-tile:hover {
+    border-color: var(--border-strong);
+    background-color: var(--surface-2);
   }
 
   /* Button variants */
@@ -123,5 +212,41 @@
   .btn-white:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+
+  /* Press states — return to baseline on click instead of staying lifted. */
+  .btn-primary:active:not(:disabled),
+  .btn-secondary:active:not(:disabled) {
+    transform: translateY(0);
+  }
+}
+
+/* Reveal — trigger="mount" (above-the-fold hero content). Pure CSS keyframe
+   animation instead of Framer Motion: the browser runs it without needing
+   JS to hydrate, so content is visible even if the script fails/blocks —
+   unlike a motion.div SSR-ing inline opacity:0. Framer Motion is still used
+   for trigger="scroll" (see components/ui/Reveal.tsx), which needs JS anyway
+   to know when the element enters the viewport. Duration/ease mirror --dur/--ease. */
+@keyframes reveal-mount {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-mount {
+  animation: reveal-mount var(--dur) var(--ease) both;
+  animation-delay: var(--reveal-delay, 0s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-mount {
+    animation: none;
+    opacity: 1;
+    transform: none;
   }
 }

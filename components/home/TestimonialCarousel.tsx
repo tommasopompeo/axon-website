@@ -3,8 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
+import { EASE, DURATION } from '@/lib/motion'
 
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1]
 const AUTOPLAY_MS = 6500
 
 type Testimonial = {
@@ -93,7 +93,7 @@ export default function TestimonialCarousel() {
 
   return (
     <div
-      className="relative overflow-hidden bg-black text-white border border-gray-800 shadow-xl"
+      className="relative overflow-hidden bg-black text-white shadow-xl"
       role="region"
       aria-roledescription="carosello"
       aria-label="Testimonianze"
@@ -101,6 +101,7 @@ export default function TestimonialCarousel() {
       onTouchEnd={onTouchEnd}
       style={{
         borderRadius: 'var(--radius-lg)',
+        border: '1px solid var(--border-strong)',
       }}
     >
       <div className="px-7 py-10 md:px-14 md:py-14 lg:px-20">
@@ -111,8 +112,14 @@ export default function TestimonialCarousel() {
           style={{ color: 'var(--brand)' }}
         />
 
-        {/* Area slide — altezza gestita dal contenuto, transizione orizzontale */}
-        <div className="relative mt-6">
+        {/* Area slide — layout animation assorbe il cambio di altezza tra quote
+            di lunghezza diversa (invece di uno scatto secco), transizione orizzontale
+            sul contenuto interno. */}
+        <motion.div
+          layout="size"
+          transition={{ duration: reduced ? 0 : DURATION.uiSlow, ease: EASE, type: 'tween' }}
+          className="relative mt-6"
+        >
           <AnimatePresence mode="wait" custom={direction} initial={false}>
             <motion.blockquote
               key={index}
@@ -143,15 +150,14 @@ export default function TestimonialCarousel() {
                   {t.name}
                 </cite>
                 <span
-                  className="text-gray-400"
-                  style={{ fontSize: 'var(--fs-caption)' }}
+                  style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-muted)' }}
                 >
                   {t.role}
                 </span>
               </footer>
             </motion.blockquote>
           </AnimatePresence>
-        </div>
+        </motion.div>
 
         {/* Controlli: frecce spastate più in alto */}
         <div className="mt-6 flex items-center justify-end gap-3">

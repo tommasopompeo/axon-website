@@ -58,7 +58,7 @@ export default function VideoSection() {
   }
 
   return (
-    <Section id="video-come-funziona" className="bg-black" style={{ background: 'var(--bg-black)' }}>
+    <Section id="video-come-funziona" background="black">
       <Container>
         <Reveal>
           {/* 16:9 box — sides flush with container text area */}
@@ -75,6 +75,7 @@ export default function VideoSection() {
             <video
               ref={videoRef}
               src="/video_come_funziona.mp4"
+              poster="/video-come-funziona-poster.jpg"
               className="absolute inset-0 w-full h-full object-cover"
               playsInline
               preload="metadata"

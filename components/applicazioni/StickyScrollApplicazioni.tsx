@@ -3,7 +3,8 @@
 import React, { useRef, useState } from "react";
 import Image from "next/image";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
-import { Container } from "@/components/ui";
+import { Container, MediaFrame } from "@/components/ui";
+import { EASE, DURATION } from "@/lib/motion";
 
 const applicationsData = [
   { 
@@ -125,9 +126,9 @@ export default function StickyScrollApplicazioni() {
                     />
                     
                     {/* Title */}
-                    <h3 
+                    <h3
                       className={`text-3xl md:text-4xl transition-all duration-300 ${
-                        isActive ? "font-extrabold text-white" : "font-semibold text-white/35"
+                        isActive ? "text-white" : "text-white/35"
                       }`}
                     >
                       {item.title}
@@ -140,7 +141,7 @@ export default function StickyScrollApplicazioni() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{ duration: DURATION.uiSlow, ease: EASE }}
                           className="overflow-hidden"
                         >
                           <p className="text-white/70 mt-3 text-lg leading-relaxed pr-4">
@@ -156,7 +157,7 @@ export default function StickyScrollApplicazioni() {
 
             {/* Right Column: Media Display & Overlay Title */}
             <div className="w-full flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-lg lg:max-w-xl xl:max-w-[620px] aspect-square rounded-lg overflow-hidden shadow-[0_0_50px_rgba(255,255,255,0.08)] border border-white/10">
+              <MediaFrame>
                 {applicationsData.map((item, i) => (
                   <motion.div
                     key={item.id}
@@ -169,8 +170,10 @@ export default function StickyScrollApplicazioni() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover opacity-90 transition-transform duration-1000 scale-105" 
-                      style={{ 
+                      sizes="(min-width: 1280px) 620px, (min-width: 1024px) 576px, 512px"
+                      loading={Math.abs(i - activeIndex) <= 1 ? 'eager' : 'lazy'}
+                      className="object-cover opacity-90 transition-transform duration-1000 scale-105"
+                      style={{
                         transform: i === activeIndex ? 'scale(1)' : 'scale(1.05)'
                       }}
                     />
@@ -178,7 +181,7 @@ export default function StickyScrollApplicazioni() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
                   </motion.div>
                 ))}
-              </div>
+              </MediaFrame>
             </div>
 
           </div>

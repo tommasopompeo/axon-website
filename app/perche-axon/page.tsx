@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
-import Image from 'next/image'
-import { Container, Section, Reveal } from '@/components/ui'
+import { Container, Section, Reveal, PageHero } from '@/components/ui'
 import ResultsAccordion, { ResultItem } from '@/components/perche-axon/ResultsAccordion'
 import PartnerSection from '@/components/perche-axon/PartnerSection'
 
@@ -96,39 +95,19 @@ export default function PercheAxonPage() {
   return (
     <>
       {/* ── Hero Section ── */}
-      <Section
-        id="top"
-        className="relative overflow-hidden z-0 min-h-[calc(100vh-80px)] flex items-center"
+      <PageHero
+        media={{ type: 'image', src: '/hero_perche_axon.jpg', alt: 'I risultati di chi ha indossato AXON' }}
+        overlayOpacity={0.3}
       >
-        <Image
-          src="/hero_perche_axon.jpg"
-          alt="I risultati di chi ha indossato AXON"
-          fill
-          priority
-          className="object-cover -z-10"
-        />
-        <div className="absolute inset-0 bg-black/30 -z-10" aria-hidden="true" />
-
-        <Container className="relative z-10">
-          <div className="max-w-4xl flex flex-col gap-6 lg:gap-8 pt-12 lg:pt-20">
-            <Reveal trigger="mount" delay={0.1}>
-              <h1
-                className="font-bold text-white"
-                style={{
-                  fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)',
-                  lineHeight: 1.04,
-                  letterSpacing: '-0.02em',
-                }}
-              >
-                I risultati di chi ha indossato AXON
-              </h1>
-            </Reveal>
-          </div>
-        </Container>
-      </Section>
+        <Reveal trigger="mount" delay={0.1}>
+          <h1 className="text-display text-white">
+            I risultati di chi ha indossato AXON
+          </h1>
+        </Reveal>
+      </PageHero>
 
       {/* ── Intro paragraph ── */}
-      <Section className="bg-black" style={{ background: 'var(--bg-black)' }}>
+      <Section background="black">
         <Container>
           <Reveal>
             <p
@@ -163,7 +142,6 @@ export default function PercheAxonPage() {
         title="Forza e risposta neuromuscolare"
         items={forzaItems}
         imageSide="left"
-        elevated
       />
 
       {/* ── Sezione C: Mobilità (immagine a destra) ── */}

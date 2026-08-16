@@ -54,10 +54,7 @@ export default function TargetCarousel() {
         <div className="mb-10 flex items-end justify-between gap-6 lg:mb-12">
           <div className="flex max-w-[75ch] flex-col gap-4">
             <Reveal>
-              <h2
-                className="text-balance font-bold"
-                style={{ fontSize: 'clamp(3.25rem, 7.0vw, 5.2rem)', lineHeight: 1.04, letterSpacing: '-0.02em' }}
-              >
+              <h2 className="text-balance text-display">
                 Per come ti muovi, ogni giorno.
               </h2>
             </Reveal>
@@ -83,7 +80,7 @@ export default function TargetCarousel() {
             {cards.map((card) => (
               <div
                 key={card.id}
-                className="relative w-[80%] flex-none snap-start overflow-hidden sm:w-[56%] md:w-[40%] lg:w-[316px]"
+                className="target-tile relative w-[80%] flex-none snap-start overflow-hidden sm:w-[56%] md:w-[40%] lg:w-[316px]"
                 style={{ aspectRatio: '3 / 4', borderRadius: 'var(--radius-lg)' }}
               >
                 {/* Immagine o placeholder: il FRAME (riquadro + raggio + aspect) resta identico */}
@@ -120,7 +117,7 @@ export default function TargetCarousel() {
 
                 {/* Overlay testo in basso a sinistra */}
                 <div className="absolute inset-x-0 bottom-0 flex flex-col gap-1 p-5">
-                  <h3 className="font-bold text-white" style={{ fontSize: 'var(--fs-h3)', letterSpacing: '-0.01em' }}>
+                  <h3 className="text-h3 text-white">
                     {card.title}
                   </h3>
                   <p

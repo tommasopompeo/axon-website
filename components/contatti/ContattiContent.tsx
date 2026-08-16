@@ -87,10 +87,7 @@ export default function ContattiContent() {
         <Container>
           <div className="flex flex-col gap-5 max-w-3xl">
             <Reveal trigger="mount">
-              <h1
-                className="font-bold"
-                style={{ fontSize: 'var(--fs-display)', lineHeight: 1.04, letterSpacing: '-0.02em' }}
-              >
+              <h1 className="text-display">
                 Contatti
               </h1>
             </Reveal>
@@ -104,7 +101,7 @@ export default function ContattiContent() {
       </Section>
 
       {/* ── Form + box contatti ── */}
-      <Section id="contatto" elevated className="!pt-0">
+      <Section id="contatto" background="elevated" className="!pt-0">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:gap-16 lg:items-start">
 
@@ -214,7 +211,7 @@ export default function ContattiContent() {
             <Reveal delay={0.14}>
               <div className="flex flex-col gap-6">
                 <Card className="flex flex-col gap-5 p-6 lg:p-7">
-                  <h2 className="font-semibold" style={{ fontSize: 'var(--fs-h3)' }}>
+                  <h2 style={{ fontSize: 'var(--fs-h3)' }}>
                     Contatti diretti
                   </h2>
 
