@@ -14,15 +14,20 @@
 - CTA primaria (bottone rosso): **Acquista AXON** → /shop
 - Mobile: menu hamburger con le stesse voci.
 
-# FOOTER (su tutte le pagine)
-- Logo AXON + tagline: *"La forza invisibile che rivoluziona il movimento."*
-- Colonna Navigazione: Applicazioni · Come funziona · Testimonianze · FAQ · Shop · Aziende · Contatti
-- Colonna Prodotto: AXON KIT · AXON SHELL · Come si usa · FAQ
-- Colonna Azienda: Axon-Tech S.r.l. · Contatti · info@axon-tech.it
-- Social: Instagram · TikTok · LinkedIn (link in lib/links.ts, placeholder)
-- Riga legale: "Axon è un dispositivo medico di Classe I. Leggere le istruzioni per l'uso.
-  © {anno} Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV). P.IVA IT05577370264."
-- Link: Privacy · Cookie · Termini (placeholder `#`)
+# FOOTER (su tutte le pagine) — aggiornato 2026-08-17, vedi DESIGN.md §5
+- Blocco brand: logo AXON + tagline *"La forza invisibile che rivoluziona il movimento."*
+  + icone social condizionate (rese solo se non più `'#'` in `lib/links.ts`).
+- Colonna Azienda: Axon-Tech S.r.l. (testo semplice, non link) · Contatti (/contatti) ·
+  info@axon-tech.it
+- Colonna Navigazione: rispecchia le 5 voci dell'header, stesso ordine — Applicazioni ·
+  Come funziona · Perchè AXON · Professionisti · Aziende — + Shop. Niente più
+  Testimonianze/FAQ/Contatti come voci di questa colonna (restano raggiungibili in pagina/
+  dal Footer stesso, ma non elencate qui).
+- Colonna Informazioni Legali: Privacy (/privacy) · Cookie (/cookie) · Termini (/termini) —
+  pagine reali, non più placeholder `#`. Non esiste più una colonna "Prodotto".
+- Riga legale (fine stampa): "Axon è un dispositivo medico di Classe I. Leggere le istruzioni
+  per l'uso. © {anno} Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV). P.IVA
+  IT05577370264."
 
 ---
 
@@ -182,45 +187,62 @@
 - 6 card: Fisioterapisti · Medici e specialisti · Personal trainer ·
   Osteopati e chiropratici · Podologi · Educatori motori e trainer per anziani
 
-## Form professionisti
+## Form professionisti — id: contatto-professionisti
+- H2: **Raccontaci la tua esigenza**
+- Sottotitolo: *Il team Axon ti ricontatterà per valutare insieme la soluzione più adatta.*
 - Campi: Nome cognome · Professione (select) · Studio/struttura · Email ·
   Telefono · Ambito principale (select) · Tipo di interesse (select) ·
   Pazienti/clienti seguiti (select) · Messaggio · Consenso privacy
 - CTA: **Invia richiesta**
-- Conferma: *Grazie. Il team Axon ti ricontatterà al più presto.*
+- Conferma: *Richiesta ricevuta. Grazie. Il team Axon ti ricontatterà al più presto.*
 
 > Nota: `/fisioterapisti` è il vecchio slug di questa pagina — redirect 301 permanente
 > verso `/professionisti` (vedi `next.config.ts`).
 
 ---
 
-# PAGINA: AZIENDE ("/aziende")
-- H1: **Axon per le aziende**
-- Sottotitolo: *Una tecnologia orizzontale, integrabile in prodotti, percorsi e team.*
-- CTA: **Parla con noi** → form sotto
+# PAGINA: AZIENDE ("/aziende") — aggiornata 2026-08-17 (H1/sottotitolo/sezioni corretti su verifica codice)
+- H1: **Sei un azienda?**
+- Sottotitolo: *Se vuoi integrare Axon nei tuoi prodotti, calzature o percorsi aziendali —
+  per i tuoi clienti, i tuoi dipendenti o la tua struttura — sei nel posto giusto.*
+- Nessuna CTA nell'hero: si scorre direttamente alla sezione casi d'uso/form sotto.
 
-## Sezione "Casi d'uso"
+## Sezione "Casi d'uso" — id: casi-uso
 - H2: **Un dispositivo, molti settori**
-- 6 card: Moda · Calzature · Sanità/RSA · Sport · Benessere sul lavoro · Tutori/ortopedia
+- Sottotitolo: *Dove può essere integrato.*
+- 6 card (`Card variant="white"`, icona `lucide-react` + titolo + testo):
+  1. **Moda e abbigliamento** — Integrare Axon in capi, intimo tecnico, activewear.
+  2. **Calzature** — Inserire Axon in scarpe e solette per supporto a postura ed equilibrio.
+  3. **Sanità e RSA** — Case di riposo e centri riabilitativi: equilibrio e prevenzione cadute.
+  4. **Sport e performance** — Squadre, palestre e centri sportivi: supporto a forza, equilibrio e recupero.
+  5. **Benessere sul lavoro** — Programmi corporate per chi passa molte ore seduto.
+  6. **Tutori e ortopedia** — Applicazione su tutori e supporti, su indicazione clinica.
 
-## Sezione "Perché Axon per il B2B"
-- Passivo e sicuro · Integrabile · Discreto · Dispositivo medico Classe I
+> Non esiste una sezione "Perché Axon per il B2B" separata (Passivo e sicuro/Integrabile/
+> Discreto/Dispositivo medico Classe I) — non è presente nel codice attuale.
 
-## Form B2B
+## Form B2B — id: contatto-aziende
+- H2: **Raccontaci la tua esigenza**
+- Sottotitolo: *Il team Axon ti ricontatterà per valutare insieme la soluzione più adatta.*
 - Campi: Nome cognome · Azienda · Ruolo · Email aziendale · Telefono ·
   Settore (select) · Tipo di interesse (select) · Volumi stimati (select) ·
   Messaggio · Consenso privacy
 - CTA: **Invia richiesta**
-- Conferma: *Grazie. Il team Axon ti ricontatterà al più presto.*
+- Conferma: *Richiesta ricevuta. Grazie. Il team Axon ti ricontatterà al più presto.*
 
 ---
 
-# PAGINA: CONTATTI ("/contatti")
+# PAGINA: CONTATTI ("/contatti") — aggiornata 2026-08-17, vedi DESIGN.md §10
 - H1: **Contatti**
+- Sottotitolo hero: *Domande su Axon, ordini o assistenza? Scrivici.*
+- Layout a due colonne (pattern B2B, come Professionisti/Aziende): colonna sinistra
+  "Domande frequenti" con 3 FAQ in accordion (id `come-si-usa` · `contenuto-kit` ·
+  `lavaggio`, selezionate da `lib/faqs.ts` — stessa fonte della Home), colonna destra
+  il form. Non esiste più il vecchio box "Contatti diretti" (email/indirizzo/Instagram):
+  quell'informazione resta comunque raggiungibile in Footer (colonna Azienda + riga legale).
 - Form: Nome cognome · Email · Oggetto (select) · Messaggio · Consenso privacy
 - CTA: **Invia messaggio**
-- Box contatti: **info@axon-tech.it** · Axon-Tech S.r.l., Via Verdi 73, 31100 Treviso (TV)
-- Conferma: *Messaggio inviato. Ti risponderemo via email.*
+- Conferma: *Messaggio inviato. Ti risponderemo via email al più presto.*
 
 ---
 

@@ -2,7 +2,7 @@
 
 Tema scuro, grandi titoli display, spaziature generose, micro-animazioni allo scroll.
 
-> Questo documento descrive **esattamente ciò che è pubblicato sul sito** (`app/`, `components/`, `design/tokens.css`). Riconciliato con il codice il 2026-08-14: ogni valore sotto è verificato contro l'implementazione reale, non aspirazionale. Se in futuro qualcosa in questo file e il codice divergono, il codice resta la fonte di verità — aggiorna questo file, non il contrario.
+> Questo documento descrive **esattamente ciò che è pubblicato sul sito** (`app/`, `components/`, `design/tokens.css`). Riconciliato con il codice il 2026-08-17 (audit coerenza/dead-weight — corretta una nota §11 su `TargetCarousel` rimasta dalla conversione a griglia): ogni valore sotto è verificato contro l'implementazione reale, non aspirazionale. Se in futuro qualcosa in questo file e il codice divergono, il codice resta la fonte di verità — aggiorna questo file, non il contrario.
 
 ## 1. Identità
 - **Font: Urbanist** (Google Fonts, `next/font/google`). Pesi 400–800.
@@ -133,7 +133,7 @@ Pagine "utility": hero H1 in `--fs-display` (stessa scala del resto del sito), c
 - **Hover bottoni** (`primary`/`secondary`): `translateY(-2px)`, `duration 0.2`; **`:active`** riporta a `translateY(0)` (press state). Card: **nessun lift** — bento/use-case cards (`Card variant="white" hover`) usano solo `shadow-md → shadow-lg` al hover; le card scure (`Card` default, `variant="surface"`) e i tile di `TargetCarousel` hanno uno stato hover dedicato via classi CSS (`.card-surface`, `.target-tile`): `border-color → --border-strong`, `background → --surface-2`, `0.2s var(--ease)` — le proprietà base vivono nella classe CSS (non in inline style) proprio perché un valore inline non può mai essere sovrascritto da una regola `:hover`.
 - Accordion/expand-collapse (tutte le varianti): `duration 0.35`, `ease cubic-bezier(0.22,1,0.36,1)` (via `lib/motion.ts`).
 - Crossfade immagini (scroll-jacked sections): `opacity duration 0.5` + `scale transition 1s` — categoria di movimento distinta, più lenta, per transizioni "editoriali" tra fotografie.
-- Carousel: `TargetCarousel` = slide orizzontale nativo (scroll-snap). `TestimonialCarousel` = crossfade orizzontale via Framer (`AnimatePresence mode="wait"`); il contenitore della quote è un `motion.div layout="size"` che assorbe il cambio di altezza tra quote di lunghezza diversa con una transizione morbida (`DURATION.uiSlow`, `EASE`) invece di uno scatto secco.
+- Carousel: `TargetCarousel` — nonostante il nome, dalla conversione a griglia (vedi §6) non è più un carousel: griglia statica CSS (`grid`, 1→2→4 colonne), nessuno scroll-snap/scroll-jacking. `TestimonialCarousel` = crossfade orizzontale via Framer (`AnimatePresence mode="wait"`); il contenitore della quote è un `motion.div layout="size"` che assorbe il cambio di altezza tra quote di lunghezza diversa con una transizione morbida (`DURATION.uiSlow`, `EASE`) invece di uno scatto secco.
 - **Rispettare `prefers-reduced-motion`**: disattivare y-translate e autoplay (verificato su `Reveal`/`RevealItem`/`ui/AccordionItem`/`ResultsAccordion`/ScienceSection `DeepDive`/`TestimonialCarousel`).
 
 ## 12. Responsive

@@ -7,20 +7,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        brand:           'var(--brand)',
-        'brand-hover':   'var(--brand-hover)',
-        'brand-glow':    'var(--brand-glow)',
-        'brand-soft':    'var(--brand-soft)',
-        bg:              'var(--bg)',
-        'bg-elevated':   'var(--bg-elevated)',
-        surface:         'var(--surface)',
-        'surface-2':     'var(--surface-2)',
-        'text-primary':  'var(--text)',
-        'text-muted':    'var(--text-muted)',
-        'text-subtle':   'var(--text-subtle)',
-        'header-bg':     'var(--header-bg)',
-      },
+      // No `colors` extension: every color is consumed as a raw CSS custom
+      // property (`var(--token)`, set in design/tokens.css) via inline
+      // `style` or app/globals.css, never as a Tailwind utility class
+      // (verified: zero `bg-brand`/`text-muted`-style classNames anywhere in
+      // app/ or components/, and removing this block produces a byte-for-byte
+      // identical build CSS) — so a theme.colors block here mapped to nothing
+      // generated. `fontFamily` stays: Tailwind's own Preflight base reset
+      // reads `theme('fontFamily.sans')` to set `html`'s font-family, so this
+      // one *does* reach generated CSS even though no className references it.
       fontFamily: {
         sans: ['var(--font-sans)'],
       },

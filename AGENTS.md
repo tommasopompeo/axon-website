@@ -37,12 +37,17 @@ che si applica ai capi). Pubblico **consumer** + pagina **aziende** (B2B, senza 
 - Non usare colori/spacing fuori dai token senza motivo.
 
 ## Aperti / da completare (chiedere a Tommaso quando rilevante)
-- Prezzo di **AXON SHELL™ Kit da 5** (placeholder ora).
 - **URL prodotto Shopify** (KIT e SHELL) — attualmente `'#'` in `lib/links.ts`.
-- **Endpoint/servizio form** + email destinataria — attualmente `FORM_ENDPOINT = '#'`.
 - **Testi consumer** da far validare al referente regolatorio Axon-Tech prima del go-live.
 - **Testimonianze** in `content-it.md` sono esempi da validare/sostituire con quote reali.
 - **P.IVA** in Footer (già inserita: IT05577370264 — verificare).
-- **Pagina `/privacy`**: non ancora creata — i link "Privacy Policy" nei form e in Footer
-  puntano a `#` come placeholder.
 - **Social links**: tutti `'#'` in `lib/links.ts`.
+- **`/termini`**: porta un blocco `DA VERIFICARE` in cima al file con le assunzioni
+  commerciali non deducibili dal repo — da far confermare ad Axon-Tech/legale.
+- **Prezzo AXON SHELL Kit da 5**: `knowledge/product.md` lo segna ancora come "da
+  definire", ma il codice (`ShopContent.tsx`) mostra già `€ 30,00` — verificare con
+  Tommaso quale dei due è corretto e allineare l'altro.
+
+Risolti da questa lista in una passata precedente (non più aperti): endpoint form
+(ora `/api/contact`, vedi DESIGN.md §5), pagina `/privacy` (ora esistente, insieme a
+`/cookie` e `/termini`).
