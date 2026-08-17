@@ -357,7 +357,7 @@ export default function ProfessionistiContent() {
                       errorId={errors.consenso ? 'pro-consenso-err' : undefined}
                     >
                       Accetto il trattamento dei dati personali secondo la{' '}
-                      <Link href="#" style={{ color: 'var(--text)' }}>Privacy Policy</Link> di Axon-Tech S.r.l.
+                      <Link href="/privacy" style={{ color: 'var(--text)' }}>Privacy Policy</Link> di Axon-Tech S.r.l.
                     </CheckboxField>
                     {errors.consenso && <FieldError id="pro-consenso-err">{errors.consenso}</FieldError>}
                   </div>

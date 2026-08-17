@@ -349,7 +349,7 @@ export default function AziendeContent() {
                       errorId={errors.consenso ? 'az-consenso-err' : undefined}
                     >
                       Accetto il trattamento dei dati personali secondo la{' '}
-                      <Link href="#" style={{ color: 'var(--text)' }}>Privacy Policy</Link> di Axon-Tech S.r.l.
+                      <Link href="/privacy" style={{ color: 'var(--text)' }}>Privacy Policy</Link> di Axon-Tech S.r.l.
                     </CheckboxField>
                     {errors.consenso && <FieldError id="az-consenso-err">{errors.consenso}</FieldError>}
                   </div>
