@@ -69,17 +69,13 @@ export default function ContattiContent() {
     setSubmitting(true)
     setServerError(false)
     try {
-      if (FORM_ENDPOINT === '#') {
-        setSuccess(true)
-      } else {
-        const res = await fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ ...data, _honey: undefined }),
-        })
-        if (!res.ok) throw new Error('error')
-        setSuccess(true)
-      }
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, _honey: undefined, source: 'contatti' }),
+      })
+      if (!res.ok) throw new Error('error')
+      setSuccess(true)
     } catch {
       setServerError(true)
     } finally {

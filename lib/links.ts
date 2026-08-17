@@ -2,8 +2,9 @@
 export const SHOPIFY_KIT_URL = '#'
 export const SHOPIFY_SHELL_URL = '#'
 
-// TODO: sostituire con l'endpoint reale del form service (Web3Forms/Formspree o API route + Resend)
-export const FORM_ENDPOINT = '#'
+// Route interna che riceve i 3 form (Contatti/Professionisti/Aziende) e li
+// inoltra al provider email — vedi app/api/contact/route.ts e DESIGN.md §5.
+export const FORM_ENDPOINT = '/api/contact'
 
 // Profili social — finché un valore resta '#', l'icona corrispondente non
 // viene renderizzata (Footer). Impostare l'URL reale qui è sufficiente
