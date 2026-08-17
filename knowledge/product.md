@@ -43,7 +43,7 @@
 - Pensato per applicare Axon su **più capi/accessori** (ricambi/estensione).
 - Nota: AXON SHELL non è una semplice bustina; è progettato per garantire piena
   efficacia, comfort sulla pelle, resistenza ai lavaggi e corretta applicazione.
-- Prezzo: **da definire** (placeholder finché Tommaso non conferma).
+- **Prezzo: € 30,00** — IVA inclusa, spedizione inclusa (confermato 2026-08-17).
 
 > Entrambi i pulsanti "Acquista" rimandano in **redirect alla pagina prodotto Shopify**
 > (URL da inserire in fase di integrazione). Nessun checkout sul sito.

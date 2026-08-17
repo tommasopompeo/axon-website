@@ -171,7 +171,7 @@
 - H1: **Shop**
 - Sottotitolo: *Scegli il tuo Axon. Spedizione inclusa in Italia.*
 - Prodotto 1 — **AXON KIT**: immagini kit-1.jpg / kit-2.jpg, prezzo € 230,00, CTA → Shopify
-- Prodotto 2 — **AXON SHELL Kit da 5**: immagini shell-1.jpg / shell-2.jpg, prezzo [da definire], CTA → Shopify
+- Prodotto 2 — **AXON SHELL Kit da 5**: immagini shell-1.jpg / shell-2.jpg, prezzo € 30,00, CTA → Shopify
 - Sezione fiducia: garanzia 2 anni · dispositivo medico Classe I · spedizione inclusa.
 
 ---

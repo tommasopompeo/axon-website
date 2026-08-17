@@ -44,10 +44,10 @@ che si applica ai capi). Pubblico **consumer** + pagina **aziende** (B2B, senza 
 - **Social links**: tutti `'#'` in `lib/links.ts`.
 - **`/termini`**: porta un blocco `DA VERIFICARE` in cima al file con le assunzioni
   commerciali non deducibili dal repo — da far confermare ad Axon-Tech/legale.
-- **Prezzo AXON SHELL Kit da 5**: `knowledge/product.md` lo segna ancora come "da
-  definire", ma il codice (`ShopContent.tsx`) mostra già `€ 30,00` — verificare con
-  Tommaso quale dei due è corretto e allineare l'altro.
+- **URL prodotti Shopify e social**: link reali in arrivo — quando disponibili,
+  aggiornare `lib/links.ts` (`SHOPIFY_KIT_URL`/`SHOPIFY_SHELL_URL`/`SOCIAL.*`,
+  attualmente `'#'`); nessun'altra modifica necessaria altrove.
 
 Risolti da questa lista in una passata precedente (non più aperti): endpoint form
 (ora `/api/contact`, vedi DESIGN.md §5), pagina `/privacy` (ora esistente, insieme a
-`/cookie` e `/termini`).
+`/cookie` e `/termini`), prezzo AXON SHELL Kit da 5 (confermato `€ 30,00`).
