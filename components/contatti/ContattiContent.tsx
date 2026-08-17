@@ -83,7 +83,7 @@ export default function ContattiContent() {
   return (
     <>
       {/* ── Hero ── */}
-      <Section id="top">
+      <Section id="top" background="black">
         <Container>
           <div className="flex flex-col gap-5 max-w-3xl">
             <Reveal trigger="mount">
@@ -101,7 +101,7 @@ export default function ContattiContent() {
       </Section>
 
       {/* ── Form + box contatti ── */}
-      <Section id="contatto" background="elevated" className="!pt-0">
+      <Section id="contatto" background="black" className="!pt-0">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:gap-16 lg:items-start">
 
@@ -211,7 +211,7 @@ export default function ContattiContent() {
             <Reveal delay={0.14}>
               <div className="flex flex-col gap-6">
                 <Card className="flex flex-col gap-5 p-6 lg:p-7">
-                  <h2 style={{ fontSize: 'var(--fs-h3)' }}>
+                  <h2 className="text-h3">
                     Contatti diretti
                   </h2>
 
@@ -246,8 +246,9 @@ export default function ContattiContent() {
                     </div>
                   </div>
 
-                  {/* Solo Instagram */}
-                  {SOCIAL.instagram !== '#' ? (
+                  {/* Instagram — reso solo quando lib/links.ts riporta un URL
+                      reale (non '#'); vedi stessa regola in Footer. */}
+                  {SOCIAL.instagram !== '#' && (
                     <a
                       href={SOCIAL.instagram}
                       target="_blank"
@@ -258,11 +259,6 @@ export default function ContattiContent() {
                       <Instagram size={18} strokeWidth={1.75} aria-hidden="true" />
                       <span style={{ fontSize: 'var(--fs-body)' }}>Instagram</span>
                     </a>
-                  ) : (
-                    <div className="inline-flex items-center gap-2" style={{ color: 'var(--text-subtle)' }}>
-                      <Instagram size={18} strokeWidth={1.75} aria-hidden="true" />
-                      <span style={{ fontSize: 'var(--fs-body)' }}>Instagram</span>
-                    </div>
                   )}
                 </Card>
 

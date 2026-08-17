@@ -3,28 +3,30 @@ import Image from 'next/image'
 import { Instagram, Linkedin } from 'lucide-react'
 import { SOCIAL } from '@/lib/links'
 
+// Le 5 pagine dell'header, nello stesso ordine, + Shop.
 const navColonna = [
   { label: 'Applicazioni', href: '/applicazioni' },
   { label: 'Come funziona', href: '/come-funziona' },
-  { label: 'Testimonianze', href: '/#testimonianze' },
-  { label: 'FAQ', href: '/#faq' },
-  { label: 'Shop', href: '/shop' },
+  { label: 'Perchè AXON', href: '/perche-axon' },
+  { label: 'Professionisti', href: '/professionisti' },
   { label: 'Aziende', href: '/aziende' },
-  { label: 'Contatti', href: '/contatti' },
+  { label: 'Shop', href: '/shop' },
 ]
 
 const prodottoColonna = [
   { label: 'AXON KIT', href: '/shop' },
-  { label: 'AXON SHELL', href: '/shop' },
   { label: 'Come si usa', href: '/#come-indossare' },
   { label: 'FAQ', href: '/#faq' },
+  { label: 'Testimonianze', href: '/#testimonianze' },
 ]
 
-const aziendalColonna = [
-  { label: 'Axon-Tech S.r.l.', href: '#' },
-  { label: 'Contatti', href: '/contatti' },
-  { label: 'info@axon-tech.it', href: 'mailto:info@axon-tech.it' },
+const legaleColonna = [
+  { label: 'Privacy', href: '/privacy' },
+  { label: 'Cookie', href: '/cookie' },
+  { label: 'Termini', href: '/termini' },
 ]
+
+const hasSocial = SOCIAL.instagram !== '#' || SOCIAL.tiktok !== '#' || SOCIAL.linkedin !== '#'
 
 export default function Footer() {
   const anno = new Date().getFullYear()
@@ -57,44 +59,54 @@ export default function Footer() {
               La forza invisibile che rivoluziona il movimento.
             </p>
 
-            {/* Social */}
-            <div className="mt-5 flex gap-3">
-              <a
-                href={SOCIAL.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Axon su Instagram"
-                className="inline-flex items-center justify-center min-h-11 min-w-11 rounded-md link-subtle"
-              >
-                <Instagram size={18} aria-hidden="true" />
-              </a>
-              <a
-                href={SOCIAL.tiktok}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Axon su TikTok"
-                className="inline-flex items-center justify-center min-h-11 min-w-11 rounded-md link-subtle"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z" />
-                </svg>
-              </a>
-              <a
-                href={SOCIAL.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Axon su LinkedIn"
-                className="inline-flex items-center justify-center min-h-11 min-w-11 rounded-md link-subtle"
-              >
-                <Linkedin size={18} aria-hidden="true" />
-              </a>
-            </div>
+            {/* Social — un'icona per profilo, resa solo quando lib/links.ts
+                riporta un URL reale (non '#'): quando un profilo va live,
+                impostare l'URL lì è sufficiente, nessuna modifica qui. */}
+            {hasSocial && (
+              <div className="mt-5 flex gap-3">
+                {SOCIAL.instagram !== '#' && (
+                  <a
+                    href={SOCIAL.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Axon su Instagram"
+                    className="inline-flex items-center justify-center min-h-11 min-w-11 rounded-md link-subtle"
+                  >
+                    <Instagram size={18} aria-hidden="true" />
+                  </a>
+                )}
+                {SOCIAL.tiktok !== '#' && (
+                  <a
+                    href={SOCIAL.tiktok}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Axon su TikTok"
+                    className="inline-flex items-center justify-center min-h-11 min-w-11 rounded-md link-subtle"
+                  >
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.53V6.77a4.85 4.85 0 01-1.02-.08z" />
+                    </svg>
+                  </a>
+                )}
+                {SOCIAL.linkedin !== '#' && (
+                  <a
+                    href={SOCIAL.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Axon su LinkedIn"
+                    className="inline-flex items-center justify-center min-h-11 min-w-11 rounded-md link-subtle"
+                  >
+                    <Linkedin size={18} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Navigazione */}
@@ -144,13 +156,20 @@ export default function Footer() {
               Azienda
             </h3>
             <ul className="space-y-2">
-              {aziendalColonna.map(({ label, href }) => (
-                <li key={label}>
-                  <Link href={href} className="text-sm link-muted">
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              {/* Ragione sociale: testo semplice, non un link — non ha una destinazione. */}
+              <li className="text-sm" style={{ color: 'var(--text-muted)' }}>
+                Axon-Tech S.r.l.
+              </li>
+              <li>
+                <Link href="/contatti" className="text-sm link-muted">
+                  Contatti
+                </Link>
+              </li>
+              <li>
+                <a href="mailto:info@axon-tech.it" className="text-sm link-muted">
+                  info@axon-tech.it
+                </a>
+              </li>
             </ul>
           </div>
         </div>
@@ -166,10 +185,10 @@ export default function Footer() {
             © {anno} Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV). P.IVA IT05577370264.
           </p>
           <div className="flex gap-5">
-            {(['Privacy', 'Cookie', 'Termini'] as const).map(label => (
-              <a key={label} href="#" className="text-xs link-subtle">
+            {legaleColonna.map(({ label, href }) => (
+              <Link key={label} href={href} className="text-xs link-subtle">
                 {label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
