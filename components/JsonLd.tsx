@@ -31,7 +31,7 @@ const products = [
     name: 'AXON KIT',
     description:
       'Dispositivo medico di Classe I. Kit completo con 1 dispositivo Axon Ø 30 mm, ' +
-      '1 Axon Shell™ e scatola originale. Aiuta a migliorare equilibrio, forza ' +
+      '1 Axon Shell e scatola originale. Aiuta a migliorare equilibrio, forza ' +
       'e resistenza alla fatica con uso regolare. Non richiede batterie né contatto con la pelle.',
     brand: { '@type': 'Brand', name: 'Axon' },
     manufacturer: { '@type': 'Organization', name: 'Axon-Tech S.r.l.' },
@@ -48,9 +48,9 @@ const products = [
   {
     '@context': 'https://schema.org',
     '@type': 'Product',
-    name: 'AXON SHELL™ — Kit da 5',
+    name: 'AXON SHELL — Kit da 5',
     description:
-      '5 gusci funzionali originali AXON SHELL™. Materiale tecnologico riciclabile, ' +
+      '5 gusci funzionali originali AXON SHELL. Materiale tecnologico riciclabile, ' +
       'cucibili su indumenti, calzature e accessori. Compatibili con il dispositivo Axon.',
     brand: { '@type': 'Brand', name: 'Axon' },
     manufacturer: { '@type': 'Organization', name: 'Axon-Tech S.r.l.' },

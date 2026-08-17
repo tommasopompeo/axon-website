@@ -11,7 +11,7 @@ export default function TestimonialsSection() {
         <div className="flex flex-col gap-5 mb-10 lg:mb-12 max-w-[75ch]">
           <Reveal>
             <h2 className="text-display text-black" style={{ color: '#000000' }}>
-              Chi lo indossa, lo racconta.
+              Chi lo indossa, lo racconta
             </h2>
           </Reveal>
           <Reveal delay={0.14}>

@@ -15,13 +15,13 @@ const products = [
   {
     images: [
       { src: '/kit-1.jpg', alt: 'Axon Kit — confezione e dispositivo Axon' },
-      { src: '/kit-2.jpg', alt: 'Axon Kit — dispositivo Axon e Axon Shell™' },
+      { src: '/kit-2.jpg', alt: 'Axon Kit — dispositivo Axon e Axon Shell' },
     ],
     title: 'AXON KIT',
     subtitle: 'Dispositivo medico · Ø 30 mm',
     includes: [
       '1 dispositivo Axon Ø 30 mm',
-      '1 Axon Shell™',
+      '1 Axon Shell',
       'Scatola originale',
     ],
     price: '€ 230,00',
@@ -30,13 +30,13 @@ const products = [
   },
   {
     images: [
-      { src: '/shell-1.jpg', alt: 'Axon Shell™ — gusci funzionali originali' },
-      { src: '/shell-2.jpg', alt: 'Axon Shell™ — guscio cucibile su capo' },
+      { src: '/shell-1.jpg', alt: 'Axon Shell — gusci funzionali originali' },
+      { src: '/shell-2.jpg', alt: 'Axon Shell — guscio cucibile su capo' },
     ],
-    title: 'AXON SHELL™ — Kit da 5',
+    title: 'AXON SHELL — Kit da 5',
     subtitle: 'Gusci funzionali originali · cucibili · riciclabili',
     includes: [
-      '5 gusci AXON SHELL™',
+      '5 gusci AXON SHELL',
       'Materiale tecnologico riciclabile',
       'Angoli arrotondati, saldature termosaldabili',
     ],
@@ -136,21 +136,6 @@ export default function ShopContent() {
               </RevealItem>
             ))}
           </RevealGroup>
-
-          <Reveal delay={0.16}>
-            <p
-              className="mt-8 text-center mx-auto"
-              style={{
-                fontSize: 'var(--fs-caption)',
-                color: 'var(--text-subtle)',
-                lineHeight: 1.55,
-                maxWidth: '52ch',
-              }}
-            >
-              Solo l’Axon Shell™ originale garantisce le condizioni per cui Axon
-              è stato progettato.
-            </p>
-          </Reveal>
         </Container>
       </Section>
 
@@ -161,7 +146,7 @@ export default function ShopContent() {
             <div className="flex flex-col gap-5">
               <Reveal>
                 <h2 className="text-h2">
-                  Cosa include il Kit.
+                  Cosa include il Kit
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>
@@ -192,8 +177,8 @@ export default function ShopContent() {
                     1 dispositivo Axon Ø 30 mm
                   </strong>
                   ,{' '}
-                  <strong style={{ color: 'var(--text)' }}>1 Axon Shell™</strong>{' '}
-                  e la scatola originale. L’Axon Shell™ non è una semplice
+                  <strong style={{ color: 'var(--text)' }}>1 Axon Shell</strong>{' '}
+                  e la scatola originale. L’Axon Shell non è una semplice
                   bustina: è il guscio funzionale dedicato, progettato per
                   garantire piena efficacia, comfort sulla pelle, resistenza ai
                   lavaggi e corretta applicazione. Con il{' '}
@@ -267,7 +252,7 @@ export default function ShopContent() {
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,360px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
             <Reveal>
               <h2 className="text-h2">
-                Spedizioni, resi e garanzia.
+                Spedizioni, resi e garanzia
               </h2>
             </Reveal>
 

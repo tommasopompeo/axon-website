@@ -151,7 +151,7 @@ export default function AziendeContent() {
             <div className="flex flex-col gap-4 max-w-2xl">
               <Reveal>
                 <h2 className="text-h2">
-                  Un dispositivo, molti settori.
+                  Un dispositivo, molti settori
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>
@@ -197,7 +197,7 @@ export default function AziendeContent() {
             <div className="flex flex-col gap-5">
               <Reveal>
                 <h2 className="text-h2">
-                  Raccontaci la tua esigenza.
+                  Raccontaci la tua esigenza
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>

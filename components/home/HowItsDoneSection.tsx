@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
+import Card from '@/components/ui/Card'
 import Reveal from '@/components/ui/Reveal'
 
 export default function HowItsDoneSection() {
@@ -41,7 +42,7 @@ export default function HowItsDoneSection() {
             <div className="flex flex-col justify-between h-full gap-6">
 
               {/* Top: Vertical Image (Axon Shell sewn) */}
-              <div className="relative w-full aspect-[4/5] rounded-[var(--radius-lg)] overflow-hidden border border-gray-200 bg-gray-100 shadow-xl group">
+              <div className="relative w-full aspect-[4/5] rounded-[var(--radius-lg)] overflow-hidden border border-[rgba(0,0,0,0.06)] bg-white shadow-xl group">
                 <Image
                   src="/axon-shell-sewn.jpg"
                   alt="Axon Shell cucito sui vestiti"
@@ -52,13 +53,13 @@ export default function HowItsDoneSection() {
               </div>
 
               {/* Bottom: Shell Description */}
-              <div className="p-6 lg:p-8 rounded-[var(--radius-lg)] bg-black text-white border border-gray-800 transition-all duration-300 flex flex-col justify-between gap-4 shadow-lg flex-1">
+              <Card variant="surface" className="p-6 lg:p-8 text-white flex flex-col justify-between gap-4 shadow-lg flex-1">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-xl lg:text-2xl text-white leading-tight">
                     Cucilo direttamente sui tuoi capi
                   </h3>
                   <p className="text-sm lg:text-base text-gray-300 leading-relaxed">
-                    Fissa l&apos;Axon Shell™ a qualsiasi capo d&apos;abbigliamento — alla nuca, sul petto o sulla schiena — con pochi semplici punti di cucitura. Ti basterà poi inserire il dispositivo Axon all&apos;interno del guscio ogni volta che decidi di indossarlo.
+                    Fissa l&apos;Axon Shell a qualsiasi capo d&apos;abbigliamento — alla nuca, sul petto o sulla schiena — con pochi semplici punti di cucitura. Ti basterà poi inserire il dispositivo Axon all&apos;interno del guscio ogni volta che decidi di indossarlo.
                   </p>
                 </div>
 
@@ -71,7 +72,7 @@ export default function HowItsDoneSection() {
                     <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-0.5" />
                   </Link>
                 </div>
-              </div>
+              </Card>
 
             </div>
           </Reveal>
@@ -81,7 +82,7 @@ export default function HowItsDoneSection() {
             <div className="flex flex-col justify-between h-full gap-6">
 
               {/* Top: Band Description */}
-              <div className="p-6 lg:p-8 rounded-[var(--radius-lg)] bg-black text-white border border-gray-800 transition-all duration-300 flex flex-col justify-between gap-4 shadow-lg flex-1">
+              <Card variant="surface" className="p-6 lg:p-8 text-white flex flex-col justify-between gap-4 shadow-lg flex-1">
                 <div className="flex flex-col gap-2">
                   <h3 className="text-xl lg:text-2xl text-white leading-tight">
                     Axon Band: indossalo al polso
@@ -100,10 +101,10 @@ export default function HowItsDoneSection() {
                     <ArrowRight size={16} className="transition-transform group-hover/link:translate-x-0.5" />
                   </Link>
                 </div>
-              </div>
+              </Card>
 
               {/* Bottom: Vertical Image (Axon Band) */}
-              <div className="relative w-full aspect-[4/5] rounded-[var(--radius-lg)] overflow-hidden border border-gray-200 bg-gray-100 shadow-xl group">
+              <div className="relative w-full aspect-[4/5] rounded-[var(--radius-lg)] overflow-hidden border border-[rgba(0,0,0,0.06)] bg-white shadow-xl group">
                 <Image
                   src="/axon-watch.jpg"
                   alt="Axon Band indossato al polso"

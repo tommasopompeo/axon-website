@@ -55,7 +55,7 @@ export default function TargetCarousel() {
           <div className="flex max-w-[75ch] flex-col gap-4">
             <Reveal>
               <h2 className="text-balance text-display">
-                Per come ti muovi, ogni giorno.
+                Per come ti muovi, ogni giorno
               </h2>
             </Reveal>
             <Reveal delay={0.14}>
@@ -69,18 +69,13 @@ export default function TargetCarousel() {
           </div>
         </div>
 
-        {/* ── Carosello ── */}
+        {/* ── Griglia contesti ── */}
         <Reveal delay={0.1}>
-          <div
-            role="region"
-            aria-label="Contesti d'uso di Axon"
-            tabIndex={0}
-            className="flex snap-x snap-proximity gap-4 overflow-x-auto lg:gap-5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
             {cards.map((card) => (
               <div
                 key={card.id}
-                className="target-tile relative w-[80%] flex-none snap-start overflow-hidden sm:w-[56%] md:w-[40%] lg:w-[316px]"
+                className="target-tile relative overflow-hidden"
                 style={{ aspectRatio: '3 / 4', borderRadius: 'var(--radius-lg)' }}
               >
                 {/* Immagine o placeholder: il FRAME (riquadro + raggio + aspect) resta identico */}
@@ -90,7 +85,7 @@ export default function TargetCarousel() {
                     alt={card.alt}
                     fill
                     className="object-cover object-center"
-                    sizes="(max-width: 640px) 80vw, (max-width: 768px) 56vw, (max-width: 1024px) 40vw, 316px"
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
                   />
                 ) : (
                   <div

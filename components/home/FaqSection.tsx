@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: 'Come si usa?',
-    a: 'Si inserisce nell’Axon Shell™ e si cuce il guscio al capo (nuca, fascia lombare o petto), oppure si cuce direttamente. Poi basta indossare il capo normalmente. Non serve contatto con la pelle.',
+    a: 'Si inserisce nell’Axon Shell e si cuce il guscio al capo (nuca, fascia lombare o petto), oppure si cuce direttamente. Poi basta indossare il capo normalmente. Non serve contatto con la pelle.',
   },
   {
     q: 'Devo ricaricarlo o accenderlo?',
@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     q: 'Cosa contiene il Kit?',
-    a: '1 dispositivo Axon Ø 30 mm, 1 Axon Shell™ e la scatola originale. A € 230,00, IVA e spedizione incluse.',
+    a: '1 dispositivo Axon Ø 30 mm, 1 Axon Shell e la scatola originale. A € 230,00, IVA e spedizione incluse.',
   },
   {
     q: 'Sono un’azienda: posso integrare Axon nei miei prodotti?',
@@ -67,7 +67,7 @@ export default function FaqSection() {
           <div className="flex flex-col gap-5">
             <Reveal>
               <h2 className="text-h2">
-                Domande frequenti.
+                Domande frequenti
               </h2>
             </Reveal>
             <Reveal delay={0.14}>

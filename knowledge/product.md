@@ -32,16 +32,16 @@
 
 ## I due prodotti in vendita (Shop)
 ### 1. AXON KIT — Dispositivo Medico
-- Contenuto: **1 dispositivo Axon Ø 30 mm** + **1 Axon Shell™** + **scatola originale**.
+- Contenuto: **1 dispositivo Axon Ø 30 mm** + **1 Axon Shell** + **scatola originale**.
 - **Prezzo: € 230,00** — IVA inclusa, spedizione inclusa.
 - Posizionamento: la soluzione completa per iniziare a usare Axon nelle condizioni
   per cui è stato progettato.
 
-### 2. AXON SHELL™ — Kit da 5
-- Contenuto: **5 gusci AXON SHELL™** (i contenitori funzionali, cucibili).
+### 2. AXON SHELL — Kit da 5
+- Contenuto: **5 gusci AXON SHELL** (i contenitori funzionali, cucibili).
 - Materiale tecnologico riciclabile, angoli arrotondati, saldature termosaldabili.
 - Pensato per applicare Axon su **più capi/accessori** (ricambi/estensione).
-- Nota: AXON SHELL™ non è una semplice bustina; è progettato per garantire piena
+- Nota: AXON SHELL non è una semplice bustina; è progettato per garantire piena
   efficacia, comfort sulla pelle, resistenza ai lavaggi e corretta applicazione.
 - Prezzo: **da definire** (placeholder finché Tommaso non conferma).
 
@@ -50,7 +50,7 @@
 
 ## Come si usa (sintesi per il sito)
 - Due modalità: **cucito fisso** (lungo la circonferenza) oppure **removibile** con
-  l'Axon Shell™ (si cuce la parte superiore del guscio al capo; Axon va estratto prima
+  l'Axon Shell (si cuce la parte superiore del guscio al capo; Axon va estratto prima
   del lavaggio).
 - Punti consigliati: **zona cervicale** (nuca), **zona lombosacrale** (bordo pantaloni
   sul sacro), **zona toracica anteriore** (lato destro del petto, dentro una giacca).

@@ -152,7 +152,7 @@ export default function ProfessionistiContent() {
             <div className="flex flex-col gap-4 max-w-2xl">
               <Reveal>
                 <h2 className="text-h2">
-                  Una tecnologia, molte professioni.
+                  Una tecnologia, molte professioni
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>
@@ -198,7 +198,7 @@ export default function ProfessionistiContent() {
             <div className="flex flex-col gap-5">
               <Reveal>
                 <h2 className="text-h2">
-                  Raccontaci la tua esigenza.
+                  Raccontaci la tua esigenza
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>

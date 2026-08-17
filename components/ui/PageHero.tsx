@@ -57,6 +57,7 @@ export default function PageHero({
           alt={media.alt}
           fill
           priority
+          sizes="100vw"
           className="object-cover -z-10"
         />
       )}

@@ -175,7 +175,7 @@ export default function ResultsAccordion({
                         <span
                           className="font-bold text-[var(--brand)]"
                           style={{
-                            fontSize: 'clamp(2rem, 4vw, 2.75rem)',
+                            fontSize: 'var(--fs-stat-results)',
                             letterSpacing: '-0.02em',
                             lineHeight: 1,
                           }}

@@ -121,7 +121,7 @@ export default function ContestiBento() {
                   className="font-extrabold leading-none"
                   style={{
                     color: 'var(--brand)',
-                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    fontSize: 'var(--fs-stat-bento)',
                     letterSpacing: '-0.03em',
                   }}
                 >
@@ -145,7 +145,7 @@ export default function ContestiBento() {
                   className="font-extrabold leading-none"
                   style={{
                     color: 'var(--brand)',
-                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    fontSize: 'var(--fs-stat-bento)',
                     letterSpacing: '-0.03em',
                   }}
                 >
@@ -169,7 +169,7 @@ export default function ContestiBento() {
                   className="font-extrabold leading-none"
                   style={{
                     color: 'var(--brand)',
-                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    fontSize: 'var(--fs-stat-bento)',
                     letterSpacing: '-0.03em',
                   }}
                 >
@@ -193,7 +193,7 @@ export default function ContestiBento() {
                   className="font-extrabold leading-none"
                   style={{
                     color: 'var(--brand)',
-                    fontSize: 'clamp(1.8rem, 3.2vw, 2.4rem)',
+                    fontSize: 'var(--fs-stat-bento)',
                     letterSpacing: '-0.03em',
                   }}
                 >

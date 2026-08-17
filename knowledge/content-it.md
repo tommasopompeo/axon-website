@@ -17,7 +17,7 @@
 # FOOTER (su tutte le pagine)
 - Logo AXON + tagline: *"La forza invisibile che rivoluziona il movimento."*
 - Colonna Navigazione: Applicazioni · Come funziona · Testimonianze · FAQ · Shop · Aziende · Contatti
-- Colonna Prodotto: AXON KIT · AXON SHELL™ · Come si usa · FAQ
+- Colonna Prodotto: AXON KIT · AXON SHELL · Come si usa · FAQ
 - Colonna Azienda: Axon-Tech S.r.l. · Contatti · info@axon-tech.it
 - Social: Instagram · TikTok · LinkedIn (link in lib/links.ts, placeholder)
 - Riga legale: "Axon è un dispositivo medico di Classe I. Leggere le istruzioni per l'uso.
@@ -57,7 +57,7 @@
 - Sottotitolo: *Progettato per adattarsi perfettamente al tuo stile di vita. Scegli la
   soluzione più comoda per te ed esprimi il massimo del tuo benessere in ogni momento.*
 - Layout: griglia a 2 colonne, ciascuna con immagine + box testo nero:
-  1. **Cucilo direttamente sui tuoi capi** — *Fissa l'Axon Shell™ a qualsiasi capo
+  1. **Cucilo direttamente sui tuoi capi** — *Fissa l'Axon Shell a qualsiasi capo
      d'abbigliamento — alla nuca, sul petto o sulla schiena — con pochi punti di cucitura.
      Inserisci poi il dispositivo Axon nel guscio ogni volta che lo indossi.* →
      axon-shell-sewn.jpg · CTA "Vedi nello shop" → /shop
@@ -65,9 +65,9 @@
      all'esclusivo cinturino Axon Band.* → axon-watch.jpg · CTA "Vedi nello shop" → /shop
 
 ## 4. A CHI È RIVOLTO (TargetCarousel) — id: per-chi
-- H2: **Per come ti muovi, ogni giorno.**
+- H2: **Per come ti muovi, ogni giorno**
 - Sottotitolo: *Axon lavora con te in ogni contesto, dal lavoro allo sport.*
-- Carousel 4 card:
+- Griglia 4 card:
   1. **Vita quotidiana** — *Postura e tensioni delle lunghe ore da seduti.* (ufficio.jpg)
   2. **Anzianità** — *Supporto a equilibrio e stabilità, per più autonomia.* (anziano.jpg)
   3. **Sport** — *Equilibrio, forza e recupero, in ogni disciplina.* (sciatore.jpg)
@@ -166,7 +166,7 @@
 - H1: **Shop**
 - Sottotitolo: *Scegli il tuo Axon. Spedizione inclusa in Italia.*
 - Prodotto 1 — **AXON KIT**: immagini kit-1.jpg / kit-2.jpg, prezzo € 230,00, CTA → Shopify
-- Prodotto 2 — **AXON SHELL™ Kit da 5**: immagini shell-1.jpg / shell-2.jpg, prezzo [da definire], CTA → Shopify
+- Prodotto 2 — **AXON SHELL Kit da 5**: immagini shell-1.jpg / shell-2.jpg, prezzo [da definire], CTA → Shopify
 - Sezione fiducia: garanzia 2 anni · dispositivo medico Classe I · spedizione inclusa.
 
 ---
@@ -178,7 +178,7 @@
   nella tua attività, sei nel posto giusto.*
 
 ## Sezione "Ambiti professionali"
-- H2: **Una tecnologia, molte professioni.**
+- H2: **Una tecnologia, molte professioni**
 - 6 card: Fisioterapisti · Medici e specialisti · Personal trainer ·
   Osteopati e chiropratici · Podologi · Educatori motori e trainer per anziani
 
@@ -250,12 +250,12 @@
 
 # FAQ (testi)
 1. **Cos'è Axon?** — Un dispositivo medico di Classe I, passivo e non invasivo...
-2. **Come si usa?** — Si inserisce nell'Axon Shell™ e si cuce il guscio al capo...
+2. **Come si usa?** — Si inserisce nell'Axon Shell e si cuce il guscio al capo...
 3. **Devo ricaricarlo o accenderlo?** — No. Completamente passivo.
 4. **Si sente mentre lo indosso?** — No. Le micro-vibrazioni sono sub-percettibili.
 5. **Quanto tempo prima di notare qualcosa?** — Pensato per uso regolare e continuativo.
 6. **Come si lava il capo?** — Removibile: estrai Axon, lava il capo normalmente. Cucito: a mano max 30°C.
 7. **Ci sono controindicazioni?** — Nessuna nota. Non su ferite aperte. Sconsigliato a donne in gravidanza e bambini sotto i 3 anni.
 8. **Quanto dura e che garanzia ha?** — Riutilizzabile. Garanzia 2 anni.
-9. **Cosa contiene il Kit?** — 1 dispositivo Axon Ø 30 mm, 1 Axon Shell™, scatola originale. € 230,00.
+9. **Cosa contiene il Kit?** — 1 dispositivo Axon Ø 30 mm, 1 Axon Shell, scatola originale. € 230,00.
 10. **Sono un'azienda: posso integrare Axon?** — Sì. Visita la pagina Aziende.

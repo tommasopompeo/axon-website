@@ -15,7 +15,7 @@ const navColonna = [
 
 const prodottoColonna = [
   { label: 'AXON KIT', href: '/shop' },
-  { label: 'AXON SHELL™', href: '/shop' },
+  { label: 'AXON SHELL', href: '/shop' },
   { label: 'Come si usa', href: '/#come-indossare' },
   { label: 'FAQ', href: '/#faq' },
 ]

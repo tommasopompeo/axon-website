@@ -146,14 +146,16 @@
     background-color: var(--surface-2);
   }
 
-  /* TargetCarousel tiles — same hover language as dark cards. */
+  /* TargetCarousel tiles — same hover language as dark cards. Border only:
+     the tiles are full-bleed images (Image fill / placeholder both cover the
+     tile with their own background), so a background-color on this element
+     can never be seen. */
   .target-tile {
     border: 1px solid transparent;
-    transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease);
+    transition: border-color 0.2s var(--ease);
   }
   .target-tile:hover {
     border-color: var(--border-strong);
-    background-color: var(--surface-2);
   }
 
   /* Button variants */

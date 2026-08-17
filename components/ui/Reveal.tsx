@@ -36,7 +36,7 @@ export const revealItemVariants: Variants = {
 
 export const revealItemReducedVariants: Variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.4 } },
+  visible: { opacity: 1, transition: { duration: DURATION.revealReduced } },
 }
 
 /**
