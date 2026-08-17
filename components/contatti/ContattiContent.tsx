@@ -16,7 +16,14 @@ import {
   Select,
   CheckboxField,
 } from '@/components/ui/Field'
+import { AccordionItem } from '@/components/ui/Accordion'
 import { FORM_ENDPOINT } from '@/lib/links'
+import { faqs, type Faq } from '@/lib/faqs'
+
+// Sottoinsieme delle FAQ della Home mostrato accanto al form (stessa sorgente: lib/faqs.ts).
+const contattiFaqs: Faq[] = ['come-si-usa', 'contenuto-kit', 'lavaggio']
+  .map((id) => faqs.find((f) => f.id === id))
+  .filter((f): f is Faq => f !== undefined)
 
 interface FormData {
   nome: string
@@ -47,6 +54,7 @@ export default function ContattiContent() {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [serverError, setServerError] = useState(false)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   function set<K extends keyof FormData>(k: K, v: FormData[K]) {
     setData((prev) => ({ ...prev, [k]: v }))
@@ -99,11 +107,33 @@ export default function ContattiContent() {
         </Container>
       </Section>
 
-      {/* ── Form ── */}
+      {/* ── FAQ + Form ── */}
       <Section id="contatto" background="black" className="!pt-0">
         <Container>
-          <div className="max-w-xl">
-            <Reveal>
+          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
+            <div className="flex flex-col gap-5">
+              <Reveal>
+                <h2 className="text-h2">
+                  Domande frequenti
+                </h2>
+              </Reveal>
+              <Reveal delay={0.12}>
+                <div>
+                  {contattiFaqs.map(({ id, q, a }, i) => (
+                    <AccordionItem
+                      key={id}
+                      title={q}
+                      isOpen={openFaq === i}
+                      onToggle={() => setOpenFaq((prev) => (prev === i ? null : i))}
+                    >
+                      {a}
+                    </AccordionItem>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+
+            <Reveal delay={0.1}>
               {success ? (
                 <Card className="flex flex-col gap-3 p-8">
                   <p className="font-semibold" style={{ fontSize: 'var(--fs-h3)' }}>Messaggio inviato.</p>
@@ -196,7 +226,7 @@ export default function ContattiContent() {
                   )}
 
                   <div>
-                    <Button type="submit" variant="primary" size="lg" disabled={submitting}>
+                    <Button type="submit" variant="white" size="lg" disabled={submitting}>
                       {submitting ? 'Invio in corso…' : 'Invia messaggio'}
                     </Button>
                   </div>

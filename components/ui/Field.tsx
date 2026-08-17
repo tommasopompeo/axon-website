@@ -1,6 +1,6 @@
 'use client'
 
-import { forwardRef, InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react'
+import { forwardRef, useLayoutEffect, useRef, InputHTMLAttributes, SelectHTMLAttributes, TextareaHTMLAttributes, ReactNode } from 'react'
 
 const inputBase: React.CSSProperties = {
   background: 'var(--surface-2)',
@@ -67,14 +67,49 @@ export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputE
 )
 Input.displayName = 'Input'
 
+// Autogrow: `field-sizing: content` dove supportato (Baseline 2026); altrove un
+// fallback JS che segue il valore controllato (nessun listener manuale, quindi
+// non entra in conflitto con React né col reset post-invio). Crescita limitata
+// a 50vh dal max-height, oltre il quale subentra lo scroll interno.
+const supportsFieldSizing =
+  typeof CSS !== 'undefined' && CSS.supports('field-sizing', 'content')
+
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaHTMLAttributes<HTMLTextAreaElement>>(
-  ({ style, ...props }, ref) => (
-    <textarea
-      ref={ref}
-      style={{ ...inputBase, minHeight: 120, resize: 'vertical', ...style }}
-      {...props}
-    />
-  ),
+  ({ style, value, ...props }, ref) => {
+    const innerRef = useRef<HTMLTextAreaElement | null>(null)
+
+    useLayoutEffect(() => {
+      if (supportsFieldSizing) return
+      const el = innerRef.current
+      if (!el) return
+      el.style.height = 'auto'
+      el.style.height = `${el.scrollHeight + el.offsetHeight - el.clientHeight}px`
+    }, [value])
+
+    return (
+      <textarea
+        ref={(node) => {
+          innerRef.current = node
+          if (typeof ref === 'function') ref(node)
+          else if (ref) ref.current = node
+        }}
+        value={value}
+        style={
+          {
+            ...inputBase,
+            minHeight: 120,
+            maxHeight: '50vh',
+            height: 'auto',
+            overflowY: 'auto',
+            resize: 'none',
+            fieldSizing: 'content',
+            ...style,
+          } as React.CSSProperties
+        }
+        {...props}
+      />
+    )
+  },
 )
 Textarea.displayName = 'Textarea'
 

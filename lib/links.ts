@@ -6,8 +6,8 @@ export const SHOPIFY_SHELL_URL = '#'
 export const FORM_ENDPOINT = '#'
 
 // Profili social — finché un valore resta '#', l'icona corrispondente non
-// viene renderizzata (Footer, box contatti di Contatti). Impostare l'URL
-// reale qui è sufficiente per farla ricomparire: nessuna altra modifica.
+// viene renderizzata (Footer). Impostare l'URL reale qui è sufficiente
+// per farla ricomparire: nessuna altra modifica.
 export const SOCIAL = {
   instagram: '#',
   tiktok: '#',
