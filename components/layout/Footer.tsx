@@ -13,13 +13,6 @@ const navColonna = [
   { label: 'Shop', href: '/shop' },
 ]
 
-const prodottoColonna = [
-  { label: 'AXON KIT', href: '/shop' },
-  { label: 'Come si usa', href: '/#come-indossare' },
-  { label: 'FAQ', href: '/#faq' },
-  { label: 'Testimonianze', href: '/#testimonianze' },
-]
-
 const legaleColonna = [
   { label: 'Privacy', href: '/privacy' },
   { label: 'Cookie', href: '/cookie' },
@@ -43,7 +36,7 @@ export default function Footer() {
         className="w-full max-w-container mx-auto px-6 md:px-12 lg:px-16 py-16 md:py-20"
       >
         {/* Griglia principale */}
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
           {/* Colonna brand */}
           <div className="lg:col-span-1">
             <Link href="/" aria-label="Axon — torna alla home">
@@ -109,44 +102,6 @@ export default function Footer() {
             )}
           </div>
 
-          {/* Navigazione */}
-          <div>
-            <h3
-              className="mb-4 text-xs uppercase tracking-widest"
-              style={{ color: 'var(--text-subtle)' }}
-            >
-              Navigazione
-            </h3>
-            <ul className="space-y-2">
-              {navColonna.map(({ label, href }) => (
-                <li key={href}>
-                  <Link href={href} className="text-sm link-muted">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Prodotto */}
-          <div>
-            <h3
-              className="mb-4 text-xs uppercase tracking-widest"
-              style={{ color: 'var(--text-subtle)' }}
-            >
-              Prodotto
-            </h3>
-            <ul className="space-y-2">
-              {prodottoColonna.map(({ label, href }) => (
-                <li key={label}>
-                  <Link href={href} className="text-sm link-muted">
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Azienda */}
           <div>
             <h3
@@ -170,6 +125,25 @@ export default function Footer() {
                   info@axon-tech.it
                 </a>
               </li>
+            </ul>
+          </div>
+
+          {/* Navigazione */}
+          <div>
+            <h3
+              className="mb-4 text-xs uppercase tracking-widest"
+              style={{ color: 'var(--text-subtle)' }}
+            >
+              Navigazione
+            </h3>
+            <ul className="space-y-2">
+              {navColonna.map(({ label, href }) => (
+                <li key={href}>
+                  <Link href={href} className="text-sm link-muted">
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

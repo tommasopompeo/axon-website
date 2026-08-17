@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from 'react'
 import Link from 'next/link'
-import { Instagram, Mail, MapPin } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Reveal from '@/components/ui/Reveal'
@@ -17,7 +16,7 @@ import {
   Select,
   CheckboxField,
 } from '@/components/ui/Field'
-import { FORM_ENDPOINT, SOCIAL } from '@/lib/links'
+import { FORM_ENDPOINT } from '@/lib/links'
 
 interface FormData {
   nome: string
@@ -100,12 +99,10 @@ export default function ContattiContent() {
         </Container>
       </Section>
 
-      {/* ── Form + box contatti ── */}
+      {/* ── Form ── */}
       <Section id="contatto" background="black" className="!pt-0">
         <Container>
-          <div className="grid grid-cols-1 gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,360px)] lg:gap-16 lg:items-start">
-
-            {/* Form */}
+          <div className="max-w-xl">
             <Reveal>
               {success ? (
                 <Card className="flex flex-col gap-3 p-8">
@@ -205,68 +202,6 @@ export default function ContattiContent() {
                   </div>
                 </form>
               )}
-            </Reveal>
-
-            {/* Box contatti */}
-            <Reveal delay={0.14}>
-              <div className="flex flex-col gap-6">
-                <Card className="flex flex-col gap-5 p-6 lg:p-7">
-                  <h2 className="text-h3">
-                    Contatti diretti
-                  </h2>
-
-                  <div className="flex flex-col gap-4">
-                    <a
-                      href="mailto:info@axon-tech.it"
-                      className="flex items-center gap-3 link-muted"
-                    >
-                      <span
-                        className="inline-flex items-center justify-center shrink-0"
-                        style={{ width: 36, height: 36, borderRadius: '999px', background: 'var(--brand-soft)', color: 'var(--brand)' }}
-                      >
-                        <Mail size={16} strokeWidth={2} aria-hidden="true" />
-                      </span>
-                      <span style={{ fontSize: 'var(--fs-body)' }}>info@axon-tech.it</span>
-                    </a>
-
-                    <div className="flex items-start gap-3">
-                      <span
-                        className="inline-flex items-center justify-center shrink-0"
-                        style={{ width: 36, height: 36, borderRadius: '999px', background: 'var(--brand-soft)', color: 'var(--brand)' }}
-                      >
-                        <MapPin size={16} strokeWidth={2} aria-hidden="true" />
-                      </span>
-                      <address
-                        style={{ fontSize: 'var(--fs-body)', color: 'var(--text-muted)', fontStyle: 'normal', lineHeight: 1.55 }}
-                      >
-                        Axon-Tech S.r.l.<br />
-                        Via Verdi 73<br />
-                        31100 Treviso (TV)
-                      </address>
-                    </div>
-                  </div>
-
-                  {/* Instagram — reso solo quando lib/links.ts riporta un URL
-                      reale (non '#'); vedi stessa regola in Footer. */}
-                  {SOCIAL.instagram !== '#' && (
-                    <a
-                      href={SOCIAL.instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 link-muted"
-                      aria-label="Axon su Instagram"
-                    >
-                      <Instagram size={18} strokeWidth={1.75} aria-hidden="true" />
-                      <span style={{ fontSize: 'var(--fs-body)' }}>Instagram</span>
-                    </a>
-                  )}
-                </Card>
-
-                {/* Nota legale */}
-                <p style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-subtle)', lineHeight: 1.6 }}>
-                  Axon è un dispositivo medico di Classe I. Leggere le istruzioni per l'uso.
-                </p>
-              </div>
             </Reveal>
           </div>
         </Container>
