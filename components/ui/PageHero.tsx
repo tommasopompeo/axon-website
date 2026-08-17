@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { ReactNode } from 'react'
 import Container from './Container'
 import Section from './Section'
+import HeroFade from './HeroFade'
 
 type PageHeroMedia =
   | { type: 'video'; src: string; poster?: string }
@@ -25,6 +26,14 @@ interface PageHeroProps {
  * Come Funziona and Perché AXON: Section(min-h 100vh-header, flex-centered) →
  * background media (video or image, always -z-10) → optional dark overlay →
  * Container → max-w-4xl text column. Consolidates 4 near-identical copies.
+ *
+ * Whoop-style hero pinning (see DESIGN.md §11): the hero is `position: sticky`
+ * (top var(--header-h), z-0) so it stays put while each page's content wrapper
+ * (position relative + z-index above 0, opaque background — set per page) slides
+ * over it on native scroll. The `<HeroFade>` overlay darkens the pinned hero
+ * 0 → 0.85 across the first viewport of scroll (opacity-only, MotionValue —
+ * no per-frame React state; see HeroFade.tsx). No spacer divs: the sticky
+ * element keeps its own height in layout, so CLS stays 0.
  */
 export default function PageHero({
   id = 'top',
@@ -37,7 +46,7 @@ export default function PageHero({
   return (
     <Section
       id={id}
-      className="relative overflow-hidden z-0 min-h-[calc(100vh-var(--header-h))] flex items-center"
+      className="sticky top-[var(--header-h)] z-0 overflow-hidden min-h-[calc(100vh-var(--header-h))] flex items-center"
     >
       {media.type === 'video' ? (
         <video
@@ -79,6 +88,11 @@ export default function PageHero({
         </div>
         {cta}
       </Container>
+
+      {/* Scroll-linked fade to black — sits above the hero content (z-20) but
+          pointer-events:none so the CTA/text stay interactive until the page
+          content wrapper physically covers them (see HeroFade.tsx). */}
+      <HeroFade />
     </Section>
   )
 }

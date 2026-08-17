@@ -94,6 +94,11 @@ const mobilitaItems: ResultItem[] = [
 export default function PercheAxonPage() {
   return (
     <>
+      {/* Static outer wrapper — REQUIRED for hero pinning: Next.js's router
+          skips position:sticky elements when scrolling on navigation, so the
+          page's first DOM node must be a plain static element or the router
+          scrolls past the hero. See app/page.tsx + DESIGN.md §11. */}
+      <div>
       {/* ── Hero Section ── */}
       <PageHero
         media={{ type: 'image', src: '/hero_perche_axon.jpg', alt: 'I risultati di chi ha indossato AXON' }}
@@ -106,6 +111,9 @@ export default function PercheAxonPage() {
         </Reveal>
       </PageHero>
 
+      {/* Content wrapper — opaque bg + z above the sticky hero so it slides
+          over and covers the pinned hero (Whoop-style pinning, DESIGN.md §11). */}
+      <div className="relative z-10" style={{ background: 'var(--bg)' }}>
       {/* ── Intro paragraph ── */}
       <Section background="black">
         <Container>
@@ -154,6 +162,8 @@ export default function PercheAxonPage() {
 
       {/* ── Sezione Partner ── */}
       <PartnerSection />
+      </div>
+      </div>
     </>
   )
 }

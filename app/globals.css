@@ -252,3 +252,24 @@
     transform: none;
   }
 }
+
+/* Hero pinning — Whoop-style scroll-linked darkening of the pinned PageHero.
+   The hero is position:sticky (set in components/ui/PageHero.tsx); this black
+   overlay fades 0 → 0.85 across the first viewport-height of page scroll so the
+   hero visibly darkens as each page's content wrapper slides over it. See
+   DESIGN.md §11 ("hero pinning").
+
+   Base (static) styles only. Opacity is animated in JS by <HeroFade> (Framer
+   Motion useScroll/useTransform) — CSS scroll-driven animation is unusable here
+   because the root scroller has `overflow-x: clip`, which stops
+   `animation-timeline: scroll(root)` from tracking in Chromium (see
+   components/ui/HeroFade.tsx). z-20 lifts it above the hero content (z-10);
+   pointer-events:none keeps the hero CTA/text clickable until covered. */
+.hero-fade {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+}
