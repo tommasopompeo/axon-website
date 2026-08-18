@@ -92,7 +92,7 @@ components/
 
 ## Asset pubblici (`/public/`)
 - `logo.svg` — logo wordmark bianco/rosso
-- `hero-video.mp4` + `hero-video-poster.jpg` — video background home hero + poster frame
+- `hero-video-disc.mp4` — disco AXON rotante, cropped/re-encoded dal vecchio video full-bleed (solo da `lg`, vedi DESIGN.md §6)
 - `come_funziona_hero.jpg` — hero immagine pagina Come funziona
 - `hero_applicazioni.jpg` — hero immagine pagina Applicazioni
 - `hero_perche_axon.jpg` — hero immagine pagina Perché AXON

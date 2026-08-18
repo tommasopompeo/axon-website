@@ -8,6 +8,12 @@ import HeroFade from './HeroFade'
 type PageHeroMedia =
   | { type: 'video'; src: string; poster?: string }
   | { type: 'image'; src: string; alt: string }
+  /** No full-bleed background media at all — the Section's own `background`
+   *  (see `background` prop below) shows through instead. Used by Home, whose
+   *  hero background is a flat white, not a full-viewport video (see `decor`). */
+  | { type: 'none' }
+
+type PageHeroBackground = 'default' | 'elevated' | 'black' | 'white'
 
 interface PageHeroProps {
   id?: string
@@ -16,8 +22,19 @@ interface PageHeroProps {
   overlayOpacity?: number
   /** 'light' = white text on dark/overlaid media (default) · 'dark' = black text on bright media (home). */
   tone?: 'light' | 'dark'
+  /** Forwarded to the underlying `Section` — only relevant when `media.type === 'none'`,
+   *  where there's no image/video to supply the visual backdrop. Default 'default'
+   *  (transparent) matches every existing video/image hero, unaffected by this prop. */
+  background?: PageHeroBackground
   /** Eyebrow/title/subtitle stack — rendered inside the shared max-w-4xl gap-6 column. */
   children: ReactNode
+  /** Optional decorative element rendered in-flow as a sibling column next to the
+   *  text (flex row from `lg`, e.g. Home's rotating AXON disc). Laid out with
+   *  `flex`/`justify-between` — never absolutely positioned — so the text column
+   *  simply narrows/wraps to make room instead of ever overlapping it, at any
+   *  viewport width. Visibility/sizing at each breakpoint is the caller's own
+   *  className on this node (e.g. `hidden lg:flex`). */
+  decor?: ReactNode
   /** Optional CTA rendered as a sibling of the text column (matches home hero's below-fold button). */
   cta?: ReactNode
 }
@@ -25,8 +42,9 @@ interface PageHeroProps {
 /**
  * PageHero — the full-viewport hero scaffold shared by Home, Applicazioni,
  * Come Funziona and Perché AXON: Section(min-h 100vh-header, flex-centered) →
- * background media (video or image, always -z-10) → optional dark overlay →
- * Container → max-w-4xl text column. Consolidates 4 near-identical copies.
+ * background media (video, image, or none — always -z-10 when present) →
+ * optional dark overlay → Container → flex row of max-w-4xl text column +
+ * optional `decor` sibling. Consolidates 4 near-identical copies.
  *
  * Whoop-style hero pinning (see DESIGN.md §11): the hero is `position: sticky`
  * (top var(--header-h), z-0) so it stays put while each page's content wrapper
@@ -41,14 +59,18 @@ export default function PageHero({
   media,
   overlayOpacity = 0,
   tone = 'light',
+  background = 'default',
   children,
+  decor,
   cta,
 }: PageHeroProps) {
-  // Il poster del video hero è l'elemento LCP della pagina, ma Chrome scarica
-  // l'attributo `poster` a priorità bassa (non esiste fetchpriority sul
-  // poster). Il preload high lo mette in cima alla coda, come già avviene per
-  // le hero immagine via <Image priority>. Misurato su build di produzione
-  // (Lighthouse mobile): LCP home 8.7s → vedi report per il valore post-fix.
+  // Quando la hero è un video con poster, quel poster è l'elemento LCP della
+  // pagina, ma Chrome lo scarica a priorità bassa (non esiste fetchpriority
+  // sul `poster` HTML). Il preload high lo mette in cima alla coda, come già
+  // avviene per le hero immagine via <Image priority>. Nessuna delle 4 hero
+  // attuali passa più di qui (Home è passata a `media.type:'none'` il
+  // 2026-08-18, le altre 3 sono sempre state `media.type:'image'`) — il ramo
+  // resta per una futura hero video con poster. Vedi DESIGN.md §15.
   if (media.type === 'video' && media.poster) {
     preload(media.poster, { as: 'image', fetchPriority: 'high' })
   }
@@ -56,6 +78,7 @@ export default function PageHero({
   return (
     <Section
       id={id}
+      background={background}
       className="sticky top-[var(--header-h)] z-0 overflow-hidden min-h-[calc(100vh-var(--header-h))] flex items-center"
     >
       {media.type === 'video' ? (
@@ -70,7 +93,7 @@ export default function PageHero({
         >
           <source src={media.src} type="video/mp4" />
         </video>
-      ) : (
+      ) : media.type === 'image' ? (
         <Image
           src={media.src}
           alt={media.alt}
@@ -79,7 +102,7 @@ export default function PageHero({
           sizes="100vw"
           className="object-cover -z-10"
         />
-      )}
+      ) : null}
 
       {overlayOpacity > 0 && (
         <div
@@ -90,11 +113,14 @@ export default function PageHero({
       )}
 
       <Container className="relative z-10">
-        <div
-          className="max-w-4xl flex flex-col gap-6 lg:gap-8 pt-12 lg:pt-20"
-          style={{ color: tone === 'dark' ? '#0a0a0b' : '#ffffff' }}
-        >
-          {children}
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-12">
+          <div
+            className="max-w-4xl flex flex-col gap-6 lg:gap-8 pt-12 lg:pt-20"
+            style={{ color: tone === 'dark' ? '#0a0a0b' : '#ffffff' }}
+          >
+            {children}
+          </div>
+          {decor}
         </div>
         {cta}
       </Container>

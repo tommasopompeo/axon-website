@@ -40,7 +40,7 @@
   con i micro-movimenti di ogni giorno, aiuta a migliorare equilibrio, forza e
   rilassamento muscolare. Senza batterie. Senza contatto con la pelle.*
 - CTA: **Acquista AXON** → /shop
-- Sfondo: video background (`/hero-video.mp4`). Testo e CTA in **nero** (il video ha sfondo chiaro).
+- Sfondo: bianco pieno. Testo e CTA in **nero**. A destra (da `lg`, disco nascosto sotto): video del disco AXON rotante (`/hero-video-disc.mp4`), in flusso normale accanto al testo — non più full-bleed dietro l'intera hero.
 
 ## 2. CONTESTI (ContestiBento) — id: contesti
 - H2: **Migliora il tuo benessere a 360°**
