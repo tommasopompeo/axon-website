@@ -24,7 +24,7 @@ import {
   Select,
   CheckboxField,
 } from '@/components/ui/Field'
-import { FORM_ENDPOINT } from '@/lib/links'
+import { submitContact } from '@/lib/contact'
 
 // ── Casi d'uso ──
 const useCases = [
@@ -104,12 +104,17 @@ export default function AziendeContent() {
     setSubmitting(true)
     setServerError(false)
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, _honey: undefined, source: 'aziende' }),
+      await submitContact('aziende', {
+        nome: data.nome,
+        email: data.email,
+        azienda: data.azienda,
+        ruolo: data.ruolo,
+        telefono: data.telefono,
+        settore: data.settore,
+        tipo: data.tipo,
+        volumi: data.volumi,
+        messaggio: data.messaggio,
       })
-      if (!res.ok) throw new Error('error')
       setSuccess(true)
     } catch {
       setServerError(true)

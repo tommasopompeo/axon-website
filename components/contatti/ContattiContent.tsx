@@ -17,7 +17,7 @@ import {
   CheckboxField,
 } from '@/components/ui/Field'
 import { AccordionItem } from '@/components/ui/Accordion'
-import { FORM_ENDPOINT } from '@/lib/links'
+import { submitContact } from '@/lib/contact'
 import { faqs, type Faq } from '@/lib/faqs'
 
 // Sottoinsieme delle FAQ della Home mostrato accanto al form (stessa sorgente: lib/faqs.ts).
@@ -69,12 +69,12 @@ export default function ContattiContent() {
     setSubmitting(true)
     setServerError(false)
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, _honey: undefined, source: 'contatti' }),
+      await submitContact('contatti', {
+        nome: data.nome,
+        email: data.email,
+        oggetto: data.oggetto,
+        messaggio: data.messaggio,
       })
-      if (!res.ok) throw new Error('error')
       setSuccess(true)
     } catch {
       setServerError(true)
