@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { preload } from 'react-dom'
 import { ReactNode } from 'react'
 import Container from './Container'
 import Section from './Section'
@@ -43,6 +44,15 @@ export default function PageHero({
   children,
   cta,
 }: PageHeroProps) {
+  // Il poster del video hero è l'elemento LCP della pagina, ma Chrome scarica
+  // l'attributo `poster` a priorità bassa (non esiste fetchpriority sul
+  // poster). Il preload high lo mette in cima alla coda, come già avviene per
+  // le hero immagine via <Image priority>. Misurato su build di produzione
+  // (Lighthouse mobile): LCP home 8.7s → vedi report per il valore post-fix.
+  if (media.type === 'video' && media.poster) {
+    preload(media.poster, { as: 'image', fetchPriority: 'high' })
+  }
+
   return (
     <Section
       id={id}

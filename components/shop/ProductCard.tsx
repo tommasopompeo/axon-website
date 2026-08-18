@@ -19,6 +19,9 @@ interface ProductCardProps {
   price: string
   priceNote?: string
   href: string
+  /** true sulla prima card della pagina: la sua prima immagine è l'elemento
+      LCP dello Shop — priority la preloada invece del lazy di default. */
+  priority?: boolean
 }
 
 // Stile frecce condiviso col resto del sito: pill brand, 44px, stato disabilitato ai bordi.
@@ -35,6 +38,7 @@ export default function ProductCard({
   price,
   priceNote,
   href,
+  priority = false,
 }: ProductCardProps) {
   const scrollerRef = useRef<HTMLDivElement>(null)
   const reduced = useReducedMotion()
@@ -90,12 +94,13 @@ export default function ProductCard({
           aria-label={`Immagini ${title}`}
           className="flex h-full w-full snap-x snap-mandatory overflow-x-auto [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
-          {images.map((img) => (
+          {images.map((img, i) => (
             <div key={img.src} className="relative h-full w-full flex-none snap-center">
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
+                priority={priority && i === 0}
                 className="object-contain object-center p-6 lg:p-8"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
@@ -206,7 +211,9 @@ export default function ProductCard({
               <p
                 style={{
                   fontSize: 'var(--fs-caption)',
-                  color: 'rgba(10,10,11,0.45)',
+                  // --text-on-white-muted: 0.45 alpha non raggiungeva il
+                  // contrasto AA 4.5:1 su bianco per testo a --fs-caption.
+                  color: 'var(--text-on-white-muted)',
                 }}
               >
                 {priceNote}
@@ -214,9 +221,30 @@ export default function ProductCard({
             )}
           </div>
 
-          <Button href={href} target="_blank" variant="primary" size="lg">
-            Acquista
-          </Button>
+          {/* Finché l'URL Shopify è il placeholder '#' (lib/links.ts), il CTA
+              è un bottone disabilitato "Presto disponibile" — mai un link
+              href="#". Impostare l'URL reale in lib/links.ts ripristina
+              automaticamente il link "Acquista". */}
+          {href === '#' ? (
+            <div className="flex flex-col gap-2">
+              <Button type="button" disabled variant="primary" size="lg">
+                Presto disponibile
+              </Button>
+              <p
+                style={{ fontSize: 'var(--fs-caption)', color: 'rgba(10,10,11,0.62)' }}
+              >
+                L&rsquo;acquisto online sarà attivo a breve. Per ordinare subito scrivi a{' '}
+                <a href="mailto:info@axon-tech.it" style={{ textDecoration: 'underline' }}>
+                  info@axon-tech.it
+                </a>
+                .
+              </p>
+            </div>
+          ) : (
+            <Button href={href} target="_blank" variant="primary" size="lg">
+              Acquista
+            </Button>
+          )}
         </div>
       </div>
     </div>

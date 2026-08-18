@@ -3,11 +3,15 @@ import { Reveal, PageHero } from '@/components/ui'
 import VideoSection from '@/components/come-funziona/VideoSection'
 import ScienceSection from '@/components/come-funziona/ScienceSection'
 
+const description =
+  'Scopri la tecnologia e le basi scientifiche dei dispositivi e dei gusci passivi AXON: meccanotrasduzione, canali Piezo, vibrazioni terapeutiche e nanomateriali.'
+
 export const metadata: Metadata = {
-  title: 'Come funziona - AXON',
-  description:
-    'Scopri la tecnologia e le basi scientifiche dei dispositivi e dei gusci passivi AXON: meccanotrasduzione, canali Piezo, vibrazioni terapeutiche e nanomateriali.',
+  // Solo il nome pagina: il template '%s | Axon' del layout aggiunge il brand.
+  title: 'Come funziona',
+  description,
   alternates: { canonical: '/come-funziona' },
+  openGraph: { title: 'Come funziona', description, url: '/come-funziona' },
 }
 
 export default function ComeFunzionaPage() {

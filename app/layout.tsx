@@ -3,6 +3,7 @@ import { Urbanist } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { OrganizationJsonLd } from '@/components/JsonLd'
 
 const urbanist = Urbanist({
   subsets: ['latin'],
@@ -37,8 +38,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="it" className={urbanist.variable}>
       <body className={urbanist.className}>
+        {/* Skip link — primo elemento focalizzabile della pagina (WCAG 2.4.1);
+            visibile solo al focus da tastiera, stile .skip-link in globals.css. */}
+        <a href="#contenuto-principale" className="skip-link">
+          Salta al contenuto principale
+        </a>
+        <OrganizationJsonLd />
         <Header />
-        <main>{children}</main>
+        <main id="contenuto-principale">{children}</main>
         <Footer />
       </body>
     </html>

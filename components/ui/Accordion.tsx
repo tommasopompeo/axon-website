@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode } from 'react'
+import { ReactNode, useId } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import { EASE, DURATION } from '@/lib/motion'
@@ -27,6 +27,11 @@ export function AccordionItem({
   className = '',
 }: AccordionItemProps) {
   const reduced = useReducedMotion()
+  // Pattern accordion ARIA: bottone ↔ pannello collegati via aria-controls /
+  // aria-labelledby, così gli screen reader annunciano la relazione.
+  const baseId = useId()
+  const buttonId = `${baseId}-btn`
+  const panelId = `${baseId}-panel`
 
   return (
     <div
@@ -35,9 +40,11 @@ export function AccordionItem({
     >
       <button
         type="button"
+        id={buttonId}
         onClick={onToggle}
         className="w-full flex items-center justify-between gap-4 py-5 text-left"
         aria-expanded={isOpen}
+        aria-controls={panelId}
         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
       >
         <span className="flex items-center gap-3">
@@ -72,6 +79,9 @@ export function AccordionItem({
       <AnimatePresence initial={false}>
         {isOpen && (
           <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={buttonId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}

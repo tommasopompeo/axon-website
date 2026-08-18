@@ -4,10 +4,15 @@ import StickyScrollApplicazioni from '@/components/applicazioni/StickyScrollAppl
 import AxonFeaturesSection from '@/components/applicazioni/AxonFeaturesSection'
 import WearMethodSection from '@/components/applicazioni/WearMethodSection'
 
+const description =
+  'Scopri tutti gli ambiti di applicazione dei dispositivi e gusci passivi AXON in ogni occasione.'
+
 export const metadata: Metadata = {
-  title: 'Applicazioni - AXON',
-  description: 'Scopri tutti gli ambiti di applicazione dei dispositivi e gusci passivi AXON in ogni occasione.',
+  // Solo il nome pagina: il template '%s | Axon' del layout aggiunge il brand.
+  title: 'Applicazioni',
+  description,
   alternates: { canonical: '/applicazioni' },
+  openGraph: { title: 'Applicazioni', description, url: '/applicazioni' },
 }
 
 export default function ApplicazioniPage() {

@@ -3,11 +3,15 @@ import { Container, Section, Reveal, PageHero } from '@/components/ui'
 import ResultsAccordion, { ResultItem } from '@/components/perche-axon/ResultsAccordion'
 import PartnerSection from '@/components/perche-axon/PartnerSection'
 
+const description =
+  'I risultati emersi dai test condotti in contesto medico-scientifico: equilibrio, forza e mobilità prima e dopo l’applicazione dei dispositivi passivi AXON.'
+
 export const metadata: Metadata = {
-  title: 'Perché AXON - AXON',
-  description:
-    'I risultati emersi dai test condotti in contesto medico-scientifico: equilibrio, forza e mobilità prima e dopo l’applicazione dei dispositivi passivi AXON.',
+  // Solo il nome pagina: il template '%s | Axon' del layout aggiunge il brand.
+  title: 'Perché AXON',
+  description,
   alternates: { canonical: '/perche-axon' },
+  openGraph: { title: 'Perché AXON', description, url: '/perche-axon' },
 }
 
 /* ─────────────────────────────────────────────────────────────────────────

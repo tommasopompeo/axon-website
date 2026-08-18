@@ -106,6 +106,9 @@ export default function StickyScrollApplicazioni() {
       {/* Sticky wrapper */}
       <div className="sticky top-0 h-screen w-full flex items-center overflow-hidden">
         <Container className="w-full">
+          {/* Titolo solo per screen reader: ripara l'ordine dei heading
+              (h1 hero → h3 dei contesti saltava il livello h2). */}
+          <h2 className="sr-only">Contesti d&rsquo;uso</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-center">
             
             {/* Left Column: Vertical Interactive Accordion / Timeline */}
@@ -113,26 +116,39 @@ export default function StickyScrollApplicazioni() {
               {applicationsData.map((item, i) => {
                 const isActive = i === activeIndex;
                 return (
-                  <div 
-                    key={item.id} 
-                    className="relative pl-6 py-4 cursor-pointer group"
-                    onClick={() => handleItemClick(i)}
+                  <div
+                    key={item.id}
+                    className="relative pl-6 py-4 group"
                   >
                     {/* Vertical indicator bar */}
-                    <div 
+                    <div
                       className={`absolute left-0 top-0 bottom-0 w-[2px] transition-all duration-300 ${
                         isActive ? "bg-white" : "bg-white/10 group-hover:bg-white/30"
-                      }`} 
-                    />
-                    
-                    {/* Title */}
-                    <h3
-                      className={`text-3xl md:text-4xl transition-all duration-300 ${
-                        isActive ? "text-white" : "text-white/35"
                       }`}
+                      aria-hidden="true"
+                    />
+
+                    {/* Title — bottone vero (non div cliccabile): raggiungibile
+                        e attivabile da tastiera (WCAG 2.1.1), stesso pattern di
+                        ResultsAccordion. */}
+                    <button
+                      type="button"
+                      onClick={() => handleItemClick(i)}
+                      aria-expanded={isActive}
+                      className="w-full text-left cursor-pointer"
+                      style={{ background: 'none', border: 'none', padding: 0 }}
                     >
-                      {item.title}
-                    </h3>
+                      {/* white/40 e non /35: i titoli inattivi sono testo
+                          "large" (30px) e a /35 il contrasto è 2.99:1, sotto
+                          il minimo AA di 3:1 (misurato con axe). */}
+                      <h3
+                        className={`text-3xl md:text-4xl transition-all duration-300 ${
+                          isActive ? "text-white" : "text-white/40"
+                        }`}
+                      >
+                        {item.title}
+                      </h3>
+                    </button>
                     
                     {/* Body Text */}
                     <AnimatePresence initial={false}>

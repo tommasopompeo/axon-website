@@ -20,6 +20,34 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          // HSTS: 2 anni, con sottodomini. Attivo solo su HTTPS (in locale è ignorato).
+          {
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload',
+          },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          // Permissions-Policy minima: nega le API sensibili che il sito non usa.
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=(), payment=()',
+          },
+          // Protezione frame: X-Frame-Options + l'equivalente CSP moderno.
+          // frame-ancestors è l'unica direttiva CSP adottata: è provabilmente
+          // non-breaking (riguarda solo l'embedding del sito in frame altrui,
+          // mai usato). Una CSP completa richiederebbe nonce/hash per gli
+          // script inline di Next e non è introdotta in questa passata.
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'none'" },
+        ],
+      },
+    ]
+  },
 }
 
 export default nextConfig

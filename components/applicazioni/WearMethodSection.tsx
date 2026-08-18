@@ -135,11 +135,7 @@ export default function WearMethodSection() {
                   return (
                     <div
                       key={item.id}
-                      className="relative pl-6 py-5 cursor-pointer group"
-                      onClick={() => {
-                        setActiveIndex(i);
-                        scrollToItem(i);
-                      }}
+                      className="relative pl-6 py-5 group"
                     >
                       {/* Vertical indicator */}
                       <div
@@ -148,16 +144,30 @@ export default function WearMethodSection() {
                             ? "bg-white"
                             : "bg-white/10 group-hover:bg-white/30"
                         }`}
+                        aria-hidden="true"
                       />
 
-                      {/* Title */}
-                      <h3
-                        className={`text-3xl md:text-4xl transition-all duration-300 ${
-                          isActive ? "text-white" : "text-white/35"
-                        }`}
+                      {/* Title — bottone vero per l'accesso da tastiera e
+                          white/40 per il contrasto 3:1 su testo large: stessi
+                          fix di StickyScrollApplicazioni, v. commenti lì. */}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setActiveIndex(i);
+                          scrollToItem(i);
+                        }}
+                        aria-expanded={isActive}
+                        className="w-full text-left cursor-pointer"
+                        style={{ background: "none", border: "none", padding: 0 }}
                       >
-                        {item.title}
-                      </h3>
+                        <h3
+                          className={`text-3xl md:text-4xl transition-all duration-300 ${
+                            isActive ? "text-white" : "text-white/40"
+                          }`}
+                        >
+                          {item.title}
+                        </h3>
+                      </button>
 
                       {/* Expandable body */}
                       <AnimatePresence initial={false}>

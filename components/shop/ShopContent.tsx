@@ -8,6 +8,7 @@ import Card from '@/components/ui/Card'
 import Reveal, { RevealGroup, RevealItem } from '@/components/ui/Reveal'
 import { AccordionItem } from '@/components/ui/Accordion'
 import ProductCard from '@/components/shop/ProductCard'
+import { AUT_MIN_DATE } from '@/lib/legal'
 import { SHOPIFY_KIT_URL, SHOPIFY_SHELL_URL } from '@/lib/links'
 
 // ── Prodotti (versione estesa) — dati da knowledge/product.md e content-it.md ──
@@ -126,16 +127,35 @@ export default function ShopContent() {
       {/* ── Schede prodotto estese ── */}
       <Section id="prodotti" background="black" className="!pt-0">
         <Container>
-          <RevealGroup
-            className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
-            staggerDelay={0.1}
-          >
-            {products.map((p) => (
-              <RevealItem key={p.title}>
-                <ProductCard {...p} />
-              </RevealItem>
+          {/* Titolo solo per screen reader: ripara l'ordine dei heading
+              (h1 "Shop" → h3 delle card prodotto saltava il livello h2). */}
+          <h2 className="sr-only">Prodotti</h2>
+          {/* trigger="mount" (CSS puro) e non RevealGroup (Framer whileInView):
+              le card sono above-the-fold e il variant scroll le SSR-a a
+              opacity:0 fino all'idratazione — su mobile throttled l'LCP della
+              pagina slittava a ~7s (Lighthouse, Render Delay 6.5s). Stesso
+              criterio documentato in Reveal.tsx per i contenuti above-the-fold. */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+            {products.map((p, i) => (
+              <Reveal trigger="mount" delay={i * 0.1} className="h-full" key={p.title}>
+                <ProductCard {...p} priority={i === 0} />
+              </Reveal>
             ))}
-          </RevealGroup>
+          </div>
+
+          {/* Dicitura standard per la pubblicità dei dispositivi medici
+              (art. 26 D.lgs. 137/2022) al punto vendita: stessa formula del
+              Footer e di Termini §3. AUT_MIN_DATE (lib/legal.ts) è la fonte
+              unica della data — aggiornarla lì, non nei tre punti. */}
+          <Reveal delay={0.15}>
+            <p
+              className="mt-6"
+              style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-subtle)', lineHeight: 1.6 }}
+            >
+              AXON è un dispositivo medico CE. Leggere attentamente le avvertenze e le
+              istruzioni per l&rsquo;uso. Aut. Min. del {AUT_MIN_DATE}.
+            </p>
+          </Reveal>
         </Container>
       </Section>
 

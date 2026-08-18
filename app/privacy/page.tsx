@@ -3,11 +3,14 @@ import Link from 'next/link'
 import { Container, Section, Reveal } from '@/components/ui'
 import LegalSection from '@/components/legal/LegalSection'
 
+const description =
+  "Informativa sul trattamento dei dati personali raccolti da Axon-Tech S.r.l. tramite il sito axon-tech.it, ai sensi dell'art. 13 del GDPR (Regolamento UE 2016/679)."
+
 export const metadata: Metadata = {
   title: 'Privacy Policy',
-  description:
-    "Informativa sul trattamento dei dati personali raccolti da Axon-Tech S.r.l. tramite il sito axon-tech.it, ai sensi dell'art. 13 del GDPR (Regolamento UE 2016/679).",
+  description,
   alternates: { canonical: '/privacy' },
+  openGraph: { title: 'Privacy Policy', description, url: '/privacy' },
 }
 
 const linkStyle: React.CSSProperties = { color: 'var(--text)', textDecoration: 'underline', textUnderlineOffset: '2px' }
@@ -43,7 +46,9 @@ export default function PrivacyPage() {
       {/* ── Corpo informativa ── */}
       <Section id="contenuto" background="black" className="!pt-0">
         <Container>
-          <div className="max-w-[70ch] flex flex-col gap-14">
+          {/* Full-width su richiesta esplicita (2026-08-18) — v. commento
+              gemello in app/termini/page.tsx. */}
+          <div className="flex flex-col gap-14">
 
             <LegalSection title="1. Titolare del trattamento">
               <p>

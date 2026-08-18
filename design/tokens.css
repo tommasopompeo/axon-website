@@ -23,7 +23,7 @@
   /* Text */
   --text: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.66);
-  --text-subtle: rgba(255, 255, 255, 0.45);
+  --text-subtle: rgba(255, 255, 255, 0.48);
 
   /* Text on white surfaces (Shop/trust cards, use-case cards, PartnerSection) */
   --text-on-white-muted: rgba(10, 10, 11, 0.62);

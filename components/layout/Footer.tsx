@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Instagram, Linkedin } from 'lucide-react'
 import { SOCIAL } from '@/lib/links'
+import { AUT_MIN_DATE } from '@/lib/legal'
 
 // Le 5 pagine dell'header, nello stesso ordine, + Shop.
 const navColonna = [
@@ -30,9 +31,14 @@ export default function Footer() {
   // delle due istanze sia presente nel render tree (display:none la esclude
   // anche dall'albero di accessibilità), quindi resta un solo nodo per volta
   // esposto agli screen reader.
+  // Dicitura standard per la pubblicità dei dispositivi medici (art. 26
+  // D.lgs. 137/2022): stessa formula ripetuta nello Shop (punto vendita) e in
+  // Termini §3. AUT_MIN_DATE (lib/legal.ts) è la fonte unica della data —
+  // aggiornarla lì, non nei tre punti singolarmente.
   const fineStampa = (
     <p className="text-xs link-subtle lg:max-w-md">
-      Axon è un dispositivo medico di Classe I. Leggere le istruzioni per l&apos;uso.
+      AXON è un dispositivo medico CE. Leggere attentamente le avvertenze e le istruzioni
+      per l&apos;uso. Aut. Min. del {AUT_MIN_DATE}.
       <br />© {anno} Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV). P.IVA
       IT05577370264.
     </p>
@@ -55,8 +61,10 @@ export default function Footer() {
           <div className="lg:flex lg:flex-col lg:justify-between">
             <div className="lg:max-w-xs">
               <Link href="/" aria-label="Axon — torna alla home">
+                {/* logo-nav.png al posto di logo.svg (465KB, raster embedded)
+                    — stessa motivazione del Header, v. commento lì. */}
                 <Image
-                  src="/logo.svg"
+                  src="/logo-nav.png"
                   alt="Axon"
                   width={40}
                   height={40}

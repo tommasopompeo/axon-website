@@ -1,4 +1,4 @@
-import JsonLd from '@/components/JsonLd'
+import { FaqJsonLd } from '@/components/JsonLd'
 import HeroSection from '@/components/home/HeroSection'
 import ContestiBento from '@/components/home/ContestiBento'
 import HowItsDoneSection from '@/components/home/HowItsDoneSection'
@@ -9,7 +9,7 @@ import FaqSection from '@/components/home/FaqSection'
 export default function HomePage() {
   return (
     <>
-      <JsonLd />
+      <FaqJsonLd />
       {/* Static outer wrapper — REQUIRED for hero pinning: on client-side
           navigation Next.js scrolls to the page's first DOM node but skips
           position:sticky elements (shouldSkipElement in layout-router), so

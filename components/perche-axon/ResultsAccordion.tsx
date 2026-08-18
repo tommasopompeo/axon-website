@@ -141,11 +141,13 @@ export default function ResultsAccordion({
               className="w-full text-left group"
               style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}
             >
+              {/* white/40 e non /35: contrasto 3:1 minimo AA per testo large
+                  (v. stesso fix in StickyScrollApplicazioni). */}
               <h3
                 className={`transition-all duration-300 ${
                   isActive
                     ? 'text-white'
-                    : 'text-white/35 group-hover:text-white/60'
+                    : 'text-white/40 group-hover:text-white/60'
                 }`}
                 style={{
                   fontSize: 'clamp(1.5rem, 2.6vw, 2rem)',

@@ -47,6 +47,27 @@
 }
 
 @layer components {
+  /* Skip link (WCAG 2.4.1) — primo elemento focalizzabile in layout.tsx.
+     Fuori viewport finché non riceve focus da tastiera; al focus appare come
+     pill brand sopra l'header (z-index oltre lo z-50 dell'header sticky). */
+  .skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 100;
+    transform: translateY(calc(-100% - 16px));
+    background: var(--brand);
+    color: var(--brand-contrast);
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: transform 0.15s var(--ease);
+  }
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
   /* Heading type scale — font-size, line-height, letter-spacing AND font-weight
      bundled together so the weight-400 display look lives in exactly one place
      per size, instead of a hidden global override fighting per-heading classes.

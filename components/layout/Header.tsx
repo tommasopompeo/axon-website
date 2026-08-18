@@ -43,8 +43,12 @@ export default function Header() {
       >
         {/* Logo */}
         <Link href="/" aria-label="Axon — torna alla home" className="flex-shrink-0">
+          {/* logo-nav.png (144px, 6.5KB) al posto di logo.svg: l'SVG incorpora
+              raster base64 e pesa 465KB — caricato con priority su ogni pagina
+              contendeva banda all'elemento LCP (misurato con Lighthouse).
+              logo.svg resta in /public per JSON-LD/branding. */}
           <Image
-            src="/logo.svg"
+            src="/logo-nav.png"
             alt="Axon"
             width={48}
             height={48}
