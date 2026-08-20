@@ -79,7 +79,16 @@ export default function PageHero({
     <Section
       id={id}
       background={background}
-      className="sticky top-[var(--header-h)] z-0 overflow-hidden min-h-[calc(100vh-var(--header-h))] flex items-center"
+      // Pin (position:sticky) solo da md: sotto 768 la hero scorre in
+      // normal flow — niente Whoop-style pinning su schermi stretti, dove il
+      // contenuto che scivola sopra una hero fissa costa più altezza di
+      // scroll di quanta ne guadagni in effetto (v. dc.html Applicazioni e
+      // Perché AXON, entrambi con --heroPos: static sotto 768 / sticky da
+      // 834). `relative` resta sempre presente (anche sotto md, dove sticky
+      // non c'è) perché è il containing block dei figli `fill`/`absolute`
+      // (Image, overlay, HeroFade) — altrimenti si posizionerebbero rispetto
+      // al primo antenato posizionato più in alto nell'albero.
+      className="relative md:sticky md:top-[var(--header-h)] z-0 overflow-hidden min-h-[calc(100vh-var(--header-h))] flex items-center"
     >
       {media.type === 'video' ? (
         <video

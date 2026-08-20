@@ -36,25 +36,30 @@ function FeatureBadge({
   title,
   description,
   maxWidth = 220,
+  compact = false,
 }: {
   icon: React.ReactNode;
   title: string;
   description: string;
   maxWidth?: number;
+  /** true nei badge del layout a griglia sotto lg: titolo più piccolo
+      (1.6rem) e non-nowrap — a 375/834 il vincolo nowrap a 2.25rem
+      sforerebbe la cella; la griglia già delimita la larghezza, quindi
+      niente maxWidth. Il layout absolute-positioned lg+ (compact di
+      default false) resta al titolo 2.25rem nowrap invariato. */
+  compact?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-3" style={{ maxWidth }}>
+    <div className="flex flex-col gap-3" style={{ maxWidth: compact ? undefined : maxWidth }}>
       <div className="text-black">{icon}</div>
       {/* Title: hardcoded to match accordion active title size (text-4xl = 2.25rem, font-weight 800) */}
       <p
         className="text-black"
-        style={{
-          fontSize: '2.25rem',
-          fontWeight: 400,
-          lineHeight: 1.1,
-          letterSpacing: '-0.01em',
-          whiteSpace: 'nowrap',
-        }}
+        style={
+          compact
+            ? { fontSize: '1.6rem', fontWeight: 400, lineHeight: 1.1, letterSpacing: '-0.01em' }
+            : { fontSize: '2.25rem', fontWeight: 400, lineHeight: 1.1, letterSpacing: '-0.01em', whiteSpace: 'nowrap' }
+        }
       >
         {title}
       </p>
@@ -76,10 +81,13 @@ export default function AxonFeaturesSection() {
       >
 
         {/* ── Section Title ── */}
+        {/* Sotto lg niente whitespace-nowrap: a 375px il clamp(2.8rem,…)
+            sforava il viewport dentro l'overflow-hidden della sezione. Ora
+            va a capo, font-size fisso 2.125rem/3rem per fascia, margine
+            80→40px. Invariato da lg (nowrap + clamp + mb-20 originali). */}
         <h2
-          className="text-black whitespace-nowrap mb-20"
+          className="text-black mb-10 text-[2.125rem] md:text-[3rem] lg:mb-20 lg:whitespace-nowrap lg:[font-size:clamp(2.8rem,5.2vw,5.2rem)]"
           style={{
-            fontSize: "clamp(2.8rem, 5.2vw, 5.2rem)",
             lineHeight: 1.04,
             letterSpacing: "-0.02em",
           }}
@@ -195,10 +203,12 @@ export default function AxonFeaturesSection() {
 
         </div>
 
-        {/* ── Mobile fallback — simple stacked layout ── */}
-        <div className="lg:hidden flex flex-col items-center gap-12">
-          {/* Disc */}
-          <div className="relative w-[200px] h-[200px]">
+        {/* ── Mobile/tablet fallback ── */}
+        {/* La quota "5 cm" (freccia + testo) esce sotto lg: restano solo
+            disco e i tre badge, ora in griglia (1 col mobile, 2 col
+            tablet — "05: Quota 5 cm rimossa"). Disco 200px → 240px da md. */}
+        <div className="lg:hidden flex flex-col items-center gap-8">
+          <div className="relative w-[200px] h-[200px] md:w-[240px] md:h-[240px]">
             <Image
               src="/axon_no_bkg.png"
               alt="AXON device"
@@ -206,30 +216,26 @@ export default function AxonFeaturesSection() {
               className="object-contain"
             />
           </div>
-          {/* Measurement */}
-          <div className="flex items-center gap-3">
-            <VerticalMeasurement label="5 cm" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 w-full">
+            <FeatureBadge
+              compact
+              icon={<Droplets size={28} strokeWidth={1.4} />}
+              title="Impermeabile"
+              description="Resiste all'acqua e all'umidità in ogni condizione d'uso."
+            />
+            <FeatureBadge
+              compact
+              icon={<Thermometer size={28} strokeWidth={1.4} />}
+              title="Temperature estreme"
+              description="Opera da -20°C a +80°C senza perdere efficacia."
+            />
+            <FeatureBadge
+              compact
+              icon={<Layers size={28} strokeWidth={1.4} />}
+              title="Materiali durevoli"
+              description="Alta resistenza all'usura e allo sfregamento."
+            />
           </div>
-          {/* Features */}
-          <p className="text-black/60 text-lg leading-relaxed max-w-sm text-center">
-            Con un diametro di soli 5 cm, AXON si applica direttamente
-            sull&rsquo;indumento — leggero, discreto, sempre con te.
-          </p>
-          <FeatureBadge
-            icon={<Droplets size={28} strokeWidth={1.4} />}
-            title="Impermeabile"
-            description="Resiste all'acqua e all'umidità in ogni condizione d'uso."
-          />
-          <FeatureBadge
-            icon={<Thermometer size={28} strokeWidth={1.4} />}
-            title="Temperature estreme"
-            description="Opera da -20°C a +80°C senza perdere efficacia."
-          />
-          <FeatureBadge
-            icon={<Layers size={28} strokeWidth={1.4} />}
-            title="Materiali durevoli"
-            description="Alta resistenza all'usura e allo sfregamento."
-          />
         </div>
 
       </div>

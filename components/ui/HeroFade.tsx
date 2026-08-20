@@ -37,9 +37,12 @@ export default function HeroFade() {
     return Math.min(scrollY.get() / vh, 1) * 0.85
   })
 
+  // Nascosto sotto md: la hero lì non è pinnata (v. PageHero), quindi non
+  // c'è nulla che "scivola sopra" da oscurare — l'overlay resterebbe
+  // semplicemente inerte mentre la hero scorre via in normal flow.
   if (reduced) {
-    return <div className="hero-fade" aria-hidden="true" />
+    return <div className="hero-fade hidden md:block" aria-hidden="true" />
   }
 
-  return <motion.div className="hero-fade" aria-hidden="true" style={{ opacity }} />
+  return <motion.div className="hero-fade hidden md:block" aria-hidden="true" style={{ opacity }} />
 }
