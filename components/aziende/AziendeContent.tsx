@@ -125,17 +125,20 @@ export default function AziendeContent() {
 
   return (
     <>
-      {/* ── Hero ── */}
+      {/* ── Hero — niente hero pinnata qui (Section, non PageHero): nessun
+          position:sticky/HeroFade da rivalutare sotto lg (v. "Aziende -
+          Mobile & Tablet.dc.html" nota 01). Font-size e gap per fascia:
+          38px/18px mobile, 52px/18px tablet, invariati da lg. ── */}
       <Section id="top" background="black">
         <Container>
-          <div className="flex flex-col gap-5 max-w-3xl">
+          <div className="flex flex-col gap-[18px] lg:gap-5 max-w-3xl">
             <Reveal trigger="mount">
-              <h1 className="text-display">
+              <h1 className="text-display text-[2.375rem] md:text-[3.25rem] lg:[font-size:clamp(3.25rem,7vw,5.2rem)]">
                 Sei un azienda?
               </h1>
             </Reveal>
             <Reveal trigger="mount" delay={0.12}>
-              <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <p className="text-[1.125rem] md:text-[1.25rem]" style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                 Se vuoi integrare Axon nei tuoi prodotti, calzature o percorsi aziendali —
                 per i tuoi clienti, i tuoi dipendenti o la tua struttura — sei nel posto giusto.
               </p>
@@ -147,61 +150,101 @@ export default function AziendeContent() {
       {/* ── Casi d'uso ── */}
       <Section id="casi-uso" background="black" className="!pt-0">
         <Container>
-          <div className="flex flex-col gap-12 lg:gap-16">
-            <div className="flex flex-col gap-4 max-w-2xl">
-              <Reveal>
-                <h2 className="text-h2">
-                  Un dispositivo, molti settori
-                </h2>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
-                  Dove può essere integrato.
-                </p>
-              </Reveal>
-            </div>
-
-            <RevealGroup
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
-              staggerDelay={0.07}
-            >
-              {useCases.map(({ icon: Icon, title, text }) => (
-                <RevealItem key={title}>
-                  <Card variant="white" className="flex flex-col gap-4 h-full p-6 lg:p-7">
-                    <span
-                      className="inline-flex items-center justify-center"
-                      style={{ width: 48, height: 48, borderRadius: '999px', background: 'var(--brand-soft)', color: 'var(--brand)', flexShrink: 0 }}
-                    >
-                      <Icon size={22} strokeWidth={1.75} aria-hidden="true" />
-                    </span>
-                    <div className="flex flex-col gap-2">
-                      <h3 className="text-h3" style={{ color: '#0a0a0b' }}>
-                        {title}
-                      </h3>
-                      <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text-on-white-muted)', lineHeight: 1.55 }}>
-                        {text}
-                      </p>
-                    </div>
-                  </Card>
-                </RevealItem>
-              ))}
-            </RevealGroup>
+          {/* Header — gap/margin per fascia dal prototipo (12px/32px sotto
+              lg, invariati 16px/64px da lg). */}
+          <div className="flex flex-col gap-3 lg:gap-4 max-w-2xl mb-8 lg:mb-16">
+            <Reveal>
+              <h2 className="text-h2 text-[1.875rem] md:text-[2.25rem] lg:[font-size:clamp(2rem,4vw,3rem)]">
+                Un dispositivo, molti settori
+              </h2>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="text-[1.125rem] md:text-[1.25rem]" style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                Dove può essere integrato.
+              </p>
+            </Reveal>
           </div>
+        </Container>
+
+        {/* ── Sotto lg: le 6 card diventano un carosello orizzontale con
+            snap invece di una griglia impilata — sei card in colonna
+            valevano ~1.400px di scroll verticale (v. dc.html, box
+            evidenziato "Settori in carosello"). Card 258px/300px, fuori
+            da Container per il bleed a bordo schermo (stesso pattern di
+            StickyScrollApplicazioni/WearMethodSection). ── */}
+        <div className="lg:hidden">
+          <Reveal delay={0.06}>
+            <div className="flex gap-3.5 overflow-x-auto snap-x snap-mandatory px-6 md:px-12 [scroll-padding-left:1.5rem] md:[scroll-padding-left:3rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {useCases.map(({ icon: Icon, title, text }) => (
+                <Card
+                  key={title}
+                  variant="white"
+                  className="flex flex-col gap-3.5 flex-none w-[258px] md:w-[300px] p-[18px] md:p-[22px] snap-start"
+                >
+                  <span
+                    className="inline-flex items-center justify-center"
+                    style={{ width: 48, height: 48, borderRadius: '999px', background: 'var(--brand-soft)', color: 'var(--brand)', flexShrink: 0 }}
+                  >
+                    <Icon size={22} strokeWidth={1.75} aria-hidden="true" />
+                  </span>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-h3" style={{ color: '#0a0a0b' }}>
+                      {title}
+                    </h3>
+                    <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text-on-white-muted)', lineHeight: 1.55 }}>
+                      {text}
+                    </p>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* ── Da lg: comportamento invariato (griglia 3 colonne) ── */}
+        <Container>
+          <RevealGroup
+            className="hidden lg:grid lg:grid-cols-3 gap-6"
+            staggerDelay={0.07}
+          >
+            {useCases.map(({ icon: Icon, title, text }) => (
+              <RevealItem key={title}>
+                <Card variant="white" className="flex flex-col gap-4 h-full p-7">
+                  <span
+                    className="inline-flex items-center justify-center"
+                    style={{ width: 48, height: 48, borderRadius: '999px', background: 'var(--brand-soft)', color: 'var(--brand)', flexShrink: 0 }}
+                  >
+                    <Icon size={22} strokeWidth={1.75} aria-hidden="true" />
+                  </span>
+                  <div className="flex flex-col gap-2">
+                    <h3 className="text-h3" style={{ color: '#0a0a0b' }}>
+                      {title}
+                    </h3>
+                    <p style={{ fontSize: 'var(--fs-body)', color: 'var(--text-on-white-muted)', lineHeight: 1.55 }}>
+                      {text}
+                    </p>
+                  </div>
+                </Card>
+              </RevealItem>
+            ))}
+          </RevealGroup>
         </Container>
       </Section>
 
-      {/* ── Form aziende ── */}
+      {/* ── Form aziende — la colonna intro sta già sopra il form nel DOM
+          (stesso ordine del desktop, v. dc.html nota 09): nessuna
+          inversione necessaria sotto lg. ── */}
       <Section id="contatto-aziende" background="black">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
-            <div className="flex flex-col gap-5">
+          <div className="grid grid-cols-1 gap-7 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
+            <div className="flex flex-col gap-3.5 lg:gap-5">
               <Reveal>
-                <h2 className="text-h2">
+                <h2 className="text-h2 text-[1.875rem] md:text-[2.25rem] lg:[font-size:clamp(2rem,4vw,3rem)]">
                   Raccontaci la tua esigenza
                 </h2>
               </Reveal>
               <Reveal delay={0.12}>
-                <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+                <p className="text-[1.125rem] md:text-[1.25rem]" style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                   Il team Axon ti ricontatterà per valutare insieme la soluzione più adatta.
                 </p>
               </Reveal>
@@ -228,7 +271,10 @@ export default function AziendeContent() {
                     style={{ display: 'none' }}
                   />
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* sm: → md:: il desktop affiancava già da 640px; sotto
+                      768 le coppie restano impilate, tornano affiancate a
+                      834 (v. dc.html nota 02). */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <FieldGroup>
                       <FieldLabel htmlFor="az-nome" required>Nome e cognome</FieldLabel>
                       <Input
@@ -252,7 +298,7 @@ export default function AziendeContent() {
                     </FieldGroup>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <FieldGroup>
                       <FieldLabel htmlFor="az-ruolo">Ruolo</FieldLabel>
                       <Input
@@ -264,7 +310,7 @@ export default function AziendeContent() {
                     <FieldGroup>
                       <FieldLabel htmlFor="az-email" required>Email aziendale</FieldLabel>
                       <Input
-                        id="az-email" type="email" autoComplete="email"
+                        id="az-email" type="email" autoComplete="email" inputMode="email"
                         value={data.email} onChange={(e) => set('email', e.target.value)}
                         aria-required="true" aria-describedby={errors.email ? 'az-email-err' : undefined}
                         aria-invalid={!!errors.email}
@@ -273,11 +319,11 @@ export default function AziendeContent() {
                     </FieldGroup>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <FieldGroup>
                       <FieldLabel htmlFor="az-telefono">Telefono</FieldLabel>
                       <Input
-                        id="az-telefono" type="tel" autoComplete="tel"
+                        id="az-telefono" type="tel" autoComplete="tel" inputMode="tel"
                         value={data.telefono} onChange={(e) => set('telefono', e.target.value)}
                       />
                     </FieldGroup>
@@ -300,7 +346,7 @@ export default function AziendeContent() {
                     </FieldGroup>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <FieldGroup>
                       <FieldLabel htmlFor="az-tipo">Tipo di interesse</FieldLabel>
                       <Select
@@ -348,8 +394,17 @@ export default function AziendeContent() {
                       onChange={(v) => set('consenso', v)}
                       errorId={errors.consenso ? 'az-consenso-err' : undefined}
                     >
+                      {/* Sottolineato sotto lg — non solo colorato — per
+                          un'informativa da leggere prima di acconsentire
+                          (v. dc.html nota 05); invariato da lg. */}
                       Accetto il trattamento dei dati personali secondo la{' '}
-                      <Link href="/privacy" style={{ color: 'var(--text)' }}>Privacy Policy</Link> di Axon-Tech S.r.l.
+                      <Link
+                        href="/privacy"
+                        className="underline underline-offset-2 lg:no-underline"
+                        style={{ color: 'var(--text)' }}
+                      >
+                        Privacy Policy
+                      </Link> di Axon-Tech S.r.l.
                     </CheckboxField>
                     {errors.consenso && <FieldError id="az-consenso-err">{errors.consenso}</FieldError>}
                   </div>
@@ -360,12 +415,17 @@ export default function AziendeContent() {
                     </p>
                   )}
 
+                  {/* Larghezza piena sotto md — chiude il form nella zona
+                      del pollice invece di un bottone a larghezza-testo
+                      allineato a sinistra; da md torna a larghezza
+                      contenuto, invariato (v. dc.html nota 03). */}
                   <div>
                     <Button
                       type="submit"
                       variant="white"
                       size="lg"
                       disabled={submitting}
+                      className="w-full md:w-auto"
                     >
                       {submitting ? 'Invio in corso…' : 'Invia richiesta'}
                     </Button>

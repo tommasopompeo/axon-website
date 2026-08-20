@@ -10,10 +10,16 @@ const inputBase: React.CSSProperties = {
   fontSize: 'var(--fs-body)',
   lineHeight: 1.5,
   width: '100%',
-  minHeight: 44,
   padding: '0.625rem 0.875rem',
   colorScheme: 'dark',
 }
+
+// Altezza minima dei campi — 48px sotto lg (ideale Material 48dp), 44px
+// invariato da lg. --fs-body (17px) è già oltre la soglia di 16px che fa
+// zoomare iOS Safari: confermato, non toccato (v. "Aziende - Mobile &
+// Tablet.dc.html" nota 06). Via className (non inputBase) perché lo style
+// inline vince sempre sulle classi responsive.
+const inputHeightCls = 'min-h-12 lg:min-h-11'
 
 export function FieldGroup({ children }: { children: ReactNode }) {
   return (
@@ -61,8 +67,8 @@ export function FieldError({ id, children }: { id?: string; children: ReactNode 
 }
 
 export const Input = forwardRef<HTMLInputElement, InputHTMLAttributes<HTMLInputElement>>(
-  ({ style, ...props }, ref) => (
-    <input ref={ref} style={{ ...inputBase, ...style }} {...props} />
+  ({ style, className = '', ...props }, ref) => (
+    <input ref={ref} className={`${inputHeightCls} ${className}`} style={{ ...inputBase, ...style }} {...props} />
   ),
 )
 Input.displayName = 'Input'
@@ -114,8 +120,8 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaHTMLAttributes<H
 Textarea.displayName = 'Textarea'
 
 export const Select = forwardRef<HTMLSelectElement, SelectHTMLAttributes<HTMLSelectElement>>(
-  ({ style, children, ...props }, ref) => (
-    <select ref={ref} style={{ ...inputBase, ...style }} {...props}>
+  ({ style, className = '', children, ...props }, ref) => (
+    <select ref={ref} className={`${inputHeightCls} ${className}`} style={{ ...inputBase, ...style }} {...props}>
       {children}
     </select>
   ),
@@ -136,9 +142,15 @@ export function CheckboxField({
   errorId?: string
 }) {
   return (
+    // Sotto lg: 24×24 (era 18px, sotto il minimo WCAG 2.5.8 di 24×24), gap
+    // 12px, riga min 44px con padding verticale — l'intera label è l'area
+    // attiva. Testo 15px invece di --fs-caption (13px): è un'informativa
+    // privacy da leggere prima di acconsentire. Invariato da lg (v. "Aziende
+    // - Mobile & Tablet.dc.html" note 04-05).
     <label
       htmlFor={id}
-      style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', cursor: 'pointer' }}
+      className="flex items-start gap-3 lg:gap-2.5 py-[6px] lg:py-0 min-h-11 lg:min-h-0"
+      style={{ cursor: 'pointer' }}
     >
       <input
         type="checkbox"
@@ -146,16 +158,18 @@ export function CheckboxField({
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
         aria-describedby={errorId}
+        className="w-6 h-6 lg:w-[18px] lg:h-[18px]"
         style={{
           marginTop: '0.2rem',
-          width: 18,
-          height: 18,
           flexShrink: 0,
           accentColor: 'var(--brand)',
           cursor: 'pointer',
         }}
       />
-      <span style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-muted)', lineHeight: 1.55 }}>
+      <span
+        className="text-[0.9375rem] lg:[font-size:var(--fs-caption)]"
+        style={{ color: 'var(--text-muted)', lineHeight: 1.55 }}
+      >
         {children}
       </span>
     </label>
