@@ -38,11 +38,14 @@ export function AccordionItem({
       className={`${className}`}
       style={{ borderBottom: '1px solid var(--border)' }}
     >
+      {/* min-h-[60px] sotto lg — target di tocco esplicito invece di
+          affidarsi solo al padding verticale (v. FaqSection, "Home - Mobile
+          & Tablet.dc.html" nota 10); invariato da lg. */}
       <button
         type="button"
         id={buttonId}
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 py-5 text-left"
+        className="w-full min-h-[60px] lg:min-h-0 flex items-center justify-between gap-4 py-5 text-left"
         aria-expanded={isOpen}
         aria-controls={panelId}
         style={{ background: 'none', border: 'none', cursor: 'pointer' }}
@@ -57,9 +60,12 @@ export function AccordionItem({
               {icon}
             </span>
           )}
+          {/* 20px sotto lg (era --fs-h3/22px: a 375px una domanda lunga
+              andava a due righe accanto al +), invariato da lg — v.
+              "Contatti - Mobile & Tablet.dc.html" nota 07. */}
           <span
-            className="font-semibold"
-            style={{ fontSize: 'var(--fs-h3)', color: 'var(--text)' }}
+            className="font-semibold text-[1.25rem] lg:[font-size:var(--fs-h3)]"
+            style={{ color: 'var(--text)' }}
           >
             {title}
           </span>

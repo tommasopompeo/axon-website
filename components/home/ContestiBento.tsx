@@ -67,15 +67,58 @@ function ImageOverlay({
   )
 }
 
+// Le stesse 4 statistiche del bento desktop, riusate per la griglia 2×2
+// sotto lg (v. sotto). Duplicate qui invece di condivise con l'RevealGroup
+// desktop per non rischiare di alterarne il markup/layout asimmetrico
+// (2/3 + 1/3), lasciato invariato — stesso approccio già usato per gli
+// altri componenti di questa rifusione.
+const stats = [
+  { value: '+42%', label: 'potenza nel movimento' },
+  { value: '+28%', label: 'equilibrio' },
+  { value: '+30%', label: 'forza' },
+  { value: '+21%', label: 'resistenza' },
+]
+
+const photos = [
+  {
+    src: '/corsa.jpg',
+    alt: 'Persona che corre',
+    caption: (
+      <>
+        Più <Key>resistenza alla fatica</Key> e controllo del passo.
+      </>
+    ),
+  },
+  {
+    src: '/nuoto.jpg',
+    alt: 'Persona che nuota',
+    caption: (
+      <>
+        <Key>Equilibrio e stabilità</Key> posturale.
+      </>
+    ),
+  },
+  {
+    src: '/palestra.jpg',
+    alt: 'Persona che si allena in palestra',
+    caption: (
+      <>
+        <Key>Forza</Key> e tono muscolare.
+      </>
+    ),
+  },
+]
+
 export default function ContestiBento() {
   return (
     <Section id="contesti">
       <Container>
 
-        {/* ── Header compatto ── */}
-        <div className="flex flex-col gap-4 mb-10 lg:mb-12 max-w-[75ch]">
+        {/* ── Header compatto — gap/margin per fascia dal prototipo (14px/28px
+            sotto lg, invariati 16px/48px da lg). ── */}
+        <div className="flex flex-col gap-3.5 lg:gap-4 mb-7 lg:mb-12 max-w-[75ch]">
           <Reveal>
-            <h2 className="text-display">
+            <h2 className="text-display text-[2.375rem] md:text-[3.5rem] lg:[font-size:clamp(3.25rem,7vw,5.2rem)]">
               Migliora il tuo benessere a 360°
             </h2>
           </Reveal>
@@ -92,9 +135,54 @@ export default function ContestiBento() {
           </Reveal>
         </div>
 
-        {/* ── Bento grid ── */}
+        {/* ── Sotto lg: statistiche in griglia 2×2 + foto in carosello
+            orizzontale con peek, al posto della bento impilata (v. dc.html
+            nota 06: "sei card impilate" — qui 5 — "costavano ~900px di
+            scroll per contenuto decorativo"). ── */}
+        <div className="lg:hidden mb-4">
+          <div className="grid grid-cols-2 gap-2.5">
+            {stats.map((s) => (
+              <Card
+                key={s.label}
+                variant="white"
+                className="flex flex-col justify-between gap-1 p-[18px]"
+                style={{ minHeight: 104 }}
+              >
+                <span
+                  className="font-extrabold leading-none text-[1.8rem]"
+                  style={{ color: 'var(--brand)', letterSpacing: '-0.03em' }}
+                >
+                  {s.value}
+                </span>
+                <span
+                  className="font-semibold text-[15px] leading-[1.25]"
+                  style={{ color: 'var(--text-on-white-muted)' }}
+                >
+                  {s.label}
+                </span>
+              </Card>
+            ))}
+          </div>
+        </div>
+        <div className="lg:hidden mb-4">
+          <Reveal>
+            <div className="flex gap-3 overflow-x-auto snap-x snap-mandatory -mr-6 pr-6 md:-mr-12 md:pr-12 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              {photos.map((p) => (
+                <ImageOverlay
+                  key={p.src}
+                  src={p.src}
+                  alt={p.alt}
+                  caption={p.caption}
+                  className="flex-none w-[78%] md:w-[calc(50%-6px)] snap-start"
+                />
+              ))}
+            </div>
+          </Reveal>
+        </div>
+
+        {/* ── Da lg: bento invariata ── */}
         <RevealGroup
-          className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-5 lg:grid-cols-3 lg:[grid-template-rows:280px_280px]"
+          className="hidden lg:grid lg:gap-5 lg:grid-cols-3 lg:[grid-template-rows:280px_280px]"
           staggerDelay={0.1}
         >
 

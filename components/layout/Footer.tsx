@@ -35,8 +35,11 @@ export default function Footer() {
   // D.lgs. 137/2022): stessa formula ripetuta nello Shop (punto vendita) e in
   // Termini §3. AUT_MIN_DATE (lib/legal.ts) è la fonte unica della data —
   // aggiornarla lì, non nei tre punti singolarmente.
+  // 14px sotto lg (era 12px: la dicitura dispositivo medico va sempre letta
+  // in chiaro, mai ridotta al minimo), 13px a tablet, invariata da lg (v.
+  // "Home - Mobile & Tablet.dc.html" nota 11).
   const fineStampa = (
-    <p className="text-xs link-subtle lg:max-w-md">
+    <p className="text-[0.875rem] md:text-[0.8125rem] lg:text-xs link-subtle lg:max-w-md">
       AXON è un dispositivo medico CE. Leggere attentamente le avvertenze e le istruzioni
       per l&apos;uso. Aut. Min. del {AUT_MIN_DATE}.
       <br />© {anno} Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV). P.IVA
@@ -129,11 +132,12 @@ export default function Footer() {
           </div>
 
           {/* Cluster colonne link — Azienda / Navigazione / Informazioni
-              Legali. Sotto lg resta una griglia (1 col poi 2 col); a lg+
-              diventa una riga flex compatta e allineata a destra, così il
-              bordo destro di "Informazioni Legali" combacia con quello del
-              container (stesso limite del resto del sito). */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:flex lg:flex-row lg:flex-shrink-0 lg:gap-x-12">
+              Legali. Impilate solo sotto md; da md diventano una riga flex
+              compatta e allineata a destra, come nel desktop (era da lg —
+              v. dc.html nota 14), così il bordo destro di "Informazioni
+              Legali" combacia con quello del container (stesso limite del
+              resto del sito) già a partire dal tablet. */}
+          <div className="flex flex-col gap-8 md:flex-row md:flex-shrink-0 md:gap-x-12">
             {/* Azienda */}
             <div>
               <h3

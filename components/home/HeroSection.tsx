@@ -40,12 +40,17 @@ export default function HeroSection() {
         </div>
       }
       cta={
-        <Reveal trigger="mount" delay={0.3} className="w-full flex justify-center mt-28 lg:mt-44 pb-0 lg:pb-2">
-          <div className="flex flex-wrap gap-3 justify-center">
+        // Distacco dal sottotitolo: 24px mobile / 56px tablet (era 112px
+        // fisso sotto lg — "Acquista AXON" restava sotto la piega), 176px
+        // invariato da lg. Larghezza: piena sotto md, 280px a tablet
+        // (min(280px,100%) nel prototipo — a queste larghezze equivale a un
+        // valore fisso), auto invariata da lg (v. dc.html nota 04).
+        <Reveal trigger="mount" delay={0.3} className="w-full flex justify-center mt-6 md:mt-14 lg:mt-44 pb-0 lg:pb-2">
+          <div className="flex flex-wrap gap-3 justify-center w-full md:w-auto">
             <Button
               href="/shop"
               size="custom"
-              className="px-12 py-3.5 text-base font-medium shadow-lg min-w-[240px] text-center"
+              className="w-full md:w-[280px] lg:w-auto px-12 py-3.5 text-base font-medium shadow-lg lg:min-w-[240px] text-center"
             >
               Acquista AXON
             </Button>
@@ -60,9 +65,11 @@ export default function HeroSection() {
         </Eyebrow>
       </Reveal>
 
-      {/* ── Title ── */}
+      {/* ── Title — 38px mobile / 56px tablet (era fissa a 52px sotto 768:
+          il clamp non scendeva mai sotto il minimo e l'H1 arrivava a 5
+          righe), invariata da lg (v. dc.html nota 02). ── */}
       <Reveal trigger="mount" delay={0.1}>
-        <h1 className="text-display text-black">
+        <h1 className="text-display text-black text-[2.375rem] md:text-[3.5rem] lg:[font-size:clamp(3.25rem,7vw,5.2rem)]">
           La forza invisibile che rivoluziona il movimento
         </h1>
       </Reveal>

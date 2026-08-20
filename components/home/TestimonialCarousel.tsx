@@ -59,16 +59,29 @@ export default function TestimonialCarousel() {
   // Swipe (touch) tracking
   const touchStartX = useRef<number | null>(null)
 
-  const paginate = useCallback((dir: number) => {
+  // Sotto lg lo swipe c'era già ma mancava un segnale di posizione su 5
+  // slide (v. dc.html nota 09): l'autoplay si ferma in modo permanente alla
+  // prima interazione manuale sotto quella fascia, dove l'utente ha appena
+  // dimostrato di saper scorrere da solo — da lg resta invariato, sempre
+  // attivo. Controllato al momento dell'interazione (non a un breakpoint
+  // fisso in render) così riflette sempre il viewport reale, senza le
+  // complicazioni di un controllo lato SSR.
+  const stoppedRef = useRef(false)
+
+  const paginate = useCallback((dir: number, manual = false) => {
+    if (manual && typeof window !== 'undefined' && window.matchMedia('(max-width: 1023.98px)').matches) {
+      stoppedRef.current = true
+    }
     setState(([prev]) => {
       const next = (prev + dir + testimonials.length) % testimonials.length
       return [next, dir]
     })
   }, [])
 
-  // Autoplay — DISATTIVATO se prefers-reduced-motion.
+  // Autoplay — DISATTIVATO se prefers-reduced-motion o dopo un'interazione
+  // manuale sotto lg.
   useEffect(() => {
-    if (reduced) return
+    if (reduced || stoppedRef.current) return
     const id = setInterval(() => paginate(1), AUTOPLAY_MS)
     return () => clearInterval(id)
   }, [reduced, paginate, index])
@@ -79,7 +92,7 @@ export default function TestimonialCarousel() {
   function onTouchEnd(e: React.TouchEvent) {
     if (touchStartX.current === null) return
     const delta = e.changedTouches[0].clientX - touchStartX.current
-    if (Math.abs(delta) > 50) paginate(delta < 0 ? 1 : -1)
+    if (Math.abs(delta) > 50) paginate(delta < 0 ? 1 : -1, true)
     touchStartX.current = null
   }
 
@@ -159,24 +172,41 @@ export default function TestimonialCarousel() {
           </AnimatePresence>
         </motion.div>
 
-        {/* Controlli: frecce spastate più in alto */}
-        <div className="mt-6 flex items-center justify-end gap-3">
-          <button
-            type="button"
-            onClick={() => paginate(-1)}
-            aria-label="Testimonianza precedente"
-            className={arrowClass}
-          >
-            <ChevronLeft size={20} strokeWidth={2} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            onClick={() => paginate(1)}
-            aria-label="Testimonianza successiva"
-            className={arrowClass}
-          >
-            <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
-          </button>
+        {/* Controlli: dot indicator (sotto lg) + frecce spostate più in alto.
+            Il segnale di posizione mancava sullo swipe già esistente sotto
+            lg (v. dc.html nota 09); da lg resta assente, come prima. */}
+        <div className="mt-6 flex items-center justify-between lg:justify-end gap-3">
+          <div className="flex items-center gap-1.5 lg:hidden" aria-hidden="true">
+            {testimonials.map((_, i) => (
+              <span
+                key={i}
+                className="rounded-full transition-all duration-300"
+                style={{
+                  width: i === index ? 20 : 6,
+                  height: 6,
+                  background: i === index ? 'var(--brand)' : 'rgba(255,255,255,0.24)',
+                }}
+              />
+            ))}
+          </div>
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => paginate(-1, true)}
+              aria-label="Testimonianza precedente"
+              className={arrowClass}
+            >
+              <ChevronLeft size={20} strokeWidth={2} aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              onClick={() => paginate(1, true)}
+              aria-label="Testimonianza successiva"
+              className={arrowClass}
+            >
+              <ChevronRight size={20} strokeWidth={2} aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

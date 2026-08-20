@@ -96,11 +96,15 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Menu mobile */}
+      {/* Menu mobile — righe 56px (era ~48px via solo padding) e ingresso
+          con transizione invece di comparire di colpo, più lo spazio di
+          sicurezza in fondo per l'home indicator iOS (v. dc.html nota 05:
+          "Header non ricostruito" — restano stessi link/CTA, tocca solo
+          altezza righe/animazione/safe-area). */}
       {menuOpen && (
         <div
           id="mobile-menu"
-          className="md:hidden border-t"
+          className="md:hidden border-t mobile-menu-panel"
           style={{
             background: 'var(--bg-elevated)',
             borderColor: 'var(--border)',
@@ -110,8 +114,8 @@ export default function Header() {
             aria-label="Menu mobile"
             className="flex flex-col px-6"
             style={{
-              paddingTop: '1rem',
-              paddingBottom: '1.5rem',
+              paddingTop: '0.5rem',
+              paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom))',
             }}
           >
             {navLinks.map(({ label, href }) => (
@@ -119,7 +123,7 @@ export default function Header() {
                 key={href}
                 href={href}
                 aria-current={pathname === href ? 'page' : undefined}
-                className="nav-link nav-link--mobile py-3 text-base font-medium border-b last:border-0"
+                className="nav-link nav-link--mobile flex items-center min-h-14 text-base font-medium border-b last:border-0"
                 style={{ borderColor: 'var(--border)' }}
                 onClick={() => setMenuOpen(false)}
               >
