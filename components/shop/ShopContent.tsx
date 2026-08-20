@@ -135,9 +135,19 @@ export default function ShopContent() {
               opacity:0 fino all'idratazione — su mobile throttled l'LCP della
               pagina slittava a ~7s (Lighthouse, Render Delay 6.5s). Stesso
               criterio documentato in Reveal.tsx per i contenuti above-the-fold. */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
+          {/* Sotto md: carosello orizzontale con snap (card 88%, peek della
+              successiva) invece di stack verticale — swipe nativo, niente
+              frecce (v. ProductCard). Da md: torna alla griglia 2 colonne
+              di sempre; lg invariato. Bleed calcolato sul solo px-6 base di
+              Container (niente override sm: nel range 640-767). */}
+          <div className="flex gap-3.5 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 [scroll-padding-left:1.5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-2 md:gap-5 md:overflow-visible md:px-0 md:snap-none lg:gap-6">
             {products.map((p, i) => (
-              <Reveal trigger="mount" delay={i * 0.1} className="h-full" key={p.title}>
+              <Reveal
+                trigger="mount"
+                delay={i * 0.1}
+                className="h-full flex-[0_0_88%] snap-start md:flex-none"
+                key={p.title}
+              >
                 <ProductCard {...p} priority={i === 0} />
               </Reveal>
             ))}
@@ -148,9 +158,12 @@ export default function ShopContent() {
               Footer e di Termini §3. AUT_MIN_DATE (lib/legal.ts) è la fonte
               unica della data — aggiornarla lì, non nei tre punti. */}
           <Reveal delay={0.15}>
+            {/* Dicitura punto vendita a 14px sotto md (leggibilità sulla card
+                stretta), torna al token --fs-caption (13px) da md — invariata
+                rispetto al desktop attuale. */}
             <p
-              className="mt-6"
-              style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-subtle)', lineHeight: 1.6 }}
+              className="mt-6 text-[0.875rem] md:[font-size:var(--fs-caption)]"
+              style={{ color: 'var(--text-subtle)', lineHeight: 1.6 }}
             >
               AXON è un dispositivo medico CE. Leggere attentamente le avvertenze e le
               istruzioni per l&rsquo;uso. Aut. Min. del {AUT_MIN_DATE}.
@@ -228,13 +241,16 @@ export default function ShopContent() {
       {/* ── Box fiducia ── */}
       <Section id="garanzie" background="black">
         <Container>
+          {/* Sotto md: carosello orizzontale con snap (card al 78%, la
+              seconda resta parzialmente visibile) — nessuna garanzia
+              rimossa o accorpata. Da md: griglia 2×2; lg invariato (4 col). */}
           <RevealGroup
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6"
+            className="flex gap-3 overflow-x-auto snap-x snap-mandatory -mx-6 px-6 [scroll-padding-left:1.5rem] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:grid md:grid-cols-2 md:overflow-visible md:px-0 md:snap-none lg:grid-cols-4 lg:gap-6"
             staggerDelay={0.08}
           >
             {trust.map(({ icon: Icon, title, text }) => (
-              <RevealItem key={title}>
-                <Card variant="white" className="flex flex-col gap-3 h-full p-6 lg:p-7">
+              <RevealItem key={title} className="flex-[0_0_78%] snap-start md:flex-none">
+                <Card variant="white" className="flex flex-col gap-3 h-full p-5 md:p-[22px] lg:p-7">
                   <span
                     className="inline-flex items-center justify-center"
                     style={{

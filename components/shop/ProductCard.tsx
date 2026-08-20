@@ -101,16 +101,19 @@ export default function ProductCard({
                 alt={img.alt}
                 fill
                 priority={priority && i === 0}
-                className="object-contain object-center p-6 lg:p-8"
+                className="object-contain object-center p-[18px] md:p-5 lg:p-8"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
           ))}
         </div>
 
-        {/* Frecce */}
+        {/* Frecce — nascoste sotto md: a 375 le due pill da 44px coprono i
+            bordi dell'immagine in un riquadro di soli 327px e lo scroller ha
+            già snap-x snap-mandatory, quindi lo swipe è nativo e bastano i
+            dot. Tornano da md (tablet e desktop, invariato). */}
         {images.length > 1 && (
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-between px-3">
+          <div className="pointer-events-none absolute inset-0 hidden items-center justify-between px-3 md:flex">
             <button
               type="button"
               onClick={() => scrollByOne(-1)}
@@ -132,17 +135,20 @@ export default function ProductCard({
           </div>
         )}
 
-        {/* Indicatori (dots) */}
+        {/* Indicatori (dots) — ingranditi 6→8px sotto lg, solo per
+            visibilità su sfondo bianco (restano non cliccabili,
+            pointer-events:none: il minimo target 24×24 non si applica).
+            Da lg tornano alla dimensione desktop invariata. */}
         {images.length > 1 && (
           <div className="pointer-events-none absolute inset-x-0 bottom-3 flex items-center justify-center gap-1.5">
             {images.map((img, i) => (
               <span
                 key={img.src}
                 aria-hidden="true"
-                className="rounded-full transition-all"
+                className={`h-2 rounded-full transition-all lg:h-1.5 ${
+                  i === index ? 'w-6 lg:w-[18px]' : 'w-2 lg:w-1.5'
+                }`}
                 style={{
-                  width: i === index ? 18 : 6,
-                  height: 6,
                   background: i === index ? 'var(--brand)' : 'rgba(10,10,11,0.18)',
                 }}
               />
@@ -152,15 +158,22 @@ export default function ProductCard({
       </div>
 
       {/* ── Corpo ── */}
-      <div className="flex flex-col flex-1 gap-6 p-7 lg:p-8">
+      {/* Padding 28→20px sotto md: a 375 p-7 lasciava 271px di riga utile e
+          la lista "include" andava a capo su ogni voce. Da md torna a
+          28px (lg:p-8 desktop invariato). Gap segue lo stesso schema. */}
+      <div className="flex flex-col flex-1 gap-5 p-5 md:gap-[22px] md:p-7 lg:gap-6 lg:p-8">
         {/* Titolo + sottotitolo */}
         <div className="flex flex-col gap-1.5">
           <h3 className="text-h3" style={{ color: '#0a0a0b' }}>
             {title}
           </h3>
+          {/* Testo body 16px sotto md, torna al token --fs-body (17px) da
+              md — invariato rispetto al desktop attuale. Il font-size vive
+              in className (non style) perché uno style inline non può mai
+              essere sovrascritto da una classe responsive. */}
           <p
+            className="text-[1rem] md:[font-size:var(--fs-body)]"
             style={{
-              fontSize: 'var(--fs-body)',
               color: 'var(--text-on-white-muted)',
               lineHeight: 1.5,
             }}
@@ -186,8 +199,8 @@ export default function ProductCard({
                 <Check size={13} strokeWidth={2.5} aria-hidden="true" />
               </span>
               <span
+                className="text-[1rem] md:[font-size:var(--fs-body)]"
                 style={{
-                  fontSize: 'var(--fs-body)',
                   color: '#0a0a0b',
                   lineHeight: 1.5,
                 }}
@@ -201,9 +214,13 @@ export default function ProductCard({
         {/* Prezzo + CTA — ancorati in basso */}
         <div className="flex flex-col gap-5 mt-auto pt-2">
           <div className="flex flex-col gap-1">
+            {/* Prezzo fissato a 2rem/2.25rem sotto lg invece del clamp
+                --fs-h2: a 375 il clamp vale già 32px (corretto) ma a 834
+                sale fluidamente a ~33px — qui vogliamo un valore fisso per
+                fascia. Da lg torna al token clamp, invariato. */}
             <p
-              className="font-bold"
-              style={{ fontSize: 'var(--fs-h2)', letterSpacing: '-0.02em', color: '#0a0a0b' }}
+              className="font-bold text-[2rem] md:text-[2.25rem] lg:[font-size:var(--fs-h2)]"
+              style={{ letterSpacing: '-0.02em', color: '#0a0a0b' }}
             >
               {price}
             </p>
