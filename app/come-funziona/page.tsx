@@ -28,7 +28,10 @@ export default function ComeFunzionaPage() {
           overlayOpacity={0.3}
         >
           <Reveal trigger="mount" delay={0.1}>
-            <h1 className="text-display text-white">
+            {/* Font-size per fascia: 38px mobile / 52px tablet (dc.html
+                --fsD), invariato da lg (clamp esistente di .text-display) —
+                stesso pattern di WearMethodSection/ResultsAccordion. */}
+            <h1 className="text-display text-white text-[2.375rem] md:text-[3.25rem] lg:[font-size:clamp(3.25rem,7vw,5.2rem)]">
               La tecnologia dietro AXON
             </h1>
           </Reveal>

@@ -1,14 +1,19 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
+import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 import { Container, Section, Reveal } from '@/components/ui'
 import { EASE, DURATION } from '@/lib/motion'
 
 /* ─────────────────────────────────────────────────────────────────────────
  * DeepDive — accordion stile Applicazioni con barra verticale sinistra.
- * Barra e titolo grigi di default, bianchi quando aperto.
+ * Barra e titolo grigi di default, bianchi quando aperto. Usato solo da lg:
+ * markup e comportamento invariati (intero blocco cliccabile, div[role=button]).
+ * Sotto lg vedi MobileDeepDive più in basso (bottone vero da 48px, v. dc.html
+ * "Come funziona - Mobile & Tablet.dc.html" nota 05).
  * ──────────────────────────────────────────────────────────────────────── */
 interface DeepDiveProps {
   label?: string
@@ -74,6 +79,116 @@ function DeepDive({ label = 'Approfondimento tecnico', children, isOpen, onToggl
   )
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+ * MobileReadMore — sotto lg (375/834), assente su desktop: anteprima
+ * dell'introduzione troncata a 119px con dissolvenza (mask-image), bottone
+ * "Continua a leggere" ↔ "Mostra meno". Ripreso 1:1 dal prototipo
+ * (data-more / data-more-body / toggleMore in "Come funziona - Mobile &
+ * Tablet.dc.html") — non elencato tra le 11 deviazioni annotate lì, ma
+ * presente e funzionante nel file sorgente, quindi parte dello stesso spec.
+ * ──────────────────────────────────────────────────────────────────────── */
+const READ_MORE_COLLAPSED_PX = 119
+
+function MobileReadMore({ children }: { children: ReactNode }) {
+  const [open, setOpen] = useState(false)
+  const bodyRef = useRef<HTMLDivElement>(null)
+  const [maxHeight, setMaxHeight] = useState<number>(READ_MORE_COLLAPSED_PX)
+
+  const toggle = () => {
+    const next = !open
+    setOpen(next)
+    setMaxHeight(next ? (bodyRef.current?.scrollHeight ?? READ_MORE_COLLAPSED_PX) : READ_MORE_COLLAPSED_PX)
+  }
+
+  return (
+    <div className="flex flex-col gap-3">
+      <div
+        ref={bodyRef}
+        className="flex flex-col overflow-hidden"
+        style={{
+          gap: '18px',
+          fontSize: 'var(--fs-body)',
+          lineHeight: 1.75,
+          color: 'var(--text-muted)',
+          maxHeight,
+          WebkitMaskImage: open ? 'none' : 'linear-gradient(to bottom, #000 55%, transparent 100%)',
+          maskImage: open ? 'none' : 'linear-gradient(to bottom, #000 55%, transparent 100%)',
+          transition: 'max-height 0.45s var(--ease)',
+        }}
+      >
+        {children}
+      </div>
+      <button
+        type="button"
+        onClick={toggle}
+        aria-expanded={open}
+        className="self-start flex items-center gap-1.5 min-h-11 font-semibold"
+        style={{ fontSize: '1.0625rem', color: 'var(--brand)', background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+      >
+        <span>{open ? 'Mostra meno' : 'Continua a leggere'}</span>
+        <ChevronDown
+          size={18}
+          aria-hidden="true"
+          style={{ transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s var(--ease)' }}
+        />
+      </button>
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * MobileDeepDive — stessa "Approfondimento tecnico" del desktop (barra e
+ * colori invariati) ma come bottone vero da 48px invece di un intero blocco
+ * div[role=button] cliccabile senza segnale visivo, con chevron che ruota
+ * (v. dc.html nota 05).
+ * ──────────────────────────────────────────────────────────────────────── */
+function MobileDeepDive({ children }: { children: ReactNode }) {
+  const [open, setOpen] = useState(false)
+  const reduced = useReducedMotion()
+
+  return (
+    <div style={{ borderLeft: `2px solid ${open ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.15)'}`, transition: 'border-color 0.3s ease' }}>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="w-full min-h-12 flex items-center justify-between gap-3 pl-[18px] pr-0 text-left"
+        style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+      >
+        <span
+          className="font-semibold transition-colors duration-300"
+          style={{ fontSize: '1.0625rem', color: open ? 'var(--text)' : 'var(--text-muted)' }}
+        >
+          Approfondimento tecnico
+        </span>
+        <ChevronDown
+          size={20}
+          aria-hidden="true"
+          className="shrink-0"
+          style={{ color: 'var(--text-muted)', transform: open ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s var(--ease)' }}
+        />
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: reduced ? 0 : DURATION.uiSlow, ease: EASE }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div
+              className="pt-2.5 pb-5 pl-[18px] flex flex-col gap-4"
+              style={{ fontSize: 'var(--fs-body)', lineHeight: 1.7, color: 'var(--text-muted)' }}
+            >
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
 
 /* ─────────────────────────────────────────────────────────────────────────
  * Pillar data
@@ -306,6 +421,8 @@ const references: {
  * ──────────────────────────────────────────────────────────────────────── */
 export default function ScienceSection() {
   // Tracciamo separatamente ogni accordion (uno per pillar). null = tutti chiusi.
+  // Usato solo dal blocco desktop (da lg) — sotto lg ogni MobileDeepDive
+  // gestisce il proprio stato in autonomia (v. sotto).
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const handleToggle = (i: number) =>
@@ -315,17 +432,20 @@ export default function ScienceSection() {
     <Section id="scienza" background="black">
       <Container>
 
-        {/* ── Section header ── */}
-        <div className="flex flex-col gap-6 lg:gap-8 max-w-4xl">
+        {/* ── Section header — gap 18px sotto lg (dc.html), invariato da lg ── */}
+        <div className="flex flex-col gap-[18px] lg:gap-8 max-w-4xl">
           <Reveal delay={0.08}>
-            <h2 className="text-display text-white" style={{ color: 'var(--text)' }}>
+            <h2
+              className="text-display text-white text-[2.375rem] md:text-[3.25rem] lg:[font-size:clamp(3.25rem,7vw,5.2rem)]"
+              style={{ color: 'var(--text)' }}
+            >
               Le basi scientifiche del movimento passivo
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p
+              className="text-[1.125rem] md:text-[1.25rem]"
               style={{
-                fontSize: 'var(--fs-lead)',
                 lineHeight: 1.6,
                 color: 'var(--text-muted)',
               }}
@@ -335,71 +455,112 @@ export default function ScienceSection() {
           </Reveal>
         </div>
 
-        {/* ── Three pillars ── */}
-        <div className="mt-24 lg:mt-32 flex flex-col gap-32 lg:gap-40">
+        {/* ── Three pillars — spaziatura per fascia: 56px mobile / 72px
+            tablet (var(--pillGap) nel prototipo), invariata da lg (128/160px) ── */}
+        <div className="mt-14 md:mt-[4.5rem] lg:mt-32 flex flex-col gap-14 md:gap-[4.5rem] lg:gap-40">
           {pillars.map((pillar, i) => {
             const isInverted = i % 2 === 1
             return (
               <Reveal key={pillar.id}>
-                <article
-                  id={pillar.id}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start"
-                >
-                  {/* Text column (title + prose + deep-dive) */}
-                  <div className={`flex flex-col ${isInverted ? 'lg:order-2' : 'lg:order-1'}`}>
+                <article id={pillar.id}>
+
+                  {/* ── Sotto lg: colonna unica. L'immagine va subito dopo
+                      il titolo — nell'ordine DOM desktop è la seconda
+                      colonna, quindi sotto 1024 cadeva dopo l'intero
+                      accordion (v. dc.html nota 06) — seguita
+                      dall'introduzione troncata e dall'approfondimento come
+                      bottone vero (note 05, 08). ── */}
+                  <div className="lg:hidden flex flex-col gap-5">
                     <h3
-                      className="mb-8"
-                      style={{
-                        fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
-                        lineHeight: 1.15,
-                        letterSpacing: '-0.015em',
-                        color: 'var(--text)',
-                      }}
+                      className="text-[1.625rem] md:text-[2rem] font-normal leading-[1.15] text-white"
+                      style={{ letterSpacing: '-0.015em' }}
                     >
                       {pillar.title}
                     </h3>
 
                     <div
-                      className="flex flex-col gap-5"
+                      className="relative w-full overflow-hidden border"
                       style={{
-                        fontSize: 'var(--fs-body)',
-                        lineHeight: 1.75,
-                        color: 'var(--text-muted)',
+                        aspectRatio: '3 / 2',
+                        borderRadius: 'var(--radius-lg)',
+                        borderColor: 'var(--border)',
+                        background: 'var(--surface)',
                       }}
                     >
-                      {pillar.intro}
+                      <Image
+                        src={pillar.image}
+                        alt={pillar.title}
+                        fill
+                        sizes="100vw"
+                        className="object-cover object-center"
+                      />
                     </div>
 
-                    <DeepDive
-                      isOpen={openIndex === i}
-                      onToggle={() => handleToggle(i)}
-                    >
-                      {pillar.deepDive}
-                    </DeepDive>
+                    <MobileReadMore>{pillar.intro}</MobileReadMore>
+
+                    <MobileDeepDive>{pillar.deepDive}</MobileDeepDive>
                   </div>
 
-                  {/* Image column (3:2 horizontal ratio — 50/50 grid matching Applicazioni page) */}
-                  <div className={`flex items-start ${isInverted ? 'lg:order-1' : 'lg:order-2'}`}>
-                    <div className="w-full lg:sticky lg:top-24">
-                      <div
-                        className="relative w-full overflow-hidden border"
+                  {/* ── Da lg: comportamento invariato (griglia 2 colonne,
+                      immagine sticky, DeepDive a blocco intero cliccabile) ── */}
+                  <div className="hidden lg:grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                    {/* Text column (title + prose + deep-dive) */}
+                    <div className={`flex flex-col ${isInverted ? 'lg:order-2' : 'lg:order-1'}`}>
+                      <h3
+                        className="mb-8"
                         style={{
-                          aspectRatio: '3 / 2',
-                          borderRadius: 'var(--radius-lg)',
-                          borderColor: 'var(--border)',
-                          background: 'var(--surface)',
+                          fontSize: 'clamp(1.75rem, 3vw, 2.25rem)',
+                          lineHeight: 1.15,
+                          letterSpacing: '-0.015em',
+                          color: 'var(--text)',
                         }}
                       >
-                        <Image
-                          src={pillar.image}
-                          alt={pillar.title}
-                          fill
-                          className="object-cover object-center"
-                          sizes="(max-width: 1024px) 100vw, 50vw"
-                        />
+                        {pillar.title}
+                      </h3>
+
+                      <div
+                        className="flex flex-col gap-5"
+                        style={{
+                          fontSize: 'var(--fs-body)',
+                          lineHeight: 1.75,
+                          color: 'var(--text-muted)',
+                        }}
+                      >
+                        {pillar.intro}
+                      </div>
+
+                      <DeepDive
+                        isOpen={openIndex === i}
+                        onToggle={() => handleToggle(i)}
+                      >
+                        {pillar.deepDive}
+                      </DeepDive>
+                    </div>
+
+                    {/* Image column (3:2 horizontal ratio — 50/50 grid matching Applicazioni page) */}
+                    <div className={`flex items-start ${isInverted ? 'lg:order-1' : 'lg:order-2'}`}>
+                      <div className="w-full lg:sticky lg:top-24">
+                        <div
+                          className="relative w-full overflow-hidden border"
+                          style={{
+                            aspectRatio: '3 / 2',
+                            borderRadius: 'var(--radius-lg)',
+                            borderColor: 'var(--border)',
+                            background: 'var(--surface)',
+                          }}
+                        >
+                          <Image
+                            src={pillar.image}
+                            alt={pillar.title}
+                            fill
+                            className="object-cover object-center"
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
+
                 </article>
               </Reveal>
             )
@@ -407,7 +568,7 @@ export default function ScienceSection() {
         </div>
 
         {/* ── References ── */}
-        <div className="mt-24 lg:mt-32">
+        <div className="mt-14 md:mt-[4.5rem] lg:mt-32">
           <Reveal delay={0.08}>
             <h3
               className="mb-6"
@@ -429,8 +590,8 @@ export default function ScienceSection() {
             {references.map((r, i) => (
               <li
                 key={r.doi ?? `${r.authors}-${i}`}
+                className="text-[0.9375rem] lg:text-[0.8125rem]"
                 style={{
-                  fontSize: '0.8125rem',
                   lineHeight: 1.55,
                   color: 'var(--text-subtle)',
                 }}
@@ -441,10 +602,16 @@ export default function ScienceSection() {
                 {r.doi && (
                   <>
                     {' '}
+                    {/* Sotto lg: riga tappabile da 44px (era testo inline
+                        senza target dedicato) — bibliografia a 15px invece
+                        di 13px. L'underline resta permanente a ogni fascia
+                        (già così sul desktop): solo il colore cambia, e
+                        solo su hover reale (v. dc.html nota 09). */}
                     <a
                       href={`https://doi.org/${r.doi}`}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="inline-flex items-center min-h-11 lg:inline lg:min-h-0"
                       style={{
                         color: 'var(--text-subtle)',
                         textDecoration: 'underline',
