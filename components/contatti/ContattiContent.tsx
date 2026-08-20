@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from 'react'
 import Link from 'next/link'
+import { Mail, ArrowRight } from 'lucide-react'
 import Container from '@/components/ui/Container'
 import Section from '@/components/ui/Section'
 import Reveal from '@/components/ui/Reveal'
@@ -85,17 +86,19 @@ export default function ContattiContent() {
 
   return (
     <>
-      {/* ── Hero ── */}
+      {/* ── Hero — niente hero pinnata qui (Section, non PageHero), stesso
+          pattern di Aziende/Professionisti. Font-size e gap per fascia:
+          38px/18px mobile, 52px/18px tablet, invariati da lg. ── */}
       <Section id="top" background="black">
         <Container>
-          <div className="flex flex-col gap-5 max-w-3xl">
+          <div className="flex flex-col gap-[18px] lg:gap-5 max-w-3xl">
             <Reveal trigger="mount">
-              <h1 className="text-display">
+              <h1 className="text-display text-[2.375rem] md:text-[3.25rem] lg:[font-size:clamp(3.25rem,7vw,5.2rem)]">
                 Contatti
               </h1>
             </Reveal>
             <Reveal trigger="mount" delay={0.12}>
-              <p style={{ fontSize: 'var(--fs-lead)', color: 'var(--text-muted)', lineHeight: 1.6 }}>
+              <p className="text-[1.125rem] md:text-[1.25rem]" style={{ color: 'var(--text-muted)', lineHeight: 1.6 }}>
                 Domande su Axon, ordini o assistenza? Scrivici.
               </p>
             </Reveal>
@@ -103,13 +106,19 @@ export default function ContattiContent() {
         </Container>
       </Section>
 
-      {/* ── FAQ + Form ── */}
+      {/* ── FAQ + Form — sotto md: form prima delle FAQ (nel DOM desktop la
+          colonna FAQ precede il form: sotto 1024 tre accordion spingevano
+          il primo campo a ~600px dall'inizio; qui l'intento è scrivere, non
+          leggere). Da md: torna l'ordine desktop (FAQ a sinistra, 320px —
+          380px invariato da lg), via order-* invece di riordinare il DOM,
+          così da md in su `order-none` riproduce esattamente il naturale
+          ordine desktop (v. "Contatti - Mobile & Tablet.dc.html" nota 01). ── */}
       <Section id="contatto" background="black" className="!pt-0">
         <Container>
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 lg:items-start">
-            <div className="flex flex-col gap-5">
+          <div className="grid grid-cols-1 gap-11 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:gap-12 lg:grid-cols-[minmax(0,380px)_minmax(0,1fr)] lg:gap-20 items-start">
+            <div className="order-2 md:order-none flex flex-col gap-4 lg:gap-5">
               <Reveal>
-                <h2 className="text-h2">
+                <h2 className="text-h2 text-[1.75rem] md:text-[2rem] lg:[font-size:clamp(2rem,4vw,3rem)]">
                   Domande frequenti
                 </h2>
               </Reveal>
@@ -127,9 +136,28 @@ export default function ContattiContent() {
                   ))}
                 </div>
               </Reveal>
+              {/* Le 3 domande qui sono un'anteprima, non l'insieme: link
+                  all'accordion completo della Home (v. dc.html nota 08). */}
+              <Reveal delay={0.16} className="lg:hidden">
+                <Link
+                  href="/#faq"
+                  className="inline-flex items-center gap-1.5 min-h-11 text-[15px] font-semibold"
+                  style={{ color: 'var(--brand)' }}
+                >
+                  Tutte le domande frequenti <ArrowRight size={15} aria-hidden="true" />
+                </Link>
+              </Reveal>
             </div>
 
-            <Reveal delay={0.1}>
+            <div className="order-1 md:order-none flex flex-col gap-[22px]">
+              {/* Con l'inversione il form arriverebbe senza intestazione (a
+                  lg l'h2 di riferimento è quello delle FAQ): una riga,
+                  nessun contenuto nuovo oltre l'etichetta (v. dc.html
+                  nota 02). */}
+              <h3 className="text-h2 text-[1.75rem] md:text-[2rem] lg:hidden">
+                Scrivici
+              </h3>
+              <Reveal delay={0.1}>
               {success ? (
                 <Card className="flex flex-col gap-3 p-8">
                   <p className="font-semibold" style={{ fontSize: 'var(--fs-h3)' }}>Messaggio inviato.</p>
@@ -150,7 +178,10 @@ export default function ContattiContent() {
                     style={{ display: 'none' }}
                   />
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {/* sm: → md:: il desktop affiancava già da 640px; sotto
+                      768 i due campi restano impilati, tornano affiancati a
+                      834 (v. dc.html nota 03). */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                     <FieldGroup>
                       <FieldLabel htmlFor="ct-nome" required>Nome e cognome</FieldLabel>
                       <Input
@@ -166,7 +197,7 @@ export default function ContattiContent() {
                     <FieldGroup>
                       <FieldLabel htmlFor="ct-email" required>Email</FieldLabel>
                       <Input
-                        id="ct-email" type="email" autoComplete="email"
+                        id="ct-email" type="email" autoComplete="email" inputMode="email"
                         value={data.email} onChange={(e) => set('email', e.target.value)}
                         aria-required="true"
                         aria-describedby={errors.email ? 'ct-email-err' : undefined}
@@ -209,8 +240,18 @@ export default function ContattiContent() {
                       onChange={(v) => set('consenso', v)}
                       errorId={errors.consenso ? 'ct-consenso-err' : undefined}
                     >
+                      {/* Sottolineato sotto lg — non solo colorato — per
+                          un'informativa da leggere prima di acconsentire
+                          (stesso trattamento di Aziende/Professionisti);
+                          invariato da lg. */}
                       Accetto il trattamento dei dati personali secondo la{' '}
-                      <Link href="/privacy" style={{ color: 'var(--text)' }}>Privacy Policy</Link> di Axon-Tech S.r.l.
+                      <Link
+                        href="/privacy"
+                        className="underline underline-offset-2 lg:no-underline"
+                        style={{ color: 'var(--text)' }}
+                      >
+                        Privacy Policy
+                      </Link> di Axon-Tech S.r.l.
                     </CheckboxField>
                     {errors.consenso && <FieldError id="ct-consenso-err">{errors.consenso}</FieldError>}
                   </div>
@@ -221,14 +262,34 @@ export default function ContattiContent() {
                     </p>
                   )}
 
+                  {/* Larghezza piena sotto md — chiude il form nella zona
+                      del pollice; da md torna a larghezza contenuto,
+                      invariato (v. dc.html nota 04). */}
                   <div>
-                    <Button type="submit" variant="white" size="lg" disabled={submitting}>
+                    <Button type="submit" variant="white" size="lg" disabled={submitting} className="w-full md:w-auto">
                       {submitting ? 'Invio in corso…' : 'Invia messaggio'}
                     </Button>
                   </div>
                 </form>
               )}
-            </Reveal>
+              </Reveal>
+
+              {/* Il mailto del footer promosso qui sotto come riga da 44px:
+                  su mobile è spesso la via più rapida, e copre il caso di
+                  invio fallito (v. dc.html nota 06). */}
+              <Reveal delay={0.14} className="lg:hidden flex flex-col gap-2">
+                <a
+                  href="mailto:info@axon-tech.it"
+                  className="inline-flex items-center gap-2 min-h-11 text-[17px] text-white"
+                >
+                  <Mail size={18} aria-hidden="true" style={{ color: 'var(--brand)' }} />
+                  info@axon-tech.it
+                </a>
+                <p style={{ fontSize: 'var(--fs-caption)', color: 'var(--text-subtle)', lineHeight: 1.6 }}>
+                  Axon-Tech S.r.l. — Via Verdi 73, 31100 Treviso (TV)
+                </p>
+              </Reveal>
+            </div>
           </div>
         </Container>
       </Section>
