@@ -29,6 +29,7 @@ const equilibrioItems: ResultItem[] = [
     statLabel: 'Scala Tinetti · p = 0.0024',
     body: 'Il punteggio Tinetti, che misura equilibrio e qualità del cammino, è migliorato in modo netto e statisticamente significativo dopo l’applicazione del dispositivo.',
     image: '/grafici-perche-axon/1.png',
+    imageMobile: '/grafici-perche-axon/1-mobile.webp',
     imageAlt: 'Grafico Scala Tinetti - Equilibrio e andatura',
   },
   {
@@ -38,6 +39,7 @@ const equilibrioItems: ResultItem[] = [
     statLabel: 'Qualità esecuzione · p = 0.0025',
     body: 'La qualità di esecuzione nella salita delle scale — indicatore diretto di autonomia quotidiana — ha registrato il miglioramento più marcato tra i parametri funzionali.',
     image: '/grafici-perche-axon/2.png',
+    imageMobile: '/grafici-perche-axon/2-mobile.webp',
     imageAlt: 'Grafico Qualità esecuzione salita delle scale',
   },
   {
@@ -47,6 +49,7 @@ const equilibrioItems: ResultItem[] = [
     statLabel: 'Area stabilometrica (D-WALL)',
     body: 'Le misurazioni strumentali su piattaforma hanno mostrato una riduzione dell’area di oscillazione posturale, segno di un controllo dell’equilibrio più stabile.',
     image: '/grafici-perche-axon/3.png',
+    imageMobile: '/grafici-perche-axon/3-mobile.webp',
     imageAlt: 'Grafico Area Stabilometrica',
   },
   {
@@ -56,6 +59,7 @@ const equilibrioItems: ResultItem[] = [
     statLabel: 'SPPB · p = 0.0126',
     body: 'La batteria SPPB, misura sintetica della performance fisica complessiva, ha confermato un miglioramento significativo in linea con gli altri parametri.',
     image: '/grafici-perche-axon/4.png',
+    imageMobile: '/grafici-perche-axon/4-mobile.webp',
     imageAlt: 'Grafico Performance Funzionale SPPB',
   },
 ]
@@ -69,6 +73,7 @@ const forzaItems: ResultItem[] = [
     statLabel: 'Forza media · dz = 1.54 · p < 0.001',
     body: 'La forza di presa manuale, biomarker validato della funzione neuromuscolare, è aumentata con un effetto classificato come molto grande.',
     image: '/grafici-perche-axon/5.png',
+    imageMobile: '/grafici-perche-axon/5-mobile.webp',
     imageAlt: 'Grafico Forza media di presa',
   },
   {
@@ -78,6 +83,7 @@ const forzaItems: ResultItem[] = [
     statLabel: 'Picco di forza · p = 0.0039',
     body: 'Anche il picco di forza espresso ha mostrato un incremento significativo, a conferma di una risposta neuromuscolare più efficiente.',
     image: '/grafici-perche-axon/6.png',
+    imageMobile: '/grafici-perche-axon/6-mobile.webp',
     imageAlt: 'Grafico Picco di forza',
   },
 ]
@@ -91,6 +97,7 @@ const mobilitaItems: ResultItem[] = [
     statLabel: 'Angolo di flessione del busto',
     body: 'Il test di flessione anteriore del busto ha evidenziato un aumento dell’angolo di flessione raggiungibile dopo l’applicazione del dispositivo, trasversale ai gruppi.',
     image: '/grafici-perche-axon/7.png',
+    imageMobile: '/grafici-perche-axon/7-mobile.webp',
     imageAlt: 'Grafico Flessibilità lombare',
   },
 ]
@@ -146,6 +153,10 @@ export default function PercheAxonPage() {
         title="Equilibrio, stabilità e controllo del movimento"
         items={equilibrioItems}
         imageSide="right"
+        // Suggerimento di scroll sotto il deck (mobile/tablet) mostrato solo
+        // qui, la prima sezione con più item: l'affordance si impara una
+        // volta sola, non va ripetuta su Forza/Mobilità (v. dc.html).
+        deckHint="4 parametri — scorri"
       />
 
       {/* ── Sezione B: Forza (immagine a sinistra) ── */}
